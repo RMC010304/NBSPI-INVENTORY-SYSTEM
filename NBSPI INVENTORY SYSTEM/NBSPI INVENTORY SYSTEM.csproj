@@ -1,0 +1,1471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBEED5C6-4548-4B06-ACFC-03DB6917ABFC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NBSPI_INVENTORY_SYSTEM</RootNamespace>
+    <AssemblyName>NBSPI INVENTORY SYSTEM</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.3.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>..\..\Users\Admin\Downloads\Installers\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.26.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.26.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.1.0\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="RJCodeAdvance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RJCodeAdvance.RJControls.1.0.0\lib\net45\RJCodeAdvance.RJControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.8.0.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.0\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARCHIVE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ARCHIVE.Designer.cs">
+      <DependentUpon>ARCHIVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROW.Designer.cs">
+      <DependentUpon>BORROW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROWDETAILS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROWDETAILS.Designer.cs">
+      <DependentUpon>BORROWDETAILS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROWDETAILS2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROWDETAILS2.Designer.cs">
+      <DependentUpon>BORROWDETAILS2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROWDETAILS3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROWDETAILS3.Designer.cs">
+      <DependentUpon>BORROWDETAILS3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROWLOSS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROWLOSS.Designer.cs">
+      <DependentUpon>BORROWLOSS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BORROWRETURN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BORROWRETURN.Designer.cs">
+      <DependentUpon>BORROWRETURN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DAMAGEFIXED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DAMAGEFIXED.Designer.cs">
+      <DependentUpon>DAMAGEFIXED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAMAGEFORM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DAMAGEFORM.Designer.cs">
+      <DependentUpon>DAMAGEFORM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DASHBOARD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DASHBOARD.Designer.cs">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="HM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HM.Designer.cs">
+      <DependentUpon>HM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMADD.Designer.cs">
+      <DependentUpon>HMADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMADDSTOCK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMADDSTOCK.Designer.cs">
+      <DependentUpon>HMADDSTOCK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMCHANGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMCHANGE.Designer.cs">
+      <DependentUpon>HMCHANGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMDELETE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMDELETE.Designer.cs">
+      <DependentUpon>HMDELETE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMREDUCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMREDUCE.Designer.cs">
+      <DependentUpon>HMREDUCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HMUPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMUPDATE.Designer.cs">
+      <DependentUpon>HMUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IT.Designer.cs">
+      <DependentUpon>IT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITADD.Designer.cs">
+      <DependentUpon>ITADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITADDSTOCK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITADDSTOCK.Designer.cs">
+      <DependentUpon>ITADDSTOCK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITCHANGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITCHANGE.Designer.cs">
+      <DependentUpon>ITCHANGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITDELETE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITDELETE.Designer.cs">
+      <DependentUpon>ITDELETE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITREDUCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITREDUCE.Designer.cs">
+      <DependentUpon>ITREDUCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITUPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITUPDATE.Designer.cs">
+      <DependentUpon>ITUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFADD.Designer.cs">
+      <DependentUpon>NOTIFADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFCORRECT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFCORRECT.Designer.cs">
+      <DependentUpon>NOTIFCORRECT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFDELETE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFDELETE.Designer.cs">
+      <DependentUpon>NOTIFDELETE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFDENIED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFDENIED.Designer.cs">
+      <DependentUpon>NOTIFDENIED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFENOUGH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFENOUGH.Designer.cs">
+      <DependentUpon>NOTIFENOUGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFEXCEED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFEXCEED.Designer.cs">
+      <DependentUpon>NOTIFEXCEED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFEXIST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFEXIST.Designer.cs">
+      <DependentUpon>NOTIFEXIST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFFILLED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFFILLED.Designer.cs">
+      <DependentUpon>NOTIFFILLED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFFILLED2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFFILLED2.Designer.cs">
+      <DependentUpon>NOTIFFILLED2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFGRANTED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFGRANTED.Designer.cs">
+      <DependentUpon>NOTIFGRANTED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTFOUND.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTFOUND.Designer.cs">
+      <DependentUpon>NOTIFNOTFOUND.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTFOUND2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTFOUND2.Designer.cs">
+      <DependentUpon>NOTIFNOTFOUND2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE.Designer.cs">
+      <DependentUpon>NOTIFNOTICE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE1.Designer.cs">
+      <DependentUpon>NOTIFNOTICE1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE2.Designer.cs">
+      <DependentUpon>NOTIFNOTICE2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE3.Designer.cs">
+      <DependentUpon>NOTIFNOTICE3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE4.Designer.cs">
+      <DependentUpon>NOTIFNOTICE4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNOTICE5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNOTICE5.Designer.cs">
+      <DependentUpon>NOTIFNOTICE5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNUMERIC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNUMERIC.Designer.cs">
+      <DependentUpon>NOTIFNUMERIC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFNUMERIC2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFNUMERIC2.Designer.cs">
+      <DependentUpon>NOTIFNUMERIC2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFREGISTER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFREGISTER.Designer.cs">
+      <DependentUpon>NOTIFREGISTER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFRELOAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFRELOAD.Designer.cs">
+      <DependentUpon>NOTIFRELOAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFREPORTED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFREPORTED.Designer.cs">
+      <DependentUpon>NOTIFREPORTED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFRESTORE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFRESTORE.Designer.cs">
+      <DependentUpon>NOTIFRESTORE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFRESTORED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFRESTORED.Designer.cs">
+      <DependentUpon>NOTIFRESTORED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFRETURNED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFRETURNED.Designer.cs">
+      <DependentUpon>NOTIFRETURNED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFSELECT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFSELECT.Designer.cs">
+      <DependentUpon>NOTIFSELECT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFSUCCESS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFSUCCESS.Designer.cs">
+      <DependentUpon>NOTIFSUCCESS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFUPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFUPDATE.Designer.cs">
+      <DependentUpon>NOTIFUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SCIENCE.Designer.cs">
+      <DependentUpon>SCIENCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCEADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCEADD.Designer.cs">
+      <DependentUpon>SCIENCEADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCEADDSTOCK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCEADDSTOCK.Designer.cs">
+      <DependentUpon>SCIENCEADDSTOCK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCECHANGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCECHANGE.Designer.cs">
+      <DependentUpon>SCIENCECHANGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCEDELETE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCEDELETE.Designer.cs">
+      <DependentUpon>SCIENCEDELETE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCEREDUCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCEREDUCE.Designer.cs">
+      <DependentUpon>SCIENCEREDUCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCIENCEUPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCIENCEUPDATE.Designer.cs">
+      <DependentUpon>SCIENCEUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SPORTS.Designer.cs">
+      <DependentUpon>SPORTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSADD.Designer.cs">
+      <DependentUpon>SPORTSADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSADDSTOCK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSADDSTOCK.Designer.cs">
+      <DependentUpon>SPORTSADDSTOCK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSCHANGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSCHANGE.Designer.cs">
+      <DependentUpon>SPORTSCHANGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSDELETE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSDELETE.Designer.cs">
+      <DependentUpon>SPORTSDELETE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSREDUCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSREDUCE.Designer.cs">
+      <DependentUpon>SPORTSREDUCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SPORTSUPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SPORTSUPDATE.Designer.cs">
+      <DependentUpon>SPORTSUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACTION.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TRANSACTION.Designer.cs">
+      <DependentUpon>TRANSACTION.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ARCHIVE.resx">
+      <DependentUpon>ARCHIVE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROW.resx">
+      <DependentUpon>BORROW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROWDETAILS.resx">
+      <DependentUpon>BORROWDETAILS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROWDETAILS2.resx">
+      <DependentUpon>BORROWDETAILS2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROWDETAILS3.resx">
+      <DependentUpon>BORROWDETAILS3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROWLOSS.resx">
+      <DependentUpon>BORROWLOSS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BORROWRETURN.resx">
+      <DependentUpon>BORROWRETURN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DAMAGEFIXED.resx">
+      <DependentUpon>DAMAGEFIXED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DAMAGEFORM.resx">
+      <DependentUpon>DAMAGEFORM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DASHBOARD.resx">
+      <DependentUpon>DASHBOARD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HM.resx">
+      <DependentUpon>HM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMADD.resx">
+      <DependentUpon>HMADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMADDSTOCK.resx">
+      <DependentUpon>HMADDSTOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMCHANGE.resx">
+      <DependentUpon>HMCHANGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMDELETE.resx">
+      <DependentUpon>HMDELETE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMREDUCE.resx">
+      <DependentUpon>HMREDUCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMUPDATE.resx">
+      <DependentUpon>HMUPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT.resx">
+      <DependentUpon>IT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITADD.resx">
+      <DependentUpon>ITADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITADDSTOCK.resx">
+      <DependentUpon>ITADDSTOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITCHANGE.resx">
+      <DependentUpon>ITCHANGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITDELETE.resx">
+      <DependentUpon>ITDELETE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITREDUCE.resx">
+      <DependentUpon>ITREDUCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITUPDATE.resx">
+      <DependentUpon>ITUPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFADD.resx">
+      <DependentUpon>NOTIFADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFCORRECT.resx">
+      <DependentUpon>NOTIFCORRECT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFDELETE.resx">
+      <DependentUpon>NOTIFDELETE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFDENIED.resx">
+      <DependentUpon>NOTIFDENIED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFENOUGH.resx">
+      <DependentUpon>NOTIFENOUGH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFEXCEED.resx">
+      <DependentUpon>NOTIFEXCEED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFEXIST.resx">
+      <DependentUpon>NOTIFEXIST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFFILLED.resx">
+      <DependentUpon>NOTIFFILLED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFFILLED2.resx">
+      <DependentUpon>NOTIFFILLED2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFGRANTED.resx">
+      <DependentUpon>NOTIFGRANTED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTFOUND.resx">
+      <DependentUpon>NOTIFNOTFOUND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTFOUND2.resx">
+      <DependentUpon>NOTIFNOTFOUND2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE.resx">
+      <DependentUpon>NOTIFNOTICE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE1.resx">
+      <DependentUpon>NOTIFNOTICE1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE2.resx">
+      <DependentUpon>NOTIFNOTICE2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE3.resx">
+      <DependentUpon>NOTIFNOTICE3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE4.resx">
+      <DependentUpon>NOTIFNOTICE4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNOTICE5.resx">
+      <DependentUpon>NOTIFNOTICE5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNUMERIC.resx">
+      <DependentUpon>NOTIFNUMERIC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFNUMERIC2.resx">
+      <DependentUpon>NOTIFNUMERIC2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFREGISTER.resx">
+      <DependentUpon>NOTIFREGISTER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFRELOAD.resx">
+      <DependentUpon>NOTIFRELOAD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFREPORTED.resx">
+      <DependentUpon>NOTIFREPORTED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFRESTORE.resx">
+      <DependentUpon>NOTIFRESTORE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFRESTORED.resx">
+      <DependentUpon>NOTIFRESTORED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFRETURNED.resx">
+      <DependentUpon>NOTIFRETURNED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFSELECT.resx">
+      <DependentUpon>NOTIFSELECT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFSUCCESS.resx">
+      <DependentUpon>NOTIFSUCCESS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFUPDATE.resx">
+      <DependentUpon>NOTIFUPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCE.resx">
+      <DependentUpon>SCIENCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCEADD.resx">
+      <DependentUpon>SCIENCEADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCEADDSTOCK.resx">
+      <DependentUpon>SCIENCEADDSTOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCECHANGE.resx">
+      <DependentUpon>SCIENCECHANGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCEDELETE.resx">
+      <DependentUpon>SCIENCEDELETE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCEREDUCE.resx">
+      <DependentUpon>SCIENCEREDUCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCIENCEUPDATE.resx">
+      <DependentUpon>SCIENCEUPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTS.resx">
+      <DependentUpon>SPORTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSADD.resx">
+      <DependentUpon>SPORTSADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSADDSTOCK.resx">
+      <DependentUpon>SPORTSADDSTOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSCHANGE.resx">
+      <DependentUpon>SPORTSCHANGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSDELETE.resx">
+      <DependentUpon>SPORTSDELETE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSREDUCE.resx">
+      <DependentUpon>SPORTSREDUCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPORTSUPDATE.resx">
+      <DependentUpon>SPORTSUPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRANSACTION.resx">
+      <DependentUpon>TRANSACTION.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="IT_RESDataSet.xsc">
+      <DependentUpon>IT_RESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet.xss">
+      <DependentUpon>IT_RESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet1.xsc">
+      <DependentUpon>IT_RESDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet1.xss">
+      <DependentUpon>IT_RESDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet10.xsc">
+      <DependentUpon>IT_RESDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet10.xss">
+      <DependentUpon>IT_RESDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet11.xsc">
+      <DependentUpon>IT_RESDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet11.xss">
+      <DependentUpon>IT_RESDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet12.xsc">
+      <DependentUpon>IT_RESDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet12.xss">
+      <DependentUpon>IT_RESDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet13.xsc">
+      <DependentUpon>IT_RESDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet13.xss">
+      <DependentUpon>IT_RESDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet2.xsc">
+      <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet2.xss">
+      <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet3.xsc">
+      <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet3.xss">
+      <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet4.xsc">
+      <DependentUpon>IT_RESDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet4.xss">
+      <DependentUpon>IT_RESDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet5.xsc">
+      <DependentUpon>IT_RESDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet5.xss">
+      <DependentUpon>IT_RESDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet6.xsc">
+      <DependentUpon>IT_RESDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet6.xss">
+      <DependentUpon>IT_RESDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet7.xsc">
+      <DependentUpon>IT_RESDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet7.xss">
+      <DependentUpon>IT_RESDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet8.xsc">
+      <DependentUpon>IT_RESDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet8.xss">
+      <DependentUpon>IT_RESDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet9.xsc">
+      <DependentUpon>IT_RESDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet9.xss">
+      <DependentUpon>IT_RESDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lg2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ab2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-bin-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tech.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tr2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\r2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KEEP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ABOUTT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-fill %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-event-fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\equalizer-fill %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\export-fill %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-circle-fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bak3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-line %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tran.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IVE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dele.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-line %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOTICE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\81.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\112.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-circle-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-circle-right1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\92.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\113.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\122.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-circle-fill %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\82.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\93.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TRANS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tr1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DETAILS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RETURN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DETAILSS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DET.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DETT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dettt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1212.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FIX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\damnot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\damform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\damagee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1020.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\210.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\37.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dldl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemfix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemfi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dlq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dlqq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ddll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rqrq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ARCHB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refrr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dlfor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archbb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\151.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REST.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restor.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
