@@ -11,6 +11,8 @@ using System.IO.Ports;
 using System.Data.SqlClient;
 using System.Runtime.Remoting.Messaging;
 using System.Reflection.Emit;
+using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace NBSPI_INVENTORY_SYSTEM
 {
@@ -26,6 +28,7 @@ namespace NBSPI_INVENTORY_SYSTEM
         private bool allowScanning = true;
         private bool isNotifDeniedShown = false;
 
+   
         public Login()
         {
             InitializeComponent();
@@ -33,8 +36,18 @@ namespace NBSPI_INVENTORY_SYSTEM
             serialPortManager.OnDataReceived += DisplayRFIDUID;
             serialPortManager.OpenPort();
             timer3.Stop();
+
+            checkBox5.CheckedChanged += ShowPasswordCheckBox_CheckedChanged;
+            checkBox6.CheckedChanged += ShowPasswordCheckBox_CheckedChanged;
         }
-        
+
+        private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+            rjTextBox2.PasswordChar = !checkBox5.Checked;
+            rjTextBox3.PasswordChar = !checkBox6.Checked;
+        }
+
         private SqlConnection CreateConnection()
         {
             return new SqlConnection(connectionString);
@@ -220,14 +233,26 @@ namespace NBSPI_INVENTORY_SYSTEM
                 return;
             }
 
+            int it = checkBox1.Checked ? 1 : 0;
+            int hm = checkBox2.Checked ? 1 : 0;
+            int science = checkBox3.Checked ? 1 : 0;
+            int sports = checkBox4.Checked ? 1 : 0;
+
             using (var connection = CreateConnection())
             {
                 // Insert into the MySQL database
-                string query = "INSERT INTO dbo.register (UID, Name) VALUES (@uid, @name)";
+                string query = @"INSERT INTO dbo.register 
+                         (UID, Name, password, IT, HM, SCIENCE, SPORTS)
+                         VALUES(@uid, @name, @password, @it, @hm, @science, @sports)";
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@uid", uid);
                     cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@password", rjTextBox2.Texts);
+                    cmd.Parameters.AddWithValue("@it", it);
+                    cmd.Parameters.AddWithValue("@hm", hm);
+                    cmd.Parameters.AddWithValue("@science", science);
+                    cmd.Parameters.AddWithValue("@sports", sports);
 
                     try
                     {
@@ -296,8 +321,12 @@ namespace NBSPI_INVENTORY_SYSTEM
                         {
                             if (reader.Read())
                             {
+
+                          
+
                                 NOTIFGRANTED nOTIFGRANTED = new NOTIFGRANTED();
-                                Main main = new Main();                            
+                                Main main = new Main();
+                                EnableButtonsBasedOnPermissions2(main, uid);
                                 main.Show();
                                 nOTIFGRANTED.Show();
 
@@ -394,7 +423,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
-            doubleBufferedPanel2.BringToFront();
+            doubleBufferedPanel5.BringToFront();
             doubleBufferedPanel4.Width = 0;
             isNotifDeniedShown = true;
         }
@@ -425,7 +454,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void label2_Click(object sender, EventArgs e)
         {
-            create.BringToFront();
+            doubleBufferedPanel5.BringToFront();
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -443,5 +472,142 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            create.BringToFront();
+        }
+
+        private void rjButton5_Click(object sender, EventArgs e)
+        {
+            doubleBufferedPanel2.BringToFront();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            scan.BringToFront();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            doubleBufferedPanel6.BringToFront();
+        }
+
+        private void create_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rjButton6_Click(object sender, EventArgs e)
+        {
+            string username = rjTextBox4.Texts.Trim();
+            string password = rjTextBox3.Texts.Trim();
+
+            if (ValidateUsernamePassword(username, password))
+            {
+                NOTIFGRANTED nOTIFGRANTED = new NOTIFGRANTED();
+                Main main = new Main();
+                EnableButtonsBasedOnPermissions(main, username);
+                main.Show();
+                nOTIFGRANTED.Show();
+                this.Hide();
+            }
+            else
+            {
+                NOTIFINVALID nOTIFINVALID = new NOTIFINVALID();
+                nOTIFINVALID.Show();
+            }
+        }
+
+        private bool ValidateUsernamePassword(string username, string password)
+        {
+            using (var connection = CreateConnection())
+            {
+                string query = "SELECT COUNT(*) FROM dbo.register WHERE Name = @name AND password = @password";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@name", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    connection.Open();
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        private void EnableButtonsBasedOnPermissions(Main mainForm, string username)
+        {
+            using (var connection = CreateConnection())
+            {
+                string query = "SELECT IT, HM, SCIENCE, SPORTS FROM dbo.register WHERE Name = @name";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@name", username);
+
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            bool it = !reader.IsDBNull(0) && Convert.ToInt32(reader[0]) == 1;
+                            bool hm = !reader.IsDBNull(1) && Convert.ToInt32(reader[1]) == 1;
+                            bool science = !reader.IsDBNull(2) && Convert.ToInt32(reader[2]) == 1;
+                            bool sports = !reader.IsDBNull(3) && Convert.ToInt32(reader[3]) == 1;
+
+                            // Enable or disable buttons based on the user's permissions
+                            mainForm.SetButtonPermissions(
+                           it, hm, science, sports,
+                           Properties.Resources.it1111, Properties.Resources.it111,
+                           Properties.Resources._21, Properties.Resources.hm111,
+                          Properties.Resources._31, Properties.Resources.sc111,
+                          Properties.Resources._41, Properties.Resources.sp111);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void UpdateButtonState(Button button, bool isEnabled, Image enabledImage, Image disabledImage)
+        {
+            button.Enabled = isEnabled;
+
+            // Change the button image based on the enabled/disabled state
+            button.Image = isEnabled ? enabledImage : disabledImage;
+        }
+
+        private void EnableButtonsBasedOnPermissions2(Main mainForm, string uid)
+        {
+            using (var connection = CreateConnection())
+            {
+                string query = "SELECT IT, HM, SCIENCE, SPORTS FROM dbo.register WHERE UID = @uid";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@uid", uid);
+
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            bool it = !reader.IsDBNull(0) && Convert.ToInt32(reader[0]) == 1;
+                            bool hm = !reader.IsDBNull(1) && Convert.ToInt32(reader[1]) == 1;
+                            bool science = !reader.IsDBNull(2) && Convert.ToInt32(reader[2]) == 1;
+                            bool sports = !reader.IsDBNull(3) && Convert.ToInt32(reader[3]) == 1;
+
+                            // Enable or disable buttons based on the user's permissions
+                            mainForm.SetButtonPermissions(
+                       it, hm, science, sports,
+                       Properties.Resources.it1111, Properties.Resources.it111,
+                       Properties.Resources._21, Properties.Resources.hm111,
+                      Properties.Resources._31, Properties.Resources.sc111,
+                      Properties.Resources._41, Properties.Resources.sp111);
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }

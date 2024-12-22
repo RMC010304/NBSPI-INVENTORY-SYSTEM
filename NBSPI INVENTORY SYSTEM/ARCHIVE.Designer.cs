@@ -398,9 +398,10 @@
             this.rjButton6.Name = "rjButton6";
             this.rjButton6.Size = new System.Drawing.Size(139, 54);
             this.rjButton6.TabIndex = 99;
-            this.rjButton6.Text = " Export";
+            this.rjButton6.Text = " Report";
             this.rjButton6.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.rjButton6, "Generate Report");
             this.rjButton6.UseVisualStyleBackColor = false;
             this.rjButton6.Click += new System.EventHandler(this.rjButton6_Click);
             // 
@@ -761,8 +762,7 @@
             // 
             // ARCHIVE
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.archbb;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

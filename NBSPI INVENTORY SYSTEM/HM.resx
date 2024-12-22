@@ -117,21 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rjButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAdtJREFUSEvd
-        lMsrhGEUxidFLrkk/BPY2qDkkkSSmpRp7jXFQlJWitmwYWEtSlL+A2VlYaNIYkEWJLJFbgsZfkfP9FEz
-        5v22nnp6v3nOec453/u98wb+P+LxeGcsFluORqMHrA/iMVwnNpJKpYqV6g8U7IKnFPoswMtEItEtmxso
-        PPijwC6TjrG2M20daw3sIGcR3ijHOCV7YTBRJYY7Ckcl5UQ6nS6ybSL32ZrQcEKh3IhEIn1MWW7PoVCo
-        6lt0AL4Wir/T5IPh2iT/hn0smxrOSfIFfJP2FvAs54fXq1rCSzgcbpDsjGAwWILXBrQaQ5I9IG4paFyV
-        7Av45uVfkeQB8VJBY4Y9bVTIGbb/5mc3jiR5IPD6o4ElbSvkjGQyWSv/vSQPTPxkQTuikpyBb0eFs3xR
-        yAPiuYLNkpzB5E34MvIbLxTygJj9yNOSfAHfmvzGDckeEMMKXtg/VLIz7GjjfVONYckeOMdlBK6VEJPs
-        C9jS8DbvDUuwB1qDZz/HNHsw7JqxGt9iPlB4Rk0eOKoDkvOC/CS5d2xRhaTCwDSrJsYrfi+w2nVdTdN6
-        e4bj6HvKyaD3yu4GzP0Yb1XgLx6S2yqbP2AuhaNwE57AR3gP95l4Ke/V/I8QCHwBKIY3G9YvXBIAAAAA
-        SUVORK5CYII=
-</value>
-  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>481, 17</value>
+  </metadata>
   <metadata name="iTEMSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>159, 17</value>
   </metadata>
@@ -141,7 +129,8 @@
   <metadata name="dataGridViewImageColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="dataGridViewCellStyle12.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dataGridViewCellStyle13.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk32AgAAAAAAADYAAAAoAAAADgAAABAAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEgoTGw8bGw8bGw8bGw8bGw8bGw8bG
@@ -161,7 +150,7 @@
   <metadata name="dataGridViewImageColumn6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="dataGridViewCellStyle13.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="dataGridViewCellStyle14.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk32AgAAAAAAADYAAAAoAAAADgAAABAAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEgoTGw8bGw8bGw8bGw8bGw8bGw8bG
@@ -182,6 +171,6 @@
     <value>323, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>31</value>
   </metadata>
 </root>

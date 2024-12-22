@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using DGVPrinterHelper;
 using System.Drawing.Printing;
+using Mysqlx.Crud;
 
 namespace NBSPI_INVENTORY_SYSTEM
 {
@@ -22,6 +23,7 @@ namespace NBSPI_INVENTORY_SYSTEM
         SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;Integrated Security=True");
         DataSet ds = new DataSet();
 
+        bool isDescending = true;
         public HM()
         {
             InitializeComponent();
@@ -55,8 +57,10 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
 
             DataTable dt = new DataTable();
+            string orderBy = isDescending ? "DESC" : "ASC";
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ITEMS", con))
+            // Modify query to order by DATE column in descending order
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.ITEMS ORDER BY DATE {orderBy}", con))
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -73,8 +77,9 @@ namespace NBSPI_INVENTORY_SYSTEM
 
 
             DataTable dt = new DataTable();
+            string orderBy = isDescending ? "DESC" : "ASC";
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ITEMS", con))
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.ITEMS ORDER BY DATE {orderBy}", con))
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -162,12 +167,20 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjButton6_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ITEMS WHERE DATE BETWEEN @date1-1 AND @date2", con);
-            cmd.Parameters.AddWithValue("date1", SqlDbType.DateTime).Value = rjDatePicker1.Value;
-            cmd.Parameters.AddWithValue("date2", SqlDbType.DateTime).Value = rjDatePicker2.Value;
+
+            SqlCommand cmd = new SqlCommand(@"
+              SELECT * FROM dbo.ITEMS
+              WHERE DATE >= @date1 AND DATE < DATEADD(DAY, 1, @date2)", con);
+
+            // Set parameters with truncated time (only dates)
+            cmd.Parameters.AddWithValue("@date1", rjDatePicker1.Value.Date);
+            cmd.Parameters.AddWithValue("@date2", rjDatePicker2.Value.Date);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            // Bind data to DataGridView
             dataGridView5.DataSource = dt;
             dataGridView1.DataSource = dt;
 
@@ -176,12 +189,19 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjButton7_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ITEMS WHERE DATE2 BETWEEN @date1-1 AND @date2", con);
-            cmd.Parameters.AddWithValue("date1", SqlDbType.DateTime).Value = rjDatePicker4.Value;
-            cmd.Parameters.AddWithValue("date2", SqlDbType.DateTime).Value = rjDatePicker3.Value;
+            SqlCommand cmd = new SqlCommand(@"
+              SELECT * FROM dbo.ITEMS
+              WHERE DATE2 >= @date1 AND DATE2 < DATEADD(DAY, 1, @date2)", con);
+
+            // Set parameters with truncated time (only dates)
+            cmd.Parameters.AddWithValue("@date1", rjDatePicker4.Value.Date);
+            cmd.Parameters.AddWithValue("@date2", rjDatePicker3.Value.Date);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            // Bind data to DataGridView
             dataGridView5.DataSource = dt;
             dataGridView1.DataSource = dt;
 
@@ -314,6 +334,15 @@ namespace NBSPI_INVENTORY_SYSTEM
             Sort(rjComboBox1.SelectedItem.ToString());
 
             doubleBufferedPanel1.Hide();
+        }
+
+        private void rjButton8_Click_1(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
+
+            // Load the items with the new sorting order
+            GetItems();
+            GetItems2();
         }
     }
 }

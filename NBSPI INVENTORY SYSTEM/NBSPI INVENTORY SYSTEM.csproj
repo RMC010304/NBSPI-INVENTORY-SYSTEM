@@ -284,6 +284,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet13.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet16.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -401,6 +416,12 @@
     </Compile>
     <Compile Include="NOTIFGRANTED.Designer.cs">
       <DependentUpon>NOTIFGRANTED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NOTIFINVALID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFINVALID.Designer.cs">
+      <DependentUpon>NOTIFINVALID.cs</DependentUpon>
     </Compile>
     <Compile Include="NOTIFNOTFOUND.cs">
       <SubType>Form</SubType>
@@ -724,6 +745,9 @@
     <EmbeddedResource Include="NOTIFGRANTED.resx">
       <DependentUpon>NOTIFGRANTED.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFINVALID.resx">
+      <DependentUpon>NOTIFINVALID.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NOTIFNOTFOUND.resx">
       <DependentUpon>NOTIFNOTFOUND.cs</DependentUpon>
     </EmbeddedResource>
@@ -897,6 +921,39 @@
     <None Include="IT_RESDataSet13.xss">
       <DependentUpon>IT_RESDataSet13.xsd</DependentUpon>
     </None>
+    <None Include="IT_RESDataSet14.xsc">
+      <DependentUpon>IT_RESDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet14.xss">
+      <DependentUpon>IT_RESDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet15.xsc">
+      <DependentUpon>IT_RESDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet15.xss">
+      <DependentUpon>IT_RESDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet16.xsc">
+      <DependentUpon>IT_RESDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet16.xss">
+      <DependentUpon>IT_RESDataSet16.xsd</DependentUpon>
+    </None>
     <None Include="IT_RESDataSet2.xsc">
       <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
     </None>
@@ -1061,9 +1118,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\11.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\21.png" />
@@ -1466,6 +1520,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\restor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASBORRD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DUSTBORD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dowdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SIDEMENUP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tag3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\83.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\62.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invalid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hm111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sc111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sp111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hm1111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it1111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sc1111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sp1111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ABOUT01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-up-down-fill %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-line %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

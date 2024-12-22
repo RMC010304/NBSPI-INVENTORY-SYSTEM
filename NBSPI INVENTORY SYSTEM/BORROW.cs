@@ -20,12 +20,17 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private TRANSACTION transaction;
 
+        public event Action OnStatusUpdated;
+
         public BORROW(TRANSACTION control)
         {
             InitializeComponent();
             transaction = control;
 
             _generator = new CustomIdGenerator("B");
+
+       
+            timer1.Tick += Timer_Tick;
 
         }
 
@@ -288,7 +293,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void BORROW_Load(object sender, EventArgs e)
         {
-
+            timer1.Start();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -309,6 +314,76 @@ namespace NBSPI_INVENTORY_SYSTEM
             {
 
                 this.Close();
+            }
+        }
+
+        private void rjDatePicker1_ValueChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        // Event handler for Timer Tick
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            CheckAndUpdateOverdueStatus(); // Check for overdue items and update their status
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            CheckAndUpdateOverdueStatus();
+        }
+
+        private void CheckAndUpdateOverdueStatus()
+        {
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                con.Open();
+
+                // Query to find all borrow records where the return date has passed and status is still UNRETURNED
+                string query = "SELECT ID, DATE2 FROM BORROW WHERE STATUS = 'UNRETURNED' AND DATE2 < @CurrentDate";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@CurrentDate", DateTime.Now);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                bool statusUpdated = false;  // To track if any status was updated
+
+                List<string> overdueBorrowIds = new List<string>();
+
+                while (reader.Read())
+                {
+                    string borrowId = reader["ID"].ToString();
+                    overdueBorrowIds.Add(borrowId);  // Add the borrow ID to the list of overdue records
+                }
+
+                reader.Close();  // Close the DataReader before executing the update
+
+                // If there are overdue borrow IDs, update their status
+                if (overdueBorrowIds.Count > 0)
+                {
+                    using (SqlConnection updateCon = new SqlConnection(conn))  // Use a new connection for updates
+                    {
+                        updateCon.Open();
+
+                        foreach (string borrowId in overdueBorrowIds)
+                        {
+                            string updateQuery = "UPDATE BORROW SET STATUS = 'OVERDUE' WHERE ID = @BorrowId";
+                            SqlCommand updateCmd = new SqlCommand(updateQuery, updateCon);
+                            updateCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                            int rowsAffected = updateCmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                statusUpdated = true;  // Mark that a status update occurred
+                            }
+                        }
+                    }
+                }
+
+                // Trigger the event to notify the TRANSACTION form if any status was updated
+                if (statusUpdated && OnStatusUpdated != null)
+                {
+                    OnStatusUpdated.Invoke();
+                }
             }
         }
     }

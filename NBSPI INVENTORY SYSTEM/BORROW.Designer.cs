@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BORROW));
             this.rjTextBox2 = new RJCodeAdvance.RJControls.RJTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -41,6 +42,7 @@
             this.rjDatePicker2 = new RJCodeAdvance.RJControls.RJDatePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +99,7 @@
             this.rjDatePicker1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjDatePicker1.BorderSize = 1;
             this.rjDatePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjDatePicker1.CustomFormat = "dddd  dd MMMM yyyy hh:mm tt";
             this.rjDatePicker1.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjDatePicker1.Location = new System.Drawing.Point(63, 455);
             this.rjDatePicker1.MinimumSize = new System.Drawing.Size(4, 35);
@@ -105,6 +108,7 @@
             this.rjDatePicker1.SkinColor = System.Drawing.Color.WhiteSmoke;
             this.rjDatePicker1.TabIndex = 93;
             this.rjDatePicker1.TextColor = System.Drawing.Color.DimGray;
+            this.rjDatePicker1.ValueChanged += new System.EventHandler(this.rjDatePicker1_ValueChanged);
             // 
             // rjComboBox1
             // 
@@ -246,6 +250,12 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 99;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // BORROW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +301,6 @@
         private RJCodeAdvance.RJControls.RJDatePicker rjDatePicker2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

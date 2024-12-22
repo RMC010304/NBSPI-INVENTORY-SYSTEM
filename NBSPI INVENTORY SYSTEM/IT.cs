@@ -1,4 +1,5 @@
 ﻿using DGVPrinterHelper;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,26 +142,42 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjButton6_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.IT WHERE DATE BETWEEN @date1-1 AND @date2", con);
-            cmd.Parameters.AddWithValue("date1", SqlDbType.DateTime).Value = rjDatePicker1.Value;
-            cmd.Parameters.AddWithValue("date2", SqlDbType.DateTime).Value = rjDatePicker2.Value;
+         
+           SqlCommand cmd = new SqlCommand(@"
+              SELECT * FROM dbo.IT
+              WHERE DATE >= @date1 AND DATE < DATEADD(DAY, 1, @date2)", con);
+
+            // Set parameters with truncated time (only dates)
+            cmd.Parameters.AddWithValue("@date1", rjDatePicker1.Value.Date);
+            cmd.Parameters.AddWithValue("@date2", rjDatePicker2.Value.Date);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            // Bind data to DataGridView
             dataGridView5.DataSource = dt;
             dataGridView1.DataSource = dt;
+
 
             doubleBufferedPanel2.Hide();
         }
 
         private void rjButton7_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.IT WHERE DATE2 BETWEEN @date1-1 AND @date2", con);
-            cmd.Parameters.AddWithValue("date1", SqlDbType.DateTime).Value = rjDatePicker4.Value;
-            cmd.Parameters.AddWithValue("date2", SqlDbType.DateTime).Value = rjDatePicker3.Value;
+            SqlCommand cmd = new SqlCommand(@"
+              SELECT * FROM dbo.IT
+              WHERE DATE2 >= @date1 AND DATE2 < DATEADD(DAY, 1, @date2)", con);
+
+            // Set parameters with truncated time (only dates)
+            cmd.Parameters.AddWithValue("@date1", rjDatePicker4.Value.Date);
+            cmd.Parameters.AddWithValue("@date2", rjDatePicker3.Value.Date);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            // Bind data to DataGridView
             dataGridView5.DataSource = dt;
             dataGridView1.DataSource = dt;
 
