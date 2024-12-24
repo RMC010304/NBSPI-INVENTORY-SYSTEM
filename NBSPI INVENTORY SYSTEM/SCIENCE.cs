@@ -19,6 +19,7 @@ namespace NBSPI_INVENTORY_SYSTEM
         SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;Integrated Security=True");
         DataSet ds = new DataSet();
 
+        bool isDescending = true;
         public SCIENCE()
         {
             InitializeComponent();
@@ -42,8 +43,10 @@ namespace NBSPI_INVENTORY_SYSTEM
         public void GetItems()
         {
 
+            string orderBy = isDescending ? "DESC" : "ASC";
+
             SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.SCIENCE", con);
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.SCIENCE ORDER BY DATE {orderBy}", con);
             DataTable dt = new DataTable();
 
             con.Open();
@@ -66,7 +69,19 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void SCIENCE_Load(object sender, EventArgs e)
         {
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
+            // Disable visual styles
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView5.EnableHeadersVisualStyles = false;
         }
 
         private void rjButton22_Click(object sender, EventArgs e)
@@ -194,8 +209,9 @@ namespace NBSPI_INVENTORY_SYSTEM
 
 
             DataTable dt = new DataTable();
+            string orderBy = isDescending ? "DESC" : "ASC";
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.SCIENCE", con))
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.SCIENCE ORDER BY DATE {orderBy}", con))
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -313,6 +329,15 @@ namespace NBSPI_INVENTORY_SYSTEM
             GetItems();
             NOTIFRELOAD nOTIFRELOAD = new NOTIFRELOAD();
             nOTIFRELOAD.Show();
+        }
+
+        private void rjButton8_Click_1(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
+
+            // Load the items with the new sorting order
+            GetItems();
+            GetItems2();
         }
     }
 }

@@ -102,7 +102,19 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void HM_Load(object sender, EventArgs e)
         {
-            
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // Disable visual styles
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView5.EnableHeadersVisualStyles = false;
         }
 
 

@@ -32,6 +32,8 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private BORROW borrowForm;
 
+        bool isDescending = true;
+
         public TRANSACTION()
         {
             InitializeComponent();
@@ -68,15 +70,58 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void TRANSACTION_Load(object sender, EventArgs e)
         {
+            dataGridView3.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView3.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView3.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
+            // Disable visual styles
+            dataGridView3.EnableHeadersVisualStyles = false;
+
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // Disable visual styles
+            dataGridView2.EnableHeadersVisualStyles = false;
+
+            dataGridView6.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView6.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView6.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // Disable visual styles
+            dataGridView6.EnableHeadersVisualStyles = false;
+
+            dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView5.EnableHeadersVisualStyles = false;
+
+            dataGridView4.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView4.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView4.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView4.EnableHeadersVisualStyles = false;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView1.EnableHeadersVisualStyles = false;
         }
 
         public void GetItems()
         {
+
+            string orderBy = isDescending ? "DESC" : "ASC";
+
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
-                string query = "SELECT * FROM BORROW ORDER BY DATE DESC"; 
+                string query = ($"SELECT * FROM dbo.BORROW ORDER BY DATE {orderBy}");
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -87,10 +132,13 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         public void GetItems2()
         {
+
+            string orderBy = isDescending ? "DESC" : "ASC";
+
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
-                string query = "SELECT * FROM DAMAGE ORDER BY DATE DESC";
+                string query = ($"SELECT * FROM dbo.DAMAGE ORDER BY DATE {orderBy}");
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -101,10 +149,13 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         public void GetItems3()
         {
+
+            string orderBy = isDescending ? "DESC" : "ASC";
+
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
-                string query = "SELECT * FROM [RETURN] ORDER BY DATE DESC";
+                string query = ($"SELECT * FROM dbo.[RETURN] ORDER BY DATE {orderBy}");
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -938,8 +989,31 @@ namespace NBSPI_INVENTORY_SYSTEM
             }
         }
 
+        private void rjButton18_Click(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
 
+            // Load the items with the new sorting order
+            GetItems();
+         
+        }
 
-        //
+        private void rjButton19_Click(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
+
+            // Load the items with the new sorting order
+     
+            GetItems2();
+        }
+
+        private void rjButton20_Click(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
+
+            // Load the items with the new sorting order
+    
+            GetItems3();
+        }
     }
 }

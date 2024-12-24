@@ -113,7 +113,7 @@
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Montserrat ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(113)))), ((int)(((byte)(126)))));
-            this.label4.Location = new System.Drawing.Point(1317, 874);
+            this.label4.Location = new System.Drawing.Point(1319, 874);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 66);
             this.label4.TabIndex = 11;
@@ -145,7 +145,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Montserrat ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(166)))), ((int)(((byte)(179)))));
-            this.label2.Location = new System.Drawing.Point(1322, 509);
+            this.label2.Location = new System.Drawing.Point(1319, 509);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 66);
             this.label2.TabIndex = 9;
@@ -162,7 +162,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Montserrat ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(116)))), ((int)(((byte)(179)))));
-            this.label1.Location = new System.Drawing.Point(1321, 326);
+            this.label1.Location = new System.Drawing.Point(1322, 326);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 66);
             this.label1.TabIndex = 8;

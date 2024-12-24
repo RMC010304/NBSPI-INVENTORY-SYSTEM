@@ -19,6 +19,7 @@ namespace NBSPI_INVENTORY_SYSTEM
         SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;Integrated Security=True");
         DataSet ds = new DataSet();
 
+        bool isDescending = true;
         public ARCHIVE()
         {
             InitializeComponent();
@@ -32,15 +33,28 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void ARCHIVE_Load(object sender, EventArgs e)
         {
+            dataGridView3.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 7, FontStyle.Bold);
+            dataGridView3.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(93, 79, 162);
+            dataGridView3.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
+            // Disable visual styles
+            dataGridView3.EnableHeadersVisualStyles = false;
+
+            dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
+            dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+
+            // Disable visual styles
+            dataGridView5.EnableHeadersVisualStyles = false;
         }
 
         public void GetItems()
         {
 
             DataTable dt = new DataTable();
+            string orderBy = isDescending ? "DESC" : "ASC";
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ARCHIVE", conn))
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.ARCHIVE ORDER BY DATE {orderBy}", conn))
             {
                 conn.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -282,6 +296,15 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             printer.PrintPreviewDataGridView(dataGridView3);
             GetItems();
+        }
+
+        private void rjButton8_Click(object sender, EventArgs e)
+        {
+            isDescending = !isDescending;
+
+            // Load the items with the new sorting order
+            GetItems();
+          
         }
     }
 }
