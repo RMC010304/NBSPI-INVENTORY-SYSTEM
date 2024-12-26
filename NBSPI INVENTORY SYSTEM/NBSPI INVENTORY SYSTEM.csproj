@@ -299,6 +299,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet16.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet17.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -954,6 +959,17 @@
     <None Include="IT_RESDataSet16.xss">
       <DependentUpon>IT_RESDataSet16.xsd</DependentUpon>
     </None>
+    <None Include="IT_RESDataSet17.xsc">
+      <DependentUpon>IT_RESDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet17.xss">
+      <DependentUpon>IT_RESDataSet17.xsd</DependentUpon>
+    </None>
     <None Include="IT_RESDataSet2.xsc">
       <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
     </None>
@@ -1598,6 +1614,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh-line %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add hm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arkayb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mod1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update hm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

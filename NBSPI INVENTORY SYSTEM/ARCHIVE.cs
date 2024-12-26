@@ -166,17 +166,24 @@ namespace NBSPI_INVENTORY_SYSTEM
         private void rjButton17_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(conn.ConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.ARCHIVE WHERE DATE BETWEEN @date1-1 AND @date2", con);
-            cmd.Parameters.AddWithValue("date1", SqlDbType.DateTime).Value = rjDatePicker8.Value;
-            cmd.Parameters.AddWithValue("date2", SqlDbType.DateTime).Value = rjDatePicker7.Value;
+       
+            SqlCommand cmd = new SqlCommand(@"
+              SELECT * FROM dbo.ARCHIVE
+              WHERE DATE >= @date1 AND DATE < DATEADD(DAY, 1, @date2)", con);
+
+            // Set parameters with truncated time (only dates)
+            cmd.Parameters.AddWithValue("@date1", rjDatePicker8.Value.Date);
+            cmd.Parameters.AddWithValue("@date2", rjDatePicker7.Value.Date);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+
+            // Bind data to DataGridView
             dataGridView5.DataSource = dt;
             dataGridView3.DataSource = dt;
 
             doubleBufferedPanel6.Hide();
-
 
         }
 

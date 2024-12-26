@@ -628,11 +628,11 @@
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1888, 1002);
-            this.Controls.Add(this.doubleBufferedPanel1);
             this.Controls.Add(this.hm2);
             this.Controls.Add(this.it2);
             this.Controls.Add(this.science2);
             this.Controls.Add(this.sports2);
+            this.Controls.Add(this.doubleBufferedPanel1);
             this.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
