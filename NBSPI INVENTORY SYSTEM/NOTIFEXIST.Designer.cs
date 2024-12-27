@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources._35;
+            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.bm_notif;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(396, 76);
             this.DoubleBuffered = true;

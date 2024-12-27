@@ -94,6 +94,7 @@
             this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjTextBox3.BorderRadius = 15;
             this.rjTextBox3.BorderSize = 1;
+            this.rjTextBox3.Enabled = false;
             this.rjTextBox3.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox3.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox3.Location = new System.Drawing.Point(293, 265);
@@ -138,6 +139,7 @@
             this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjTextBox2.BorderRadius = 15;
             this.rjTextBox2.BorderSize = 1;
+            this.rjTextBox2.Enabled = false;
             this.rjTextBox2.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox2.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox2.Location = new System.Drawing.Point(62, 265);
@@ -295,12 +297,12 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Montserrat", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.label3.Location = new System.Drawing.Point(640, 379);
+            this.label3.Location = new System.Drawing.Point(641, 379);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label3.Size = new System.Drawing.Size(187, 45);
             this.label3.TabIndex = 99;
-            this.label3.Text = "Change/Add Photo";
+            this.label3.Text = "Change/Upload Photo";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 

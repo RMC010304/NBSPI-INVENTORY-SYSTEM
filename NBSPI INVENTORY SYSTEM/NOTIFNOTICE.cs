@@ -32,7 +32,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             
             _iTADD.Close(); 
             this.Close();
-           
+
+
         }
     }
 }

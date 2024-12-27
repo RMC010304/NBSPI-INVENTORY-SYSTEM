@@ -84,7 +84,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             string orderBy = isDescending ? "DESC" : "ASC";
 
-            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.ITEMS ORDER BY DATE {orderBy}", con))
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.SPORTS ORDER BY DATE {orderBy}", con))
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -116,6 +116,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
             dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
             dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+            dataGridView5.Columns["pHOTODataGridViewImageColumn"].DefaultCellStyle.NullValue = null;
 
             // Disable visual styles
             dataGridView5.EnableHeadersVisualStyles = false;
@@ -123,7 +124,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjButton22_Click(object sender, EventArgs e)
         {
-            SPORTSADD iTADD = new SPORTSADD(this, "", 0, "", "", "");
+            SPORTSADD iTADD = new SPORTSADD(this, "", 0, "", "", "", "", null);
             iTADD.Show();
         }
 
@@ -259,7 +260,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             if (dataGridView5.Columns[e.ColumnIndex].HeaderText == " ")
             {
                 int quantity;
-                string id, item, brand, model, category, date;
+                string id, item, brand, model, category, date, description;
+                byte[] photo;
 
                 id = Convert.ToString(dataGridView5.Rows[e.RowIndex].Cells["iDDataGridViewTextBoxColumn"].Value);
                 quantity = Convert.ToInt32(dataGridView5.Rows[e.RowIndex].Cells["qUANTITYDataGridViewTextBoxColumn"].Value);
@@ -268,8 +270,10 @@ namespace NBSPI_INVENTORY_SYSTEM
                 model = Convert.ToString(dataGridView5.Rows[e.RowIndex].Cells["mODELDataGridViewTextBoxColumn"].Value);
                 category = Convert.ToString(dataGridView5.Rows[e.RowIndex].Cells["cATEGORYDataGridViewTextBoxColumn"].Value);
                 date = Convert.ToString(dataGridView5.Rows[e.RowIndex].Cells["dATEDataGridViewTextBoxColumn"].Value);
+                description = Convert.ToString(dataGridView5.Rows[e.RowIndex].Cells["dESCRIPTIONDataGridViewTextBoxColumn"].Value);
+                photo = dataGridView5.Rows[e.RowIndex].Cells["pHOTODataGridViewImageColumn"].Value as byte[];
 
-                SPORTSUPDATE iTUPDATE = new SPORTSUPDATE(this,item, id, brand, model, category, date, quantity);
+                SPORTSUPDATE iTUPDATE = new SPORTSUPDATE(this,item, id, brand, model, category, date, quantity, description, photo);
                 iTUPDATE.Show();
 
                 GetItems();

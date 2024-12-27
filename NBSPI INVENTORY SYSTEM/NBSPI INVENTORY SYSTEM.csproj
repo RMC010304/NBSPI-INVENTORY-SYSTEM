@@ -304,6 +304,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet17.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet19.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -970,6 +980,28 @@
     <None Include="IT_RESDataSet17.xss">
       <DependentUpon>IT_RESDataSet17.xsd</DependentUpon>
     </None>
+    <None Include="IT_RESDataSet18.xsc">
+      <DependentUpon>IT_RESDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet18.xss">
+      <DependentUpon>IT_RESDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet19.xsc">
+      <DependentUpon>IT_RESDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet19.xss">
+      <DependentUpon>IT_RESDataSet19.xsd</DependentUpon>
+    </None>
     <None Include="IT_RESDataSet2.xsc">
       <DependentUpon>IT_RESDataSet2.xsd</DependentUpon>
     </None>
@@ -1632,6 +1664,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\no image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bm notif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mod3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add science.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update science.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add sports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mod4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update sports.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

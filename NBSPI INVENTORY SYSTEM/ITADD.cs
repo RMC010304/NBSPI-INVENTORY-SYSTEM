@@ -118,6 +118,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                             }
                         }
                     }
+
                 }
             }
             catch (Exception)
@@ -154,7 +155,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             using (SqlConnection con = new SqlConnection(conn))
             {
-                if (string.IsNullOrWhiteSpace(rjTextBox1.Texts) || string.IsNullOrWhiteSpace(rjTextBox4.Texts))
+                if (string.IsNullOrWhiteSpace(rjTextBox1.Texts) || string.IsNullOrWhiteSpace(rjTextBox4.Texts) || string.IsNullOrWhiteSpace(rjTextBox2.Texts) || string.IsNullOrWhiteSpace(rjTextBox3.Texts))
                 {
                     NOTIFFILLED nOTIFFILLED = new NOTIFFILLED();
                     nOTIFFILLED.Show();
@@ -170,8 +171,9 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 con.Open();
             
-                SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM ITEMS WHERE ITEM = @ITEM", con);
-                checkCmd.Parameters.Add("@ITEM", SqlDbType.VarChar).Value = rjTextBox1.Texts;
+                SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM ITEMS WHERE BRAND = @BRAND OR MODEL = @MODEL", con);
+                checkCmd.Parameters.Add("@BRAND", SqlDbType.VarChar).Value = rjTextBox2.Texts;
+                checkCmd.Parameters.Add("@MODEL", SqlDbType.VarChar).Value = rjTextBox3.Texts;
 
                 int count = (int)checkCmd.ExecuteScalar();
 
@@ -193,8 +195,17 @@ namespace NBSPI_INVENTORY_SYSTEM
                 cmd.Parameters.AddWithValue("@QUANTITY", no);
                 cmd.Parameters.AddWithValue("@STATUS", "AVAILABLE");
                 cmd.Parameters.AddWithValue("@DATE", DateTime.Now);
-                cmd.Parameters.AddWithValue("@DESCRIPTION", description); 
-                cmd.Parameters.AddWithValue("@PHOTO", photoData);
+                cmd.Parameters.AddWithValue("@DESCRIPTION", description);
+
+
+                if (photoData != null) // If photo data is available
+                {
+                    cmd.Parameters.Add("@PHOTO", SqlDbType.VarBinary).Value = photoData;
+                }
+                else // If no photo is uploaded
+                {
+                    cmd.Parameters.Add("@PHOTO", SqlDbType.VarBinary).Value = DBNull.Value;
+                }
 
                 cmd.ExecuteNonQuery();
             }

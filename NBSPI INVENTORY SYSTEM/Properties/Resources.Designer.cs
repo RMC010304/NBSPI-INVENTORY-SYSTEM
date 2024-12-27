@@ -823,6 +823,26 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_science {
+            get {
+                object obj = ResourceManager.GetObject("add science", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_sports {
+            get {
+                object obj = ResourceManager.GetObject("add sports", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add2 {
             get {
                 object obj = ResourceManager.GetObject("add2", resourceCulture);
@@ -976,6 +996,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         internal static System.Drawing.Bitmap bg {
             get {
                 object obj = ResourceManager.GetObject("bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bm_notif {
+            get {
+                object obj = ResourceManager.GetObject("bm notif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1493,6 +1523,26 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mod3 {
+            get {
+                object obj = ResourceManager.GetObject("mod3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mod4 {
+            get {
+                object obj = ResourceManager.GetObject("mod4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_image {
             get {
                 object obj = ResourceManager.GetObject("no image", resourceCulture);
@@ -1886,6 +1936,26 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         internal static System.Drawing.Bitmap update_hm {
             get {
                 object obj = ResourceManager.GetObject("update hm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_science {
+            get {
+                object obj = ResourceManager.GetObject("update science", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_sports {
+            get {
+                object obj = ResourceManager.GetObject("update sports", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

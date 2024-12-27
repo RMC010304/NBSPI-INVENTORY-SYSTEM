@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -21,11 +22,13 @@ namespace NBSPI_INVENTORY_SYSTEM
         private CustomIdGenerator _generator;
 
         int no;
-        string thing, br, mod, cat;
+        string thing, br, mod, cat, description;
+
+        byte[] photo;
 
         private SPORTS hm;
 
-        public SPORTSADD(SPORTS control, string item = "", int quantity = 0, string category = "", string brand = "", string model = "")
+        public SPORTSADD(SPORTS control, string item = "", int quantity = 0, string category = "", string brand = "", string model = "", string desc = "", byte[] photoData = null)
         {
             InitializeComponent();
 
@@ -36,6 +39,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             cat = category;
             br = brand;
             mod = model;
+            description = desc;
+            photo = photoData;
 
             _generator = new CustomIdGenerator("SE");
         }
@@ -46,7 +51,9 @@ namespace NBSPI_INVENTORY_SYSTEM
           !string.IsNullOrWhiteSpace(rjComboBox1.Texts) ||
           !string.IsNullOrWhiteSpace(rjTextBox2.Texts) ||
           !string.IsNullOrWhiteSpace(rjTextBox3.Texts) ||
-          !string.IsNullOrWhiteSpace(rjTextBox4.Texts))
+          !string.IsNullOrWhiteSpace(rjTextBox4.Texts) ||
+          !string.IsNullOrWhiteSpace(rjTextBox5.Texts) ||
+            photo != null)
             {
 
                 using (NOTIFNOTICE3 nOTIFNOTICE = new NOTIFNOTICE3(this))
@@ -61,13 +68,56 @@ namespace NBSPI_INVENTORY_SYSTEM
             }
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            String imageLocation = "";
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp|All Files|*.*";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Get the image file path.
+                        imageLocation = openFileDialog.FileName;
+
+                        // Display the image in the PictureBox.
+                        pictureBox2.ImageLocation = imageLocation;
+
+                        // Convert the selected image into a byte array.
+                        using (FileStream fs = new FileStream(imageLocation, FileMode.Open, FileAccess.Read))
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                fs.CopyTo(ms);
+                                photo = ms.ToArray();
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void SPORTSADD_Load(object sender, EventArgs e)
+        {
+            rjDatePicker1.Hide();
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(rjTextBox1.Texts) ||
           !string.IsNullOrWhiteSpace(rjComboBox1.Texts) ||
           !string.IsNullOrWhiteSpace(rjTextBox2.Texts) ||
           !string.IsNullOrWhiteSpace(rjTextBox3.Texts) ||
-          !string.IsNullOrWhiteSpace(rjTextBox4.Texts))
+          !string.IsNullOrWhiteSpace(rjTextBox4.Texts) ||
+          !string.IsNullOrWhiteSpace(rjTextBox5.Texts) ||
+            photo != null)
             {
 
                 using (NOTIFNOTICE3 nOTIFNOTICE = new NOTIFNOTICE3(this))
@@ -88,12 +138,23 @@ namespace NBSPI_INVENTORY_SYSTEM
             br = rjTextBox2.Texts;
             mod = rjTextBox3.Texts;
             cat = rjComboBox1.Texts;
+            description = rjTextBox5.Texts;
+            byte[] photoData = null;
+
+            if (pictureBox2.Image != null) // Convert PictureBox image to byte array.
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pictureBox2.Image.Save(ms, pictureBox2.Image.RawFormat);
+                    photoData = ms.ToArray();
+                }
+            }
 
             DateTime day = DateTime.Now;
 
             using (SqlConnection con = new SqlConnection(conn))
             {
-                if (string.IsNullOrWhiteSpace(rjTextBox1.Texts) || string.IsNullOrWhiteSpace(rjTextBox4.Texts))
+                if (string.IsNullOrWhiteSpace(rjTextBox1.Texts) || string.IsNullOrWhiteSpace(rjTextBox4.Texts) || string.IsNullOrWhiteSpace(rjTextBox2.Texts) || string.IsNullOrWhiteSpace(rjTextBox3.Texts))
                 {
                     NOTIFFILLED nOTIFFILLED = new NOTIFFILLED();
                     nOTIFFILLED.Show();
@@ -109,8 +170,9 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 con.Open();
 
-                SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM SPORTS WHERE ITEM = @ITEM", con);
-                checkCmd.Parameters.Add("@ITEM", SqlDbType.VarChar).Value = rjTextBox1.Texts;
+                SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM SPORTS WHERE BRAND = @BRAND OR MODEL = @MODEL", con);
+                checkCmd.Parameters.Add("@BRAND", SqlDbType.VarChar).Value = rjTextBox2.Texts;
+                checkCmd.Parameters.Add("@MODEL", SqlDbType.VarChar).Value = rjTextBox3.Texts;
 
                 int count = (int)checkCmd.ExecuteScalar();
 
@@ -123,7 +185,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 string customId = _generator.GenerateId();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO dbo.SPORTS ([ID],[ITEM],[BRAND],[MODEL],[CATEGORY],[QUANTITY],[STATUS],[DATE]) Values (@ID,@ITEM,@BRAND,@MODEL,@CATEGORY,@QUANTITY,@STATUS,@DATE)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO dbo.SPORTS ([ID],[ITEM],[BRAND],[MODEL],[CATEGORY],[QUANTITY],[STATUS],[DATE],[DESCRIPTION],[PHOTO]) Values (@ID,@ITEM,@BRAND,@MODEL,@CATEGORY,@QUANTITY,@STATUS,@DATE,@DESCRIPTION,@PHOTO)", con);
                 cmd.Parameters.AddWithValue("@ID", customId);
                 cmd.Parameters.AddWithValue("@ITEM", thing);
                 cmd.Parameters.AddWithValue("@BRAND", br);
@@ -132,6 +194,17 @@ namespace NBSPI_INVENTORY_SYSTEM
                 cmd.Parameters.AddWithValue("@QUANTITY", no);
                 cmd.Parameters.AddWithValue("@STATUS", "AVAILABLE");
                 cmd.Parameters.AddWithValue("@DATE", DateTime.Now);
+                cmd.Parameters.AddWithValue("@DESCRIPTION", description);
+
+
+                if (photoData != null) // If photo data is available
+                {
+                    cmd.Parameters.Add("@PHOTO", SqlDbType.VarBinary).Value = photoData;
+                }
+                else // If no photo is uploaded
+                {
+                    cmd.Parameters.Add("@PHOTO", SqlDbType.VarBinary).Value = DBNull.Value;
+                }
 
                 cmd.ExecuteNonQuery();
             }
@@ -141,6 +214,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             rjTextBox3.Texts = string.Empty;
             rjComboBox1.SelectedIndex = -1; // Clear combo box selection
             rjTextBox4.Texts = string.Empty;
+            rjTextBox5.Texts = string.Empty;
+            pictureBox2.Image = null;
 
 
             hm.GetItems();

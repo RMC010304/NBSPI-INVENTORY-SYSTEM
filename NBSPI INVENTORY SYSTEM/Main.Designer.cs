@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
             this.doubleBufferedPanel1 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.ipanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,12 +59,22 @@
             this.hm2 = new NBSPI_INVENTORY_SYSTEM.HM();
             this.it2 = new NBSPI_INVENTORY_SYSTEM.IT();
             this.science2 = new NBSPI_INVENTORY_SYSTEM.SCIENCE();
-            this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
             this.doubleBufferedPanel1.SuspendLayout();
             this.ipanel.SuspendLayout();
             this.doubleBufferedPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sports2
+            // 
+            this.sports2.BackColor = System.Drawing.Color.White;
+            this.sports2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sports2.BackgroundImage")));
+            this.sports2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sports2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sports2.Location = new System.Drawing.Point(0, 0);
+            this.sports2.Name = "sports2";
+            this.sports2.Size = new System.Drawing.Size(1888, 1002);
+            this.sports2.TabIndex = 4;
             // 
             // doubleBufferedPanel1
             // 
@@ -162,7 +173,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Montserrat ExtraBold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(116)))), ((int)(((byte)(179)))));
-            this.label1.Location = new System.Drawing.Point(1322, 326);
+            this.label1.Location = new System.Drawing.Point(1323, 326);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 66);
             this.label1.TabIndex = 8;
@@ -614,25 +625,14 @@
             this.science2.Size = new System.Drawing.Size(1888, 1002);
             this.science2.TabIndex = 3;
             // 
-            // sports2
-            // 
-            this.sports2.BackColor = System.Drawing.Color.White;
-            this.sports2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sports2.BackgroundImage")));
-            this.sports2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.sports2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sports2.Location = new System.Drawing.Point(0, 0);
-            this.sports2.Name = "sports2";
-            this.sports2.Size = new System.Drawing.Size(1888, 1002);
-            this.sports2.TabIndex = 4;
-            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1888, 1002);
+            this.Controls.Add(this.doubleBufferedPanel1);
             this.Controls.Add(this.hm2);
             this.Controls.Add(this.it2);
             this.Controls.Add(this.science2);
             this.Controls.Add(this.sports2);
-            this.Controls.Add(this.doubleBufferedPanel1);
             this.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
