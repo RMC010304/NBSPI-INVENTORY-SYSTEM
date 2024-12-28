@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMADD));
             this.rjTextBox2 = new RJCodeAdvance.RJControls.RJTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -38,7 +39,14 @@
             this.rjTextBox3 = new RJCodeAdvance.RJControls.RJTextBox();
             this.rjTextBox1 = new RJCodeAdvance.RJControls.RJTextBox();
             this.rjButton22 = new RJCodeAdvance.RJControls.RJButton();
+            this.rjTextBox5 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // rjTextBox2
@@ -50,7 +58,7 @@
             this.rjTextBox2.BorderSize = 1;
             this.rjTextBox2.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox2.Location = new System.Drawing.Point(60, 270);
+            this.rjTextBox2.Location = new System.Drawing.Point(60, 264);
             this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox2.Multiline = false;
             this.rjTextBox2.Name = "rjTextBox2";
@@ -79,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.label1.Location = new System.Drawing.Point(280, 567);
+            this.label1.Location = new System.Drawing.Point(275, 750);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 21);
             this.label1.TabIndex = 94;
@@ -92,10 +100,10 @@
             this.rjDatePicker1.BorderSize = 1;
             this.rjDatePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjDatePicker1.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjDatePicker1.Location = new System.Drawing.Point(63, 455);
+            this.rjDatePicker1.Location = new System.Drawing.Point(277, 7);
             this.rjDatePicker1.MinimumSize = new System.Drawing.Size(4, 35);
             this.rjDatePicker1.Name = "rjDatePicker1";
-            this.rjDatePicker1.Size = new System.Drawing.Size(436, 35);
+            this.rjDatePicker1.Size = new System.Drawing.Size(222, 35);
             this.rjDatePicker1.SkinColor = System.Drawing.Color.WhiteSmoke;
             this.rjDatePicker1.TabIndex = 93;
             this.rjDatePicker1.TextColor = System.Drawing.Color.DimGray;
@@ -120,7 +128,7 @@
             this.rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjComboBox1.Name = "rjComboBox1";
             this.rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox1.Size = new System.Drawing.Size(232, 30);
+            this.rjComboBox1.Size = new System.Drawing.Size(436, 30);
             this.rjComboBox1.TabIndex = 92;
             this.rjComboBox1.Texts = "";
             // 
@@ -133,15 +141,15 @@
             this.rjTextBox4.BorderSize = 1;
             this.rjTextBox4.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox4.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox4.Location = new System.Drawing.Point(322, 362);
+            this.rjTextBox4.Location = new System.Drawing.Point(60, 447);
             this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = false;
+            this.rjTextBox4.Multiline = true;
             this.rjTextBox4.Name = "rjTextBox4";
             this.rjTextBox4.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.rjTextBox4.PasswordChar = false;
             this.rjTextBox4.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox4.PlaceholderText = "";
-            this.rjTextBox4.Size = new System.Drawing.Size(177, 31);
+            this.rjTextBox4.Size = new System.Drawing.Size(439, 71);
             this.rjTextBox4.TabIndex = 91;
             this.rjTextBox4.Texts = "";
             this.rjTextBox4.UnderlinedStyle = false;
@@ -155,7 +163,7 @@
             this.rjTextBox3.BorderSize = 1;
             this.rjTextBox3.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox3.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox3.Location = new System.Drawing.Point(291, 270);
+            this.rjTextBox3.Location = new System.Drawing.Point(291, 264);
             this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox3.Multiline = false;
             this.rjTextBox3.Name = "rjTextBox3";
@@ -177,7 +185,7 @@
             this.rjTextBox1.BorderSize = 1;
             this.rjTextBox1.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox1.Location = new System.Drawing.Point(60, 184);
+            this.rjTextBox1.Location = new System.Drawing.Point(51, 7);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox1.Multiline = false;
             this.rjTextBox1.Name = "rjTextBox1";
@@ -185,10 +193,11 @@
             this.rjTextBox1.PasswordChar = false;
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.Size = new System.Drawing.Size(439, 31);
+            this.rjTextBox1.Size = new System.Drawing.Size(208, 31);
             this.rjTextBox1.TabIndex = 89;
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
+            this.rjTextBox1.Visible = false;
             // 
             // rjButton22
             // 
@@ -202,7 +211,7 @@
             this.rjButton22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton22.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton22.ForeColor = System.Drawing.Color.White;
-            this.rjButton22.Location = new System.Drawing.Point(375, 558);
+            this.rjButton22.Location = new System.Drawing.Point(375, 740);
             this.rjButton22.Name = "rjButton22";
             this.rjButton22.Size = new System.Drawing.Size(124, 40);
             this.rjButton22.TabIndex = 88;
@@ -212,14 +221,115 @@
             this.rjButton22.UseVisualStyleBackColor = false;
             this.rjButton22.Click += new System.EventHandler(this.rjButton22_Click);
             // 
+            // rjTextBox5
+            // 
+            this.rjTextBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox5.BorderRadius = 15;
+            this.rjTextBox5.BorderSize = 1;
+            this.rjTextBox5.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox5.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox5.Location = new System.Drawing.Point(60, 180);
+            this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox5.Multiline = false;
+            this.rjTextBox5.Name = "rjTextBox5";
+            this.rjTextBox5.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox5.PasswordChar = false;
+            this.rjTextBox5.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjTextBox5.PlaceholderText = "";
+            this.rjTextBox5.Size = new System.Drawing.Size(208, 31);
+            this.rjTextBox5.TabIndex = 97;
+            this.rjTextBox5.Texts = "";
+            this.rjTextBox5.UnderlinedStyle = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.click;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(60, 575);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(439, 115);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 98;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rjButton1.BackColor = System.Drawing.Color.DimGray;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.DimGray;
+            this.rjButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton1.BorderColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BorderRadius = 0;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Montserrat", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(473, 181);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(26, 16);
+            this.rjButton1.TabIndex = 100;
+            this.rjButton1.Text = "+";
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.rjButton1, "Add an item to the list\r\n(Input an item first before you click this)");
+            this.rjButton1.UseVisualStyleBackColor = false;
+            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox1.Font = new System.Drawing.Font("Montserrat Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.ItemHeight = 22;
+            this.comboBox1.Location = new System.Drawing.Point(291, 181);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(183, 30);
+            this.comboBox1.TabIndex = 101;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rjButton2.BackColor = System.Drawing.Color.DarkGray;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.DarkGray;
+            this.rjButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton2.BorderColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BorderRadius = 0;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Montserrat", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.Color.White;
+            this.rjButton2.Location = new System.Drawing.Point(473, 195);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(26, 16);
+            this.rjButton2.TabIndex = 102;
+            this.rjButton2.Text = "x";
+            this.rjButton2.TextColor = System.Drawing.Color.White;
+            this.rjButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.rjButton2, "Delete an item from the list\r\n(Select an item from the list first before you clic" +
+        "k this)");
+            this.rjButton2.UseVisualStyleBackColor = false;
+            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            // 
             // HMADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.add3;
+            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.add_it_pt_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(561, 657);
+            this.ClientSize = new System.Drawing.Size(561, 829);
+            this.Controls.Add(this.rjButton1);
+            this.Controls.Add(this.rjButton2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.rjTextBox5);
             this.Controls.Add(this.rjTextBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -234,7 +344,9 @@
             this.Name = "HMADD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HMADD";
+            this.Load += new System.EventHandler(this.HMADD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +363,11 @@
         private RJCodeAdvance.RJControls.RJTextBox rjTextBox3;
         private RJCodeAdvance.RJControls.RJTextBox rjTextBox1;
         private RJCodeAdvance.RJControls.RJButton rjButton22;
+        private RJCodeAdvance.RJControls.RJTextBox rjTextBox5;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private RJCodeAdvance.RJControls.RJButton rjButton1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private RJCodeAdvance.RJControls.RJButton rjButton2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

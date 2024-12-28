@@ -186,7 +186,6 @@
             this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjTextBox2.BorderRadius = 15;
             this.rjTextBox2.BorderSize = 1;
-            this.rjTextBox2.Enabled = false;
             this.rjTextBox2.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox2.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox2.Location = new System.Drawing.Point(62, 265);
@@ -248,7 +247,6 @@
             this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjTextBox3.BorderRadius = 15;
             this.rjTextBox3.BorderSize = 1;
-            this.rjTextBox3.Enabled = false;
             this.rjTextBox3.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox3.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox3.Location = new System.Drawing.Point(293, 265);
@@ -271,7 +269,6 @@
             this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjTextBox1.BorderRadius = 15;
             this.rjTextBox1.BorderSize = 1;
-            this.rjTextBox1.Enabled = false;
             this.rjTextBox1.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox1.Location = new System.Drawing.Point(62, 179);

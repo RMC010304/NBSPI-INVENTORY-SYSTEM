@@ -157,7 +157,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             {
                 if (string.IsNullOrWhiteSpace(rjTextBox1.Texts) || string.IsNullOrWhiteSpace(rjTextBox4.Texts) || string.IsNullOrWhiteSpace(rjTextBox2.Texts) || string.IsNullOrWhiteSpace(rjTextBox3.Texts))
                 {
-                    NOTIFFILLED nOTIFFILLED = new NOTIFFILLED();
+                    NOTIFFILLED2 nOTIFFILLED = new NOTIFFILLED2();
                     nOTIFFILLED.Show();
                     return;
                 }

@@ -823,6 +823,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_it_pt_2 {
+            get {
+                object obj = ResourceManager.GetObject("add it pt 2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_science {
             get {
                 object obj = ResourceManager.GetObject("add science", resourceCulture);
@@ -1523,6 +1533,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mod2 {
+            get {
+                object obj = ResourceManager.GetObject("mod2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mod3 {
             get {
                 object obj = ResourceManager.GetObject("mod3", resourceCulture);
@@ -1936,6 +1956,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         internal static System.Drawing.Bitmap update_hm {
             get {
                 object obj = ResourceManager.GetObject("update hm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_it {
+            get {
+                object obj = ResourceManager.GetObject("update it", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

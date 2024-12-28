@@ -57,8 +57,8 @@
             // rjButton22
             // 
             this.rjButton22.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rjButton22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.rjButton22.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.rjButton22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton22.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
             this.rjButton22.BorderColor = System.Drawing.Color.Transparent;
             this.rjButton22.BorderRadius = 20;
             this.rjButton22.BorderSize = 0;
@@ -70,7 +70,7 @@
             this.rjButton22.Name = "rjButton22";
             this.rjButton22.Size = new System.Drawing.Size(201, 40);
             this.rjButton22.TabIndex = 94;
-            this.rjButton22.Text = "Delete";
+            this.rjButton22.Text = "Archive";
             this.rjButton22.TextColor = System.Drawing.Color.White;
             this.rjButton22.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.rjButton22.UseVisualStyleBackColor = false;
@@ -80,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.delete3;
+            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.mod2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(477, 273);
             this.Controls.Add(this.rjButton1);
