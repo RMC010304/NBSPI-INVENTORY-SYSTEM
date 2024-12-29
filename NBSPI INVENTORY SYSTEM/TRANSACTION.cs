@@ -270,7 +270,6 @@ namespace NBSPI_INVENTORY_SYSTEM
                 DateTime.TryParse(selectedRow.Cells["dATEDataGridViewTextBoxColumn1"].Value?.ToString(), out label6Text);
                 DateTime.TryParse(selectedRow.Cells["dATE2DataGridViewTextBoxColumn1"].Value?.ToString(), out label7Text);
 
-
                 Color statusColor = Color.FromArgb(255, 194, 111);
 
                 if (label5Text == "UNRETURNED")
@@ -282,7 +281,6 @@ namespace NBSPI_INVENTORY_SYSTEM
                     statusColor = Color.FromArgb(207, 74, 74);
                 }
 
-
                 BORROWDETAILS borrowDetails = new BORROWDETAILS(
                     label1Text, label2Text, label3Text, label12Text, label13Text,
                     label14Text, label15Text, label4Text, label5Text, label6Text, label7Text, statusColor);
@@ -290,19 +288,83 @@ namespace NBSPI_INVENTORY_SYSTEM
                 borrowDetails.ShowDialog();
             }
 
-
-            if (dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
+            if(dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
             {
-
                 DataGridViewRow selectedRow = dataGridView5.Rows[e.RowIndex];
                 string borrowId = selectedRow.Cells["iDDataGridViewTextBoxColumn1"].Value.ToString();
                 string itemId = selectedRow.Cells["iTEMIDDataGridViewTextBoxColumn1"].Value.ToString();
-                int borrowedQuantity = Convert.ToInt32(selectedRow.Cells["qUANTITYDataGridViewTextBoxColumn1"].Value);
 
-                BORROWRETURN bORROWRETURN = new BORROWRETURN(this, borrowId, itemId, borrowedQuantity);
-                bORROWRETURN.Show();
+                // Check if the item belongs to the IT category based on its ID
+                if (itemId.StartsWith("HM") || itemId.StartsWith("SL") || itemId.StartsWith("SE")) // Assuming IT items have IDs starting with "IT"
+                {
+                    // Handle direct return for IT items
+                    // For non-IT items, show the BORROWRETURN form
+                    int borrowedQuantity = 0;
+                    object quantityValue = selectedRow.Cells["qUANTITYDataGridViewTextBoxColumn1"].Value;
 
+                    if (quantityValue != DBNull.Value)
+                    {
+                        borrowedQuantity = Convert.ToInt32(quantityValue);
+                    }
+
+                    BORROWRETURN bORROWRETURN = new BORROWRETURN(this, borrowId, itemId, borrowedQuantity);
+                    bORROWRETURN.Show();
+
+                }
+                else
+                {
+
+                    using (SqlConnection con = new SqlConnection(conn))
+                    {
+                        con.Open();
+
+                        // Retrieve the borrowed item details
+                        string getBorrowDetailsQuery = "SELECT [ITEM], BRAND, MODEL, DESCRIPTION, PHOTO FROM BORROW WHERE ID = @BorrowId";
+                        SqlCommand getBorrowDetailsCmd = new SqlCommand(getBorrowDetailsQuery, con);
+                        getBorrowDetailsCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+
+                        SqlDataReader reader = getBorrowDetailsCmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            string itemName = reader["ITEM"].ToString();
+                            string brand = reader["BRAND"].ToString();
+                            string model = reader["MODEL"].ToString();
+                            string description = reader["DESCRIPTION"].ToString();
+                            byte[] photo = reader["PHOTO"] as byte[];
+
+                            // Insert the item back into the IT table
+                            string insertToITQuery = "INSERT INTO IT (ID, ITEM, BRAND, MODEL,STATUS, DESCRIPTION, PHOTO,DATE) VALUES (@ItemId, @Item, @Brand, @Model,@status, @Description, @Photo,@date)";
+                            SqlCommand insertToITCmd = new SqlCommand(insertToITQuery, con);
+                            insertToITCmd.Parameters.AddWithValue("@ItemId", itemId);
+                            insertToITCmd.Parameters.AddWithValue("@Item", itemName);
+                            insertToITCmd.Parameters.AddWithValue("@Brand", brand);
+                            insertToITCmd.Parameters.AddWithValue("@Model", model);
+                            insertToITCmd.Parameters.AddWithValue("@status", "AVAILABLE");
+                            insertToITCmd.Parameters.AddWithValue("@Description", description);
+                            insertToITCmd.Parameters.AddWithValue("@Photo", (object)photo ?? DBNull.Value);
+                            insertToITCmd.Parameters.AddWithValue("@date", DateTime.Now);
+
+
+
+                            reader.Close();
+                            insertToITCmd.ExecuteNonQuery();
+
+                            // Remove the item from the BORROW table
+                            string deleteFromBorrowQuery = "DELETE FROM BORROW WHERE ID = @BorrowId";
+                            SqlCommand deleteFromBorrowCmd = new SqlCommand(deleteFromBorrowQuery, con);
+                            deleteFromBorrowCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                            deleteFromBorrowCmd.ExecuteNonQuery();
+
+                            GetItems();
+                            NOTIFRETURNED nOTIFSUCCESS = new NOTIFRETURNED();
+                            nOTIFSUCCESS.Show();
+                        }
+                    }
+                }
             }
+            
+
+
 
 
 

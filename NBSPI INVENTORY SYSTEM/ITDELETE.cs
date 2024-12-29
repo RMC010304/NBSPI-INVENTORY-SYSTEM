@@ -46,9 +46,9 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 // Transfer data to RETURN table
                 string insertReturnQuery = @"
-                INSERT INTO ARCHIVE ([ITEM ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], [STATUS], [DATE])
-                SELECT [ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], 'UNAVAILABLE', GETDATE()
-                FROM ITEMS WHERE [ID] = @ID";
+              INSERT INTO ARCHIVE ([ITEM ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], [STATUS],[DESCRIPTION], [PHOTO], [DATE])
+            SELECT [ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], 'UNAVAILABLE', [DESCRIPTION], [PHOTO], GETDATE()
+            FROM ITEMS WHERE [ID] = @ID";
 
                 SqlCommand insertReturnCmd = new SqlCommand(insertReturnQuery, con);
                 insertReturnCmd.Parameters.AddWithValue("@ID", itemId);

@@ -41,9 +41,9 @@ namespace NBSPI_INVENTORY_SYSTEM
                 con.Open();
 
                 string insertArchiveQuery = @"
-              INSERT INTO {0} ([ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], [STATUS], [DATE])
-              SELECT [ITEM ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], @Status, [DATE]
-                FROM ARCHIVE WHERE [ITEM ID] = @itemId";
+             INSERT INTO {0} ([ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], [STATUS],[DESCRIPTION], [DATE],[PHOTO])
+            SELECT [ITEM ID], [ITEM], [BRAND], [MODEL], [CATEGORY], [QUANTITY], @Status, [DESCRIPTION], GETDATE() , [PHOTO]
+            FROM ARCHIVE WHERE [ITEM ID] = @itemId";
 
 
                 string targetTable = GetInventoryTable(archiveId);
@@ -57,6 +57,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 insertArchiveCmd.Parameters.AddWithValue("@Status", "AVAILABLE");
                 insertArchiveCmd.ExecuteNonQuery();           
                 
+
                 string deleteArchiveQuery = "DELETE FROM ARCHIVE WHERE [ITEM ID] = @itemId";
                 SqlCommand deleteArchiveCmd = new SqlCommand(deleteArchiveQuery, con);
                 deleteArchiveCmd.Parameters.AddWithValue("@itemId", archiveId);
@@ -72,10 +73,10 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private string GetInventoryTable(string itemId)
         {
-            if (itemId.StartsWith("IT")) return "IT";
+            if (itemId.StartsWith("HM")) return "ITEMS";
             else if (itemId.StartsWith("SL")) return "SCIENCE";
             else if (itemId.StartsWith("SE")) return "SPORTS";
-            else return "ITEMS";
+            else return "IT";
         }
 
     }

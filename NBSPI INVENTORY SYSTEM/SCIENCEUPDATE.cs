@@ -23,6 +23,8 @@ namespace NBSPI_INVENTORY_SYSTEM
         byte[] photo;
 
         SCIENCE hm;
+
+        private bool imageChanged = false;
         private void SCIENCEUPDATE_Load(object sender, EventArgs e)
         {
             textBox1.Text = number.ToString();
@@ -160,7 +162,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             description = rjTextBox4.Texts;
 
             // Convert the image in PictureBox to byte[]
-            if (pictureBox2.Image != null)
+            if (imageChanged && pictureBox2.Image != null)
             {
                 using (var ms = new MemoryStream())
                 {
@@ -168,9 +170,13 @@ namespace NBSPI_INVENTORY_SYSTEM
                     photo = ms.ToArray();
                 }
             }
+            else if (!imageChanged)
+            {
+                // Retain the existing photo (do nothing)
+            }
             else
             {
-                photo = null;
+                photo = null; // Handle cases where no image exists
             }
 
             DateTime day = DateTime.Now;
@@ -189,7 +195,10 @@ namespace NBSPI_INVENTORY_SYSTEM
             cmd.Parameters.AddWithValue("@DATE2", rjDatePicker1.Value);
             cmd.Parameters.AddWithValue("@CATEGORY", cat);
             cmd.Parameters.AddWithValue("@DESCRIPTION", description);
-            cmd.Parameters.AddWithValue("@PHOTO", (object)photo ?? DBNull.Value);
+
+            SqlParameter photoParameter = new SqlParameter("@PHOTO", SqlDbType.VarBinary);
+            photoParameter.Value = (object)photo ?? DBNull.Value; // Assign the photo or null
+            cmd.Parameters.Add(photoParameter);
 
             int result = cmd.ExecuteNonQuery();
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,11 +63,10 @@ namespace NBSPI_INVENTORY_SYSTEM
                 con.Open();
 
                 string queryTemplate = "SELECT * FROM {0} WHERE ID = @ItemId";
-                string[] tables = { "ITEMS", "IT", "SCIENCE", "SPORTS" };
+                string[] tables = { "IT", "ITEMS", "SCIENCE", "SPORTS" };
 
                 foreach (string table in tables)
                 {
-
                     string query = string.Format(queryTemplate, table);
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -76,14 +76,63 @@ namespace NBSPI_INVENTORY_SYSTEM
                         {
                             if (reader.Read())
                             {
-
+                                // Populate the fields
                                 rjTextBox3.Texts = reader["ITEM"].ToString();
                                 textBox1.Text = reader["BRAND"].ToString();
                                 textBox2.Text = reader["MODEL"].ToString();
                                 rjTextBox4.Texts = reader["QUANTITY"].ToString();
+                                rjTextBox5.Texts = reader["DESCRIPTION"]?.ToString();
 
-                                return;
+                                // Populate photo
+                                byte[] photoBytes = reader["PHOTO"] as byte[];
+                                pictureBox2.Image = photoBytes != null ? Image.FromStream(new MemoryStream(photoBytes)) : null;
 
+                                // Disable rjTextBox4 if the data comes from the "IT" table
+                                rjTextBox4.Enabled = (table != "IT");
+
+                                return; // Exit after finding a match
+                            }
+                        }
+                    }
+                }
+
+                // Enable rjTextBox4 if no match is found in any table
+                rjTextBox4.Enabled = true;
+            }
+        }
+
+        private void FetchItemDetails2(string itemName)
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678"))
+            {
+                con.Open();
+
+                string queryTemplate = "SELECT * FROM {0} WHERE ITEM = @ItemName";
+                string[] tables = { "ITEMS", "SCIENCE", "SPORTS" };
+
+                foreach (string table in tables)
+                {
+                    string query = string.Format(queryTemplate, table);
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ItemName", itemName);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Populate fields with the retrieved data
+                                textBox1.Text = reader["BRAND"].ToString();
+                                textBox2.Text = reader["MODEL"].ToString();
+                                rjTextBox2.Texts = reader["ID"]?.ToString();
+                                rjTextBox4.Texts = reader["QUANTITY"].ToString();
+                                rjTextBox5.Texts = reader["DESCRIPTION"]?.ToString();
+
+                                // Populate photo
+                                byte[] photoBytes = reader["PHOTO"] as byte[];
+                                pictureBox2.Image = photoBytes != null ? Image.FromStream(new MemoryStream(photoBytes)) : null;
+
+                                return; // Exit after finding the first match
                             }
                         }
                     }
@@ -94,33 +143,14 @@ namespace NBSPI_INVENTORY_SYSTEM
         private void rjButton22_Click(object sender, EventArgs e)
         {
 
-            string itemId = rjTextBox2.Texts.Trim().ToUpper();
-            int quantityToBorrow;
+            string itemId = rjTextBox2.Texts.Trim();
+            int quantityToBorrow = 0; // Initialize to avoid uninitialized variable error
 
-
-            if (string.IsNullOrWhiteSpace(rjTextBox4.Texts.Trim()))
-            {
-                NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
-                nOTIFFILLED2.Show();
-                return;
-            }
-
-            if (!int.TryParse(rjTextBox4.Texts.Trim(), out quantityToBorrow))
-            {
-               NOTIFNUMERIC2 nOTIFNUMERIC2 = new NOTIFNUMERIC2();
-                nOTIFNUMERIC2.Show();
-                return;
-
-            }
-
-            string borrowerName = rjTextBox1.Texts.Trim();
-            DateTime borrowedDate = rjDatePicker2.Value;
-            DateTime returnDate = rjDatePicker1.Value;
-
+            // Determine the table name based on the itemId prefix
             string tableName;
-            if (itemId.StartsWith("IT"))
+            if (itemId.StartsWith("HM"))
             {
-                tableName = "IT";
+                tableName = "ITEMS";
             }
             else if (itemId.StartsWith("SL"))
             {
@@ -132,8 +162,31 @@ namespace NBSPI_INVENTORY_SYSTEM
             }
             else
             {
-                tableName = "ITEMS"; 
+                tableName = "IT";
             }
+
+            // Validate quantity only if the table is NOT "IT"
+            bool isITItem = tableName == "IT";
+            if (!isITItem)
+            {
+                if (string.IsNullOrWhiteSpace(rjTextBox4.Texts.Trim()))
+                {
+                    NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
+                    nOTIFFILLED2.Show();
+                    return;
+                }
+
+                if (!int.TryParse(rjTextBox4.Texts.Trim(), out quantityToBorrow))
+                {
+                    NOTIFNUMERIC2 nOTIFNUMERIC2 = new NOTIFNUMERIC2();
+                    nOTIFNUMERIC2.Show();
+                    return;
+                }
+            }
+
+            string borrowerName = rjTextBox1.Texts.Trim();
+            DateTime borrowedDate = rjDatePicker2.Value;
+            DateTime returnDate = rjDatePicker1.Value;
 
             using (SqlConnection con = new SqlConnection(conn))
             {
@@ -150,13 +203,12 @@ namespace NBSPI_INVENTORY_SYSTEM
                 {
                     NOTIFNOTFOUND nOTIFNOTFOUND = new NOTIFNOTFOUND();
                     nOTIFNOTFOUND.Show();
-
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(borrowerName))
                 {
-                   NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
+                    NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
                     nOTIFFILLED2.Show();
                     return;
                 }
@@ -168,33 +220,43 @@ namespace NBSPI_INVENTORY_SYSTEM
                     return;
                 }
 
-                // Get current stock
-                string getStockQuery = $"SELECT QUANTITY FROM {tableName} WHERE ID = @ItemId";
-                SqlCommand getStockCmd = new SqlCommand(getStockQuery, con);
-                getStockCmd.Parameters.AddWithValue("@ItemId", itemId);
-
-                object stockResult = getStockCmd.ExecuteScalar();
-
-                if (stockResult == null || stockResult == DBNull.Value)
+                // Get current stock if the table is NOT "IT"
+                int currentStock = 0;
+                if (!isITItem)
                 {
-                    NOTIFNOTFOUND nOTIFNOTFOUND = new NOTIFNOTFOUND();
-                    nOTIFNOTFOUND.Show();   
-                    return;
+                    string getStockQuery = $"SELECT QUANTITY FROM {tableName} WHERE ID = @ItemId";
+                    SqlCommand getStockCmd = new SqlCommand(getStockQuery, con);
+                    getStockCmd.Parameters.AddWithValue("@ItemId", itemId);
+
+                    object stockResult = getStockCmd.ExecuteScalar();
+
+                    if (stockResult == null || stockResult == DBNull.Value)
+                    {
+                        NOTIFNOTFOUND nOTIFNOTFOUND = new NOTIFNOTFOUND();
+                        nOTIFNOTFOUND.Show();
+                        return;
+                    }
+
+                    currentStock = Convert.ToInt32(stockResult);
+
+                    if (quantityToBorrow > currentStock)
+                    {
+                        NOTIFENOUGH nOTIFENOUGH = new NOTIFENOUGH();
+                        nOTIFENOUGH.Show();
+                        return;
+                    }
                 }
 
-                int currentStock = Convert.ToInt32(stockResult);
-
-                if (quantityToBorrow > currentStock)
-                {
-                  NOTIFENOUGH nOTIFENOUGH = new NOTIFENOUGH();
-                    nOTIFENOUGH.Show();
-                    return;
-                }
-
+                // Generate custom ID
                 string customId = _generator.GenerateId();
+
                 // Insert borrow record into BORROW table
-                string insertBorrowQuery = "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE, DATE2) " +
-                                           "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, @Quantity, @Status, @Date, @Date2)";
+                string insertBorrowQuery = isITItem
+                    ? "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, STATUS, DATE, DATE2, DESCRIPTION, PHOTO) " +
+                      "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, @Status, @Date, @Date2, @Description, @Photo)"
+                    : "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE, DATE2, DESCRIPTION, PHOTO) " +
+                      "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, @Quantity, @Status, @Date, @Date2, @Description, @Photo)";
+
                 SqlCommand insertBorrowCmd = new SqlCommand(insertBorrowQuery, con);
                 insertBorrowCmd.Parameters.AddWithValue("@Id", customId);
                 insertBorrowCmd.Parameters.AddWithValue("@ItemId", itemId);
@@ -202,18 +264,44 @@ namespace NBSPI_INVENTORY_SYSTEM
                 insertBorrowCmd.Parameters.AddWithValue("@Item", rjTextBox3.Texts.Trim());
                 insertBorrowCmd.Parameters.AddWithValue("@Brand", textBox1.Text.Trim());
                 insertBorrowCmd.Parameters.AddWithValue("@Model", textBox2.Text.Trim());
-                insertBorrowCmd.Parameters.AddWithValue("@Category", rjComboBox1.Texts.Trim()); // Using the tableName as category
-                insertBorrowCmd.Parameters.AddWithValue("@Quantity", quantityToBorrow);
+                insertBorrowCmd.Parameters.AddWithValue("@Category", rjComboBox1.Texts.Trim());
+                if (!isITItem)
+                {
+                    insertBorrowCmd.Parameters.AddWithValue("@Quantity", quantityToBorrow);
+                }
                 insertBorrowCmd.Parameters.AddWithValue("@Status", "UNRETURNED");
                 insertBorrowCmd.Parameters.AddWithValue("@Date", borrowedDate);
                 insertBorrowCmd.Parameters.AddWithValue("@Date2", returnDate);
+                insertBorrowCmd.Parameters.AddWithValue("@Description", rjTextBox5.Texts.Trim());
+
+                if (pictureBox2.Image != null)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        pictureBox2.Image.Save(ms, pictureBox2.Image.RawFormat);
+                        byte[] photo = ms.ToArray();
+                        insertBorrowCmd.Parameters.AddWithValue("@Photo", photo);
+                    }
+                }
+                else
+                {
+                    insertBorrowCmd.Parameters.AddWithValue("@Photo", DBNull.Value);
+                }
 
                 insertBorrowCmd.ExecuteNonQuery();
+
+                // Remove the item from the IT table if it is from IT
+                if (isITItem)
+                {
+                    string deleteItemQuery = "DELETE FROM IT WHERE ID = @ItemId";
+                    SqlCommand deleteItemCmd = new SqlCommand(deleteItemQuery, con);
+                    deleteItemCmd.Parameters.AddWithValue("@ItemId", itemId);
+                    deleteItemCmd.ExecuteNonQuery();
+                }
 
                 // If the current date is past the return date, update status to OVERDUE
                 if (DateTime.Now > returnDate)
                 {
-                    // Update the status to OVERDUE in the BORROW table
                     string updateStatusQuery = "UPDATE BORROW SET STATUS = 'OVERDUE' WHERE ID = @Id";
                     SqlCommand updateStatusCmd = new SqlCommand(updateStatusQuery, con);
                     updateStatusCmd.Parameters.AddWithValue("@Id", customId);
@@ -221,20 +309,21 @@ namespace NBSPI_INVENTORY_SYSTEM
                 }
 
                 // Update stock in the specified table
-                string updateStockQuery = $"UPDATE {tableName} SET QUANTITY = QUANTITY - @Quantity WHERE ID = @ItemId";
-                SqlCommand updateStockCmd = new SqlCommand(updateStockQuery, con);
-                updateStockCmd.Parameters.AddWithValue("@Quantity", quantityToBorrow);
-                updateStockCmd.Parameters.AddWithValue("@ItemId", itemId);
-
-                updateStockCmd.ExecuteNonQuery();
+                if (!isITItem)
+                {
+                    string updateStockQuery = $"UPDATE {tableName} SET QUANTITY = QUANTITY - @Quantity WHERE ID = @ItemId";
+                    SqlCommand updateStockCmd = new SqlCommand(updateStockQuery, con);
+                    updateStockCmd.Parameters.AddWithValue("@Quantity", quantityToBorrow);
+                    updateStockCmd.Parameters.AddWithValue("@ItemId", itemId);
+                    updateStockCmd.ExecuteNonQuery();
+                }
 
                 NOTIFSUCCESS nOTIFSUCCESS = new NOTIFSUCCESS();
                 nOTIFSUCCESS.Show();
                 this.Close();
-                
             }
 
-
+            // Clear inputs
             rjTextBox1.Texts = string.Empty;
             rjTextBox2.Texts = string.Empty;
             rjTextBox3.Texts = string.Empty;
@@ -242,7 +331,6 @@ namespace NBSPI_INVENTORY_SYSTEM
             rjTextBox4.Texts = string.Empty;
 
             transaction.GetItems();
-
 
         }
 
@@ -280,7 +368,11 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void rjTextBox3__TextChanged(object sender, EventArgs e)
         {
-        
+            string itemName = rjTextBox3.Texts.Trim(); // Get the text from rjTextBox3
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                FetchItemDetails2(itemName);
+            }
         }
 
         private void rjTextBox2__TextChanged(object sender, EventArgs e)

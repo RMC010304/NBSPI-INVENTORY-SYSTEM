@@ -324,6 +324,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet20.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet22.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1029,6 +1039,28 @@
     <None Include="IT_RESDataSet20.xss">
       <DependentUpon>IT_RESDataSet20.xsd</DependentUpon>
     </None>
+    <None Include="IT_RESDataSet21.xsc">
+      <DependentUpon>IT_RESDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet21.xss">
+      <DependentUpon>IT_RESDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet22.xsc">
+      <DependentUpon>IT_RESDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet22.xss">
+      <DependentUpon>IT_RESDataSet22.xsd</DependentUpon>
+    </None>
     <None Include="IT_RESDataSet3.xsc">
       <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
     </None>
@@ -1710,6 +1742,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\update it.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arch succ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arkayb bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formfinal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

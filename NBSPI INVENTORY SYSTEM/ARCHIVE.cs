@@ -43,6 +43,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             dataGridView5.ColumnHeadersDefaultCellStyle.Font = new Font("Montserrat", 10, FontStyle.Bold);
             dataGridView5.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
             dataGridView5.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+            dataGridView5.Columns["pHOTODataGridViewImageColumn"].DefaultCellStyle.NullValue = null;
 
             // Disable visual styles
             dataGridView5.EnableHeadersVisualStyles = false;

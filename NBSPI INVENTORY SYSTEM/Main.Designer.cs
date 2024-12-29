@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
             this.doubleBufferedPanel1 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.ipanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,6 +45,8 @@
             this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
             this.abpanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.transaction2 = new NBSPI_INVENTORY_SYSTEM.TRANSACTION();
+            this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
+            this.dashboard2 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.doubleBufferedPanel4 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.rjButton16 = new RJCodeAdvance.RJControls.RJButton();
             this.abbutton = new RJCodeAdvance.RJControls.RJButton();
@@ -54,27 +55,15 @@
             this.dashbutton = new RJCodeAdvance.RJControls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.archbutton = new RJCodeAdvance.RJControls.RJButton();
-            this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
-            this.dashboard2 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.hm2 = new NBSPI_INVENTORY_SYSTEM.HM();
             this.it2 = new NBSPI_INVENTORY_SYSTEM.IT();
             this.science2 = new NBSPI_INVENTORY_SYSTEM.SCIENCE();
+            this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
             this.doubleBufferedPanel1.SuspendLayout();
             this.ipanel.SuspendLayout();
             this.doubleBufferedPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // sports2
-            // 
-            this.sports2.BackColor = System.Drawing.Color.White;
-            this.sports2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sports2.BackgroundImage")));
-            this.sports2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.sports2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sports2.Location = new System.Drawing.Point(0, 0);
-            this.sports2.Name = "sports2";
-            this.sports2.Size = new System.Drawing.Size(1888, 1002);
-            this.sports2.TabIndex = 4;
             // 
             // doubleBufferedPanel1
             // 
@@ -82,9 +71,9 @@
             this.doubleBufferedPanel1.Controls.Add(this.ipanel);
             this.doubleBufferedPanel1.Controls.Add(this.abpanel);
             this.doubleBufferedPanel1.Controls.Add(this.transaction2);
-            this.doubleBufferedPanel1.Controls.Add(this.doubleBufferedPanel4);
             this.doubleBufferedPanel1.Controls.Add(this.archive2);
             this.doubleBufferedPanel1.Controls.Add(this.dashboard2);
+            this.doubleBufferedPanel1.Controls.Add(this.doubleBufferedPanel4);
             this.doubleBufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doubleBufferedPanel1.Location = new System.Drawing.Point(0, 0);
             this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
@@ -387,6 +376,28 @@
             this.transaction2.Size = new System.Drawing.Size(1554, 1002);
             this.transaction2.TabIndex = 3;
             // 
+            // archive2
+            // 
+            this.archive2.BackColor = System.Drawing.Color.White;
+            this.archive2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.arkayb_bg;
+            this.archive2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.archive2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.archive2.Location = new System.Drawing.Point(334, 0);
+            this.archive2.Name = "archive2";
+            this.archive2.Size = new System.Drawing.Size(1554, 1002);
+            this.archive2.TabIndex = 6;
+            // 
+            // dashboard2
+            // 
+            this.dashboard2.BackColor = System.Drawing.Color.White;
+            this.dashboard2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard2.BackgroundImage")));
+            this.dashboard2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dashboard2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dashboard2.Location = new System.Drawing.Point(334, 0);
+            this.dashboard2.Name = "dashboard2";
+            this.dashboard2.Size = new System.Drawing.Size(1554, 1002);
+            this.dashboard2.TabIndex = 5;
+            // 
             // doubleBufferedPanel4
             // 
             this.doubleBufferedPanel4.BackColor = System.Drawing.Color.Transparent;
@@ -570,28 +581,6 @@
             this.archbutton.MouseLeave += new System.EventHandler(this.archbutton_MouseLeave);
             this.archbutton.MouseHover += new System.EventHandler(this.archbutton_MouseHover);
             // 
-            // archive2
-            // 
-            this.archive2.BackColor = System.Drawing.Color.White;
-            this.archive2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("archive2.BackgroundImage")));
-            this.archive2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.archive2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.archive2.Location = new System.Drawing.Point(0, 0);
-            this.archive2.Name = "archive2";
-            this.archive2.Size = new System.Drawing.Size(1888, 1002);
-            this.archive2.TabIndex = 6;
-            // 
-            // dashboard2
-            // 
-            this.dashboard2.BackColor = System.Drawing.Color.White;
-            this.dashboard2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard2.BackgroundImage")));
-            this.dashboard2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dashboard2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboard2.Location = new System.Drawing.Point(0, 0);
-            this.dashboard2.Name = "dashboard2";
-            this.dashboard2.Size = new System.Drawing.Size(1888, 1002);
-            this.dashboard2.TabIndex = 5;
-            // 
             // hm2
             // 
             this.hm2.BackColor = System.Drawing.Color.White;
@@ -625,14 +614,25 @@
             this.science2.Size = new System.Drawing.Size(1888, 1002);
             this.science2.TabIndex = 3;
             // 
+            // sports2
+            // 
+            this.sports2.BackColor = System.Drawing.Color.White;
+            this.sports2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sports2.BackgroundImage")));
+            this.sports2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sports2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sports2.Location = new System.Drawing.Point(0, 0);
+            this.sports2.Name = "sports2";
+            this.sports2.Size = new System.Drawing.Size(1888, 1002);
+            this.sports2.TabIndex = 4;
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1888, 1002);
+            this.Controls.Add(this.doubleBufferedPanel1);
+            this.Controls.Add(this.hm2);
             this.Controls.Add(this.it2);
             this.Controls.Add(this.science2);
             this.Controls.Add(this.sports2);
-            this.Controls.Add(this.doubleBufferedPanel1);
-            this.Controls.Add(this.hm2);
             this.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

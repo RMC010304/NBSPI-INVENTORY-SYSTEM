@@ -43,7 +43,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rjTextBox5 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // rjTextBox2
@@ -66,6 +70,7 @@
             this.rjTextBox2.Size = new System.Drawing.Size(208, 31);
             this.rjTextBox2.TabIndex = 96;
             this.rjTextBox2.Texts = "";
+            this.toolTip1.SetToolTip(this.rjTextBox2, "Fill this first for borrowing IT RESOURCES");
             this.rjTextBox2.UnderlinedStyle = false;
             this.rjTextBox2._TextChanged += new System.EventHandler(this.rjTextBox2__TextChanged);
             // 
@@ -176,6 +181,8 @@
             this.rjTextBox3.Size = new System.Drawing.Size(208, 31);
             this.rjTextBox3.TabIndex = 90;
             this.rjTextBox3.Texts = "";
+            this.toolTip1.SetToolTip(this.rjTextBox3, "Fill this first for borrowing HM,SCIENCE and SPORTS EQUIPMENT, \r\nyou can change t" +
+        "he Serial/Item no. of the item to change the item specifically");
             this.rjTextBox3.UnderlinedStyle = false;
             this.rjTextBox3._TextChanged += new System.EventHandler(this.rjTextBox3__TextChanged);
             // 
@@ -256,13 +263,48 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // rjTextBox5
+            // 
+            this.rjTextBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox5.BorderRadius = 15;
+            this.rjTextBox5.BorderSize = 1;
+            this.rjTextBox5.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox5.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox5.Location = new System.Drawing.Point(284, 30);
+            this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox5.Multiline = false;
+            this.rjTextBox5.Name = "rjTextBox5";
+            this.rjTextBox5.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox5.PasswordChar = false;
+            this.rjTextBox5.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjTextBox5.PlaceholderText = "";
+            this.rjTextBox5.Size = new System.Drawing.Size(208, 31);
+            this.rjTextBox5.TabIndex = 100;
+            this.rjTextBox5.Texts = "";
+            this.rjTextBox5.UnderlinedStyle = false;
+            this.rjTextBox5.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(392, 68);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 71);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 101;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
             // BORROW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.borrow;
+            this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.formfinal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(561, 657);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.rjTextBox5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.rjDatePicker2);
@@ -282,6 +324,7 @@
             this.Text = "BORROW";
             this.Load += new System.EventHandler(this.BORROW_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,5 +345,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Timer timer1;
+        private RJCodeAdvance.RJControls.RJTextBox rjTextBox5;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

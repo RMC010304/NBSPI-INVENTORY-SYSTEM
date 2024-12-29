@@ -128,10 +128,10 @@ namespace NBSPI_INVENTORY_SYSTEM
             
         private string GetInventoryTable(string itemId)
         {
-            if (itemId.StartsWith("IT")) return "IT";
+            if (itemId.StartsWith("HM")) return "ITEMS";
             else if (itemId.StartsWith("SL")) return "SCIENCE";
             else if (itemId.StartsWith("SE")) return "SPORTS";
-            else return "ITEMS";
+            else return "IT";
         }
 
         public class CustomIdGenerator
