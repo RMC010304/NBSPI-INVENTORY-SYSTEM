@@ -252,8 +252,8 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 // Insert borrow record into BORROW table
                 string insertBorrowQuery = isITItem
-                    ? "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, STATUS, DATE, DATE2, DESCRIPTION, PHOTO) " +
-                      "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, @Status, @Date, @Date2, @Description, @Photo)"
+                    ? "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE, DATE2, DESCRIPTION, PHOTO) " +
+                      "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, 1, @Status, @Date, @Date2, @Description, @Photo)"
                     : "INSERT INTO BORROW (ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE, DATE2, DESCRIPTION, PHOTO) " +
                       "VALUES (@Id, @ItemId, @Name, @Item, @Brand, @Model, @Category, @Quantity, @Status, @Date, @Date2, @Description, @Photo)";
 

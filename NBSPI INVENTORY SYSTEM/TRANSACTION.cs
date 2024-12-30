@@ -14,6 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 using DGVPrinterHelper;
 using System.Drawing.Printing;
 using RJCodeAdvance.RJControls;
+using System.Transactions;
 
 namespace NBSPI_INVENTORY_SYSTEM
 {
@@ -33,6 +34,10 @@ namespace NBSPI_INVENTORY_SYSTEM
         private BORROW borrowForm;
 
         bool isDescending = true;
+
+        private CustomIdGenerator _generator;
+
+        
 
         public TRANSACTION()
         {
@@ -56,6 +61,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             borrowForm = new BORROW(this);
             borrowForm.OnStatusUpdated += BorrowForm_OnStatusUpdated;
 
+            _generator = new CustomIdGenerator("R");
         }
 
         private void BorrowForm_OnStatusUpdated()
@@ -288,32 +294,34 @@ namespace NBSPI_INVENTORY_SYSTEM
                 borrowDetails.ShowDialog();
             }
 
-            if(dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
+            if (dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
             {
                 DataGridViewRow selectedRow = dataGridView5.Rows[e.RowIndex];
                 string borrowId = selectedRow.Cells["iDDataGridViewTextBoxColumn1"].Value.ToString();
                 string itemId = selectedRow.Cells["iTEMIDDataGridViewTextBoxColumn1"].Value.ToString();
 
-                // Check if the item belongs to the IT category based on its ID
-                if (itemId.StartsWith("HM") || itemId.StartsWith("SL") || itemId.StartsWith("SE")) // Assuming IT items have IDs starting with "IT"
-                {
-                    // Handle direct return for IT items
-                    // For non-IT items, show the BORROWRETURN form
-                    int borrowedQuantity = 0;
-                    object quantityValue = selectedRow.Cells["qUANTITYDataGridViewTextBoxColumn1"].Value;
-
-                    if (quantityValue != DBNull.Value)
-                    {
-                        borrowedQuantity = Convert.ToInt32(quantityValue);
-                    }
-
-                    BORROWRETURN bORROWRETURN = new BORROWRETURN(this, borrowId, itemId, borrowedQuantity);
-                    bORROWRETURN.Show();
-
-                }
+                // Determine the category and table based on the item ID prefix or fallback for IT
+                string targetTable = "";
+                if (itemId.StartsWith("HM"))
+                    targetTable = "ITEMS";
+                else if (itemId.StartsWith("SL"))
+                    targetTable = "SCIENCE";
+                else if (itemId.StartsWith("SE"))
+                    targetTable = "SPORTS";
                 else
-                {
+                    targetTable = "IT"; // Fallback for IT table
 
+                // Get the borrowed quantity
+                int borrowedQuantity = 0;
+                object quantityValue = selectedRow.Cells["qUANTITYDataGridViewTextBoxColumn1"].Value;
+                if (quantityValue != DBNull.Value)
+                {
+                    borrowedQuantity = Convert.ToInt32(quantityValue);
+                }
+
+                if (borrowedQuantity <= 1)
+                {
+                    // Direct return if quantity is less than or equal to 1
                     using (SqlConnection con = new SqlConnection(conn))
                     {
                         con.Open();
@@ -332,22 +340,60 @@ namespace NBSPI_INVENTORY_SYSTEM
                             string description = reader["DESCRIPTION"].ToString();
                             byte[] photo = reader["PHOTO"] as byte[];
 
-                            // Insert the item back into the IT table
-                            string insertToITQuery = "INSERT INTO IT (ID, ITEM, BRAND, MODEL,STATUS, DESCRIPTION, PHOTO,DATE) VALUES (@ItemId, @Item, @Brand, @Model,@status, @Description, @Photo,@date)";
-                            SqlCommand insertToITCmd = new SqlCommand(insertToITQuery, con);
-                            insertToITCmd.Parameters.AddWithValue("@ItemId", itemId);
-                            insertToITCmd.Parameters.AddWithValue("@Item", itemName);
-                            insertToITCmd.Parameters.AddWithValue("@Brand", brand);
-                            insertToITCmd.Parameters.AddWithValue("@Model", model);
-                            insertToITCmd.Parameters.AddWithValue("@status", "AVAILABLE");
-                            insertToITCmd.Parameters.AddWithValue("@Description", description);
-                            insertToITCmd.Parameters.AddWithValue("@Photo", (object)photo ?? DBNull.Value);
-                            insertToITCmd.Parameters.AddWithValue("@date", DateTime.Now);
-
-
-
+                            // Close the reader before executing the next command
                             reader.Close();
-                            insertToITCmd.ExecuteNonQuery();
+
+                            if (targetTable == "IT") // Check if it's the IT table
+                            {
+                                // Insert the item into the IT table
+                                string insertToITQuery = "INSERT INTO IT (ID, ITEM, BRAND, MODEL, STATUS, DESCRIPTION, PHOTO, DATE) VALUES (@ItemId, @Item, @Brand, @Model, @Status, @Description, @Photo, @Date)";
+                                SqlCommand insertToITCmd = new SqlCommand(insertToITQuery, con);
+                                insertToITCmd.Parameters.AddWithValue("@ItemId", itemId);
+                                insertToITCmd.Parameters.AddWithValue("@Item", itemName);
+                                insertToITCmd.Parameters.AddWithValue("@Brand", brand);
+                                insertToITCmd.Parameters.AddWithValue("@Model", model);
+                                insertToITCmd.Parameters.AddWithValue("@Status", "AVAILABLE");
+                                insertToITCmd.Parameters.AddWithValue("@Description", description);
+                                insertToITCmd.Parameters.AddWithValue("@Photo", (object)photo ?? DBNull.Value);
+                                insertToITCmd.Parameters.AddWithValue("@Date", DateTime.Now);
+
+                                // Insert into IT table
+                                insertToITCmd.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                // If not IT, update the quantity in the respective table
+                                string updateInventoryQuery = $"UPDATE {targetTable} SET QUANTITY = QUANTITY + 1 WHERE ID = @ItemId";
+                                SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, con);
+                                updateInventoryCmd.Parameters.AddWithValue("@ItemId", itemId);
+                                updateInventoryCmd.ExecuteNonQuery();
+                            }
+
+                            // Insert into RETURN table
+                            string customId = _generator.GenerateId();
+
+                            string insertReturnQuery;
+                            if (targetTable == "IT")
+                            {
+                                // Insert 1 for QUANTITY if item is from IT table
+                                insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DESCRIPTION, PHOTO, DATE) " +
+                                                    "SELECT @id, ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, 1, @Status, DESCRIPTION, PHOTO, GETDATE() " +
+                                                    "FROM BORROW WHERE ID = @BorrowId";
+                            }
+                            else
+                            {
+                                // Insert the borrowed quantity for other items
+                                insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DESCRIPTION, PHOTO, DATE) " +
+                                                    "SELECT @id, ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, @Quantity, @Status, DESCRIPTION, PHOTO, GETDATE() " +
+                                                    "FROM BORROW WHERE ID = @BorrowId";
+                            }
+
+                            SqlCommand insertReturnCmd = new SqlCommand(insertReturnQuery, con);
+                            insertReturnCmd.Parameters.AddWithValue("@id", customId);
+                            insertReturnCmd.Parameters.AddWithValue("@Quantity", borrowedQuantity);  // Set the return quantity here (only for non-IT items)
+                            insertReturnCmd.Parameters.AddWithValue("@Status", "RETURNED");
+                            insertReturnCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                            insertReturnCmd.ExecuteNonQuery();
 
                             // Remove the item from the BORROW table
                             string deleteFromBorrowQuery = "DELETE FROM BORROW WHERE ID = @BorrowId";
@@ -355,23 +401,32 @@ namespace NBSPI_INVENTORY_SYSTEM
                             deleteFromBorrowCmd.Parameters.AddWithValue("@BorrowId", borrowId);
                             deleteFromBorrowCmd.ExecuteNonQuery();
 
+                            // Refresh DataGridView
                             GetItems();
+
+                            // Show notification that the item was successfully returned
                             NOTIFRETURNED nOTIFSUCCESS = new NOTIFRETURNED();
                             nOTIFSUCCESS.Show();
                         }
                     }
                 }
+                else
+                {
+                    // Show BORROWRETURN form if quantity is greater than 1
+                    BORROWRETURN bORROWRETURN = new BORROWRETURN(this, borrowId, itemId, borrowedQuantity);
+                    bORROWRETURN.Show();
+                }
             }
-            
 
-
-
-
+            if (dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
+            {
+                
+            }
 
         }
 
 
-        //
+        
 
         private void doubleBufferedPanel2_Paint(object sender, PaintEventArgs e)
         {
@@ -1077,5 +1132,38 @@ namespace NBSPI_INVENTORY_SYSTEM
     
             GetItems3();
         }
+
+        public class CustomIdGenerator
+        {
+            private string _prefix;
+            private int _currentNumber;
+
+            public CustomIdGenerator(string prefix)
+            {
+                _prefix = prefix;
+                _currentNumber = GetLastUsedNumber() + 1;
+            }
+
+            private int GetLastUsedNumber()
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678"))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT COALESCE(MAX(CAST(SUBSTRING(ID, LEN(@prefix) + 1, LEN(ID) - LEN(@prefix)) AS INT)), 0) FROM [RETURN] WHERE ID LIKE @prefix + '%'", connection);
+                    command.Parameters.AddWithValue("@prefix", _prefix);
+
+                    var result = command.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                }
+            }
+
+            public string GenerateId()
+            {
+                string id = $"{_prefix}{_currentNumber:D3}";
+                _currentNumber++;
+                return id;
+            }
+        }
+
     }
 }

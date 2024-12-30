@@ -334,6 +334,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet22.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet24.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1060,6 +1070,28 @@
     </None>
     <None Include="IT_RESDataSet22.xss">
       <DependentUpon>IT_RESDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet23.xsc">
+      <DependentUpon>IT_RESDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet23.xss">
+      <DependentUpon>IT_RESDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet24.xsc">
+      <DependentUpon>IT_RESDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet24.xss">
+      <DependentUpon>IT_RESDataSet24.xsd</DependentUpon>
     </None>
     <None Include="IT_RESDataSet3.xsc">
       <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
