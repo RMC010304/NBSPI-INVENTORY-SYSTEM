@@ -35,7 +35,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         public void UpdateDashboardUsername(string username)
         {
-            dashboard2.SetUsername(username); // Call the method on the Dashboard user control
+            dashboard3.SetUsername(username); // Call the method on the Dashboard user control
         }
 
         private void dashbutton_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace NBSPI_INVENTORY_SYSTEM
             archbutton.Image = Resources.ar2;
             abbutton.Image = Resources.ab2;
 
-            dashboard2.BringToFront();
+            dashboard3.BringToFront();
            
         }
 
@@ -406,6 +406,21 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void rjButton16_Click(object sender, EventArgs e)
+        {
+            LOGOUT logoutForm = new LOGOUT();
+            logoutForm.ShowDialog();
+
+            if (logoutForm.IsConfirmed)
+            {
+                this.Close(); // Close the MainForm
+                Login loginForm = new Login();
+                loginForm.Show(); // Show the LoginForm
+            }
+            // Optionally, disable the Main form while LOGOUT form is open
 
         }
     }

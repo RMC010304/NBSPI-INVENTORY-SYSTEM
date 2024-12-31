@@ -46,7 +46,6 @@
             this.abpanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.transaction2 = new NBSPI_INVENTORY_SYSTEM.TRANSACTION();
             this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
-            this.dashboard2 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.doubleBufferedPanel4 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.rjButton16 = new RJCodeAdvance.RJControls.RJButton();
             this.abbutton = new RJCodeAdvance.RJControls.RJButton();
@@ -59,6 +58,7 @@
             this.it2 = new NBSPI_INVENTORY_SYSTEM.IT();
             this.science2 = new NBSPI_INVENTORY_SYSTEM.SCIENCE();
             this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
+            this.dashboard3 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.doubleBufferedPanel1.SuspendLayout();
             this.ipanel.SuspendLayout();
             this.doubleBufferedPanel4.SuspendLayout();
@@ -68,11 +68,11 @@
             // doubleBufferedPanel1
             // 
             this.doubleBufferedPanel1.BackColor = System.Drawing.Color.White;
-            this.doubleBufferedPanel1.Controls.Add(this.dashboard2);
-            this.doubleBufferedPanel1.Controls.Add(this.ipanel);
-            this.doubleBufferedPanel1.Controls.Add(this.abpanel);
+            this.doubleBufferedPanel1.Controls.Add(this.dashboard3);
             this.doubleBufferedPanel1.Controls.Add(this.transaction2);
             this.doubleBufferedPanel1.Controls.Add(this.archive2);
+            this.doubleBufferedPanel1.Controls.Add(this.ipanel);
+            this.doubleBufferedPanel1.Controls.Add(this.abpanel);
             this.doubleBufferedPanel1.Controls.Add(this.doubleBufferedPanel4);
             this.doubleBufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doubleBufferedPanel1.Location = new System.Drawing.Point(0, 0);
@@ -387,17 +387,6 @@
             this.archive2.Size = new System.Drawing.Size(1554, 1002);
             this.archive2.TabIndex = 6;
             // 
-            // dashboard2
-            // 
-            this.dashboard2.BackColor = System.Drawing.Color.White;
-            this.dashboard2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard2.BackgroundImage")));
-            this.dashboard2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dashboard2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboard2.Location = new System.Drawing.Point(334, 0);
-            this.dashboard2.Name = "dashboard2";
-            this.dashboard2.Size = new System.Drawing.Size(1554, 1002);
-            this.dashboard2.TabIndex = 5;
-            // 
             // doubleBufferedPanel4
             // 
             this.doubleBufferedPanel4.BackColor = System.Drawing.Color.Transparent;
@@ -438,6 +427,7 @@
             this.rjButton16.TextColor = System.Drawing.Color.White;
             this.rjButton16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.rjButton16.UseVisualStyleBackColor = false;
+            this.rjButton16.Click += new System.EventHandler(this.rjButton16_Click);
             // 
             // abbutton
             // 
@@ -625,6 +615,17 @@
             this.sports2.Size = new System.Drawing.Size(1888, 1002);
             this.sports2.TabIndex = 4;
             // 
+            // dashboard3
+            // 
+            this.dashboard3.BackColor = System.Drawing.Color.White;
+            this.dashboard3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard3.BackgroundImage")));
+            this.dashboard3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dashboard3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dashboard3.Location = new System.Drawing.Point(334, 0);
+            this.dashboard3.Name = "dashboard3";
+            this.dashboard3.Size = new System.Drawing.Size(1554, 1002);
+            this.dashboard3.TabIndex = 7;
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(1888, 1002);
@@ -714,5 +715,6 @@
         private SCIENCE science2;
         private SPORTS sports2;
         private ARCHIVE archive2;
+        private DASHBOARD dashboard3;
     }
 }

@@ -14,7 +14,7 @@ namespace NBSPI_INVENTORY_SYSTEM
     public partial class DASHBOARD : UserControl
     {
 
-        string conn = "Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678";
+         string conn = "Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678";
 
    
         public DASHBOARD()
@@ -152,8 +152,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             FillChart3();
             FillChart4();
             FillChart5();
+            LoadBorrowedPercentage();
 
-           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -239,6 +239,44 @@ namespace NBSPI_INVENTORY_SYSTEM
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadBorrowedPercentage()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn)) // Use the correct field for the connection string
+                {
+                    connection.Open();
+
+                    // Query to calculate total borrowed quantity
+                    string query = "SELECT SUM(QUANTITY) AS TotalBorrowedQuantity FROM BORROW";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != DBNull.Value && result != null)
+                    {
+                        int totalBorrowedQuantity = Convert.ToInt32(result);
+
+                        // Update label with the total borrowed items (you can adjust the format if needed)
+                        label11.Text = $"Borrowed: {totalBorrowedQuantity} items";
+                    }
+                    else
+                    {
+                        label11.Text = "No items have been borrowed.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading borrowed percentage: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }    
 }
