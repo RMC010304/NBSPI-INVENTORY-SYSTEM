@@ -153,6 +153,9 @@ namespace NBSPI_INVENTORY_SYSTEM
             FillChart4();
             FillChart5();
             LoadBorrowedPercentage();
+            LoadReturnedPercentage2();
+            LoadDamagePercentage3();
+
 
         }
 
@@ -250,32 +253,169 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(conn)) // Use the correct field for the connection string
+                using (SqlConnection connection = new SqlConnection(conn)) // Use the connection string
                 {
                     connection.Open();
 
-                    // Query to calculate total borrowed quantity
-                    string query = "SELECT SUM(QUANTITY) AS TotalBorrowedQuantity FROM BORROW";
+                    // Query to calculate total borrowed quantity and total available quantity
+                    string totalBorrowedQuery = "SELECT SUM(QUANTITY) AS TotalBorrowedQuantity FROM BORROW";
+                    string totalItemsQuery = @"
+                SELECT SUM(QUANTITY) AS TotalItemsQuantity FROM (
+                    SELECT QUANTITY FROM BORROW
+                    UNION ALL
+                    SELECT QUANTITY FROM IT
+                    UNION ALL
+                    SELECT QUANTITY FROM ITEMS
+                    UNION ALL
+                    SELECT QUANTITY FROM SCIENCE
+                    UNION ALL
+                    SELECT QUANTITY FROM SPORTS
+                ) AS TotalItems";
 
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    object result = cmd.ExecuteScalar();
+                    // Execute queries
+                    SqlCommand borrowedCommand = new SqlCommand(totalBorrowedQuery, connection);
+                    SqlCommand totalItemsCommand = new SqlCommand(totalItemsQuery, connection);
 
-                    if (result != DBNull.Value && result != null)
+                    object borrowedResult = borrowedCommand.ExecuteScalar();
+                    object totalItemsResult = totalItemsCommand.ExecuteScalar();
+
+                    // Ensure valid results
+                    int totalBorrowed = borrowedResult != DBNull.Value && borrowedResult != null
+                        ? Convert.ToInt32(borrowedResult)
+                        : 0;
+                    int totalItems = totalItemsResult != DBNull.Value && totalItemsResult != null
+                        ? Convert.ToInt32(totalItemsResult)
+                        : 0;
+
+                    // Calculate percentage
+                    if (totalItems > 0)
                     {
-                        int totalBorrowedQuantity = Convert.ToInt32(result);
-
-                        // Update label with the total borrowed items (you can adjust the format if needed)
-                        label11.Text = $"Borrowed: {totalBorrowedQuantity} items";
+                        double percentage = (double)totalBorrowed / totalItems * 100;
+                        label11.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
                     }
                     else
                     {
-                        label11.Text = "No items have been borrowed.";
+                        label11.Text = "00%";
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading borrowed percentage: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadReturnedPercentage2()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn)) // Use the connection string
+                {
+                    connection.Open();
+
+                    // Query to calculate total returned quantity and total available quantity
+                    string totalReturnedQuery = "SELECT SUM(QUANTITY) AS TotalReturnedQuantity FROM [RETURN]"; // Modify as per your return table
+                    string totalItemsQuery = @"
+            SELECT SUM(QUANTITY) AS TotalItemsQuantity FROM (
+                SELECT QUANTITY FROM [RETURN]
+                UNION ALL
+                SELECT QUANTITY FROM IT
+                UNION ALL
+                SELECT QUANTITY FROM ITEMS
+                UNION ALL
+                SELECT QUANTITY FROM SCIENCE
+                UNION ALL
+                SELECT QUANTITY FROM SPORTS
+            ) AS TotalItems";
+
+                    // Execute queries
+                    SqlCommand returnedCommand = new SqlCommand(totalReturnedQuery, connection);
+                    SqlCommand totalItemsCommand = new SqlCommand(totalItemsQuery, connection);
+
+                    object returnedResult = returnedCommand.ExecuteScalar();
+                    object totalItemsResult = totalItemsCommand.ExecuteScalar();
+
+                    // Ensure valid results
+                    int totalReturned = returnedResult != DBNull.Value && returnedResult != null
+                        ? Convert.ToInt32(returnedResult)
+                        : 0;
+                    int totalItems = totalItemsResult != DBNull.Value && totalItemsResult != null
+                        ? Convert.ToInt32(totalItemsResult)
+                        : 0;
+
+                    // Calculate percentage
+                    if (totalItems > 0)
+                    {
+                        double percentage = (double)totalReturned / totalItems * 100;
+                        label12.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
+                    }
+                    else
+                    {
+                        label12.Text = "00%";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading returned percentage: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadDamagePercentage3()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn)) // Use the connection string
+                {
+                    connection.Open();
+
+                    // Query to calculate total damaged quantity and total available quantity
+                    string totalDamagedQuery = "SELECT SUM(QUANTITY) AS TotalDamagedQuantity FROM DAMAGE"; // Modify as per your damage table
+                    string totalItemsQuery = @"
+            SELECT SUM(QUANTITY) AS TotalItemsQuantity FROM (
+                SELECT QUANTITY FROM DAMAGE
+                UNION ALL
+                SELECT QUANTITY FROM IT
+                UNION ALL
+                SELECT QUANTITY FROM ITEMS
+                UNION ALL
+                SELECT QUANTITY FROM SCIENCE
+                UNION ALL
+                SELECT QUANTITY FROM SPORTS
+            ) AS TotalItems";
+
+                    // Execute queries
+                    SqlCommand damagedCommand = new SqlCommand(totalDamagedQuery, connection);
+                    SqlCommand totalItemsCommand = new SqlCommand(totalItemsQuery, connection);
+
+                    object damagedResult = damagedCommand.ExecuteScalar();
+                    object totalItemsResult = totalItemsCommand.ExecuteScalar();
+
+                    // Ensure valid results
+                    int totalDamaged = damagedResult != DBNull.Value && damagedResult != null
+                        ? Convert.ToInt32(damagedResult)
+                        : 0;
+                    int totalItems = totalItemsResult != DBNull.Value && totalItemsResult != null
+                        ? Convert.ToInt32(totalItemsResult)
+                        : 0;
+
+                    // Calculate percentage
+                    if (totalItems > 0)
+                    {
+                        double percentage = (double)totalDamaged / totalItems * 100;
+                        label13.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
+                    }
+                    else
+                    {
+                        label13.Text = "00%";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading damage percentage: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }    
