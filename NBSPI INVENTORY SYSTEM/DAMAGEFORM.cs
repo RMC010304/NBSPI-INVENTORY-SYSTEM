@@ -197,15 +197,15 @@ namespace NBSPI_INVENTORY_SYSTEM
                 }
                 else
                 {
-                    MessageBox.Show("No matching record found in BORROW table.");
-                    return;
+                   NOTIFNOTFOUND2 nOTIFNOTFOUND2 = new NOTIFNOTFOUND2();
+                    nOTIFNOTFOUND2.Show();
                 }
 
                 // Ensure the damage quantity is not greater than borrowed quantity
                 if (quantity > borrowedQuantity)
                 {
-                    MessageBox.Show("Damage quantity cannot exceed borrowed quantity.");
-                    return;
+                    NOTIFEXCEED nOTIFEXCEED = new NOTIFEXCEED();
+                    nOTIFEXCEED.Show();
                 }
 
                 string customId2 = _generator.GenerateId2();

@@ -276,6 +276,9 @@ namespace NBSPI_INVENTORY_SYSTEM
                 DateTime.TryParse(selectedRow.Cells["dATEDataGridViewTextBoxColumn1"].Value?.ToString(), out label6Text);
                 DateTime.TryParse(selectedRow.Cells["dATE2DataGridViewTextBoxColumn1"].Value?.ToString(), out label7Text);
 
+                string label8Text = selectedRow.Cells["dESCRIPTIONDataGridViewTextBoxColumn"].Value?.ToString() ?? "";  // Description column
+                byte[] photoData = selectedRow.Cells["pHOTODataGridViewImageColumn"].Value as byte[];
+
                 Color statusColor = Color.FromArgb(255, 194, 111);
 
                 if (label5Text == "UNRETURNED")
@@ -289,7 +292,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                 BORROWDETAILS borrowDetails = new BORROWDETAILS(
                     label1Text, label2Text, label3Text, label12Text, label13Text,
-                    label14Text, label15Text, label4Text, label5Text, label6Text, label7Text, statusColor);
+                    label14Text, label15Text, label4Text, label5Text, label6Text, label7Text, statusColor, label8Text, photoData);
 
                 borrowDetails.ShowDialog();
             }
@@ -951,11 +954,13 @@ namespace NBSPI_INVENTORY_SYSTEM
                 string label5Text = selectedRow.Cells["sTATUSDataGridViewTextBoxColumn2"].Value?.ToString();
                 DateTime.TryParse(selectedRow.Cells["dATEDataGridViewTextBoxColumn2"].Value?.ToString(), out label6Text);
 
+                string label7Text = selectedRow.Cells["dESCRIPTIONDataGridViewTextBoxColumn2"].Value?.ToString() ?? "";  // Description column
+                byte[] photoData = selectedRow.Cells["pHOTODataGridViewImageColumn2"].Value as byte[];
 
 
                 BORROWDETAILS3 borrowDetails = new BORROWDETAILS3(
                     label1Text, label2Text, label3Text, label12Text, label13Text,
-                    label14Text, label15Text, label4Text, label5Text, label6Text);
+                    label14Text, label15Text, label4Text, label5Text, label6Text, label7Text, photoData);
 
                 borrowDetails.ShowDialog();
 
@@ -1090,11 +1095,13 @@ namespace NBSPI_INVENTORY_SYSTEM
                 string label6Text = selectedRow.Cells["rEASONDataGridViewTextBoxColumn"].Value?.ToString();
                 DateTime.TryParse(selectedRow.Cells["dATEDataGridViewTextBoxColumn4"].Value?.ToString(), out label7Text);
 
+                string label8Text = selectedRow.Cells["dESCRIPTIONDataGridViewTextBoxColumn4"].Value?.ToString() ?? "";  // Description column
+                byte[] photoData = selectedRow.Cells["pHOTODataGridViewImageColumn4"].Value as byte[];
 
 
                 BORROWDETAILS2 borrowDetails = new BORROWDETAILS2(
                     label1Text, label2Text, label3Text, label12Text, label13Text,
-                    label14Text, label15Text, label4Text, label5Text, label6Text, label7Text);
+                    label14Text, label15Text, label4Text, label5Text, label6Text, label7Text,label8Text, photoData);
 
                 borrowDetails.ShowDialog();
 

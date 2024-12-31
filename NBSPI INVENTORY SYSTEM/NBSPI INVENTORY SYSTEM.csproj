@@ -1784,5 +1784,14 @@
   <ItemGroup>
     <None Include="Resources\formfinal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrowdis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\damagedis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\returndis.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
