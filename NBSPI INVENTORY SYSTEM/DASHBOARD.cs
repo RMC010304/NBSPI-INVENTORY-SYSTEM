@@ -16,9 +16,16 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         string conn = "Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678";
 
+   
         public DASHBOARD()
         {
             InitializeComponent();
+            
+        }
+
+        public void SetUsername(string username)
+        {
+            label3.Text = $"Hello, {username}"; // Update the label to display the username
         }
 
         void FillChart()
@@ -145,6 +152,8 @@ namespace NBSPI_INVENTORY_SYSTEM
             FillChart3();
             FillChart4();
             FillChart5();
+
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)

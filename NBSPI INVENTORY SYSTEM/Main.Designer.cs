@@ -68,11 +68,11 @@
             // doubleBufferedPanel1
             // 
             this.doubleBufferedPanel1.BackColor = System.Drawing.Color.White;
+            this.doubleBufferedPanel1.Controls.Add(this.dashboard2);
             this.doubleBufferedPanel1.Controls.Add(this.ipanel);
             this.doubleBufferedPanel1.Controls.Add(this.abpanel);
             this.doubleBufferedPanel1.Controls.Add(this.transaction2);
             this.doubleBufferedPanel1.Controls.Add(this.archive2);
-            this.doubleBufferedPanel1.Controls.Add(this.dashboard2);
             this.doubleBufferedPanel1.Controls.Add(this.doubleBufferedPanel4);
             this.doubleBufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doubleBufferedPanel1.Location = new System.Drawing.Point(0, 0);

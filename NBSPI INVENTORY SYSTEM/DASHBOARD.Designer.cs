@@ -95,6 +95,7 @@
             this.rjButton1.Name = "rjButton1";
             this.rjButton1.Size = new System.Drawing.Size(121, 42);
             this.rjButton1.TabIndex = 57;
+            this.rjButton1.Text = "VIEW";
             this.rjButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
             this.rjButton1.UseVisualStyleBackColor = false;
             // 
@@ -115,6 +116,7 @@
             this.rjButton2.Name = "rjButton2";
             this.rjButton2.Size = new System.Drawing.Size(121, 42);
             this.rjButton2.TabIndex = 58;
+            this.rjButton2.Text = "VIEW";
             this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
             this.rjButton2.UseVisualStyleBackColor = false;
             // 
@@ -135,6 +137,7 @@
             this.rjButton3.Name = "rjButton3";
             this.rjButton3.Size = new System.Drawing.Size(121, 42);
             this.rjButton3.TabIndex = 59;
+            this.rjButton3.Text = "VIEW";
             this.rjButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
             this.rjButton3.UseVisualStyleBackColor = false;
             // 

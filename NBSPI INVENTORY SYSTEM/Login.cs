@@ -315,25 +315,22 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                     try
                     {
-                        connection.Open();      
-
+                        connection.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
+                                string username = reader.GetString(0); // Fetch the username from the database
 
-                          
-
+                                // Pass the username to the Main form
                                 NOTIFGRANTED nOTIFGRANTED = new NOTIFGRANTED();
-                                Main main = new Main();
-                                EnableButtonsBasedOnPermissions2(main, uid);
-                                main.Show();
+                                Main mainForm = new Main();
+                                EnableButtonsBasedOnPermissions2(mainForm,  uid);
+                                mainForm.UpdateDashboardUsername(username);
+                                mainForm.Show();
+                             
                                 nOTIFGRANTED.Show();
-
-                                this.Hide();
-
-
-                                // Perform further actions like granting access
+                                this.Hide(); // Hide the Login form
                             }
                             else
                             {
@@ -505,15 +502,27 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             if (ValidateUsernamePassword(username, password))
             {
+                // Create and show the Main form
                 NOTIFGRANTED nOTIFGRANTED = new NOTIFGRANTED();
-                Main main = new Main();
-                EnableButtonsBasedOnPermissions(main, username);
-                main.Show();
+                Main mainForm = new Main();
+
+                EnableButtonsBasedOnPermissions(mainForm,username);
+
+                // Update the dashboard with the username
+                mainForm.UpdateDashboardUsername(username);
+
+                // Show Main form and hide the Login form
+                mainForm.Show();
                 nOTIFGRANTED.Show();
                 this.Hide();
+
+                // Display a notification for successful login
+              
+                
             }
             else
             {
+                // Show notification for invalid credentials
                 NOTIFINVALID nOTIFINVALID = new NOTIFINVALID();
                 nOTIFINVALID.Show();
             }

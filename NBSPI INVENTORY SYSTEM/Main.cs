@@ -33,6 +33,11 @@ namespace NBSPI_INVENTORY_SYSTEM
          
         }
 
+        public void UpdateDashboardUsername(string username)
+        {
+            dashboard2.SetUsername(username); // Call the method on the Dashboard user control
+        }
+
         private void dashbutton_Click(object sender, EventArgs e)
         {
             dashbutton.BackColor = Color.White;
