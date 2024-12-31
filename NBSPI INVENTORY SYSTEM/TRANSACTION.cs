@@ -418,9 +418,37 @@ namespace NBSPI_INVENTORY_SYSTEM
                 }
             }
 
-            if (dataGridView5.Columns[e.ColumnIndex].HeaderText == "  ")
+            if (e.RowIndex >= 0 && dataGridView5.Columns[e.ColumnIndex].HeaderText == "      ")
             {
-                
+                // Retrieve data from the selected borrow row
+                string borrowerId = dataGridView5.Rows[e.RowIndex].Cells["iDDataGridViewTextBoxColumn1"].Value?.ToString();
+                string borrowerName = dataGridView5.Rows[e.RowIndex].Cells["nAMEDataGridViewTextBoxColumn1"].Value?.ToString();
+                string item = dataGridView5.Rows[e.RowIndex].Cells["iTEMIDDataGridViewTextBoxColumn1"].Value?.ToString();
+                string category = dataGridView5.Rows[e.RowIndex].Cells["cATEGORYDataGridViewTextBoxColumn1"].Value?.ToString();
+                int borrowedQuantity = Convert.ToInt32(dataGridView5.Rows[e.RowIndex].Cells["qUANTITYDataGridViewTextBoxColumn1"].Value);
+                string borrowId = dataGridView5.Rows[e.RowIndex].Cells["iDDataGridViewTextBoxColumn1"].Value?.ToString();
+
+                // Retrieve the description and photo columns
+                string description = dataGridView5.Rows[e.RowIndex].Cells["dESCRIPTIONDataGridViewTextBoxColumn"].Value?.ToString();
+                string photoPath = dataGridView5.Rows[e.RowIndex].Cells["pHOTODataGridViewImageColumn"].Value?.ToString(); // Assuming it's a path or URL to the photo
+
+                // Calculate remaining quantity dynamically
+ 
+
+                // Create and open DAMAGEFORM
+                DAMAGEFORM damageForm = new DAMAGEFORM(
+                    this,
+                    borrowerId: borrowerId,
+                    borrowerName: borrowerName,
+                    damagedItem: item,
+                    category: category,
+                    reason: "", // Placeholder, modify if necessary
+                    borrowId: borrowId,
+                    description: description,  // Pass the description
+                    photoPath: photoPath      // Pass the photo path or URL
+                );
+
+                damageForm.Show(); // Display DAMAGEFORM as a modal dialog
             }
 
         }

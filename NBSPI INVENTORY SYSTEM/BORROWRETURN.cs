@@ -67,46 +67,43 @@ namespace NBSPI_INVENTORY_SYSTEM
                 return;
             }
 
-
-            if (returnQuantity != _borrowedQuantity)
-            {
-                // Calculate remaining quantity
-                int remainingQuantity = _borrowedQuantity - returnQuantity;
-
-                // Pass remaining quantity to BORROWLOSS form
-                BORROWLOSS borrowLossForm = new BORROWLOSS(transaction, _borrowId, remainingQuantity,returnQuantity);
-                borrowLossForm.Show();
-                this.Close();
-                return;
-            }
-
-
-
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
 
                 string customId = _generator.GenerateId();
 
-                // Transfer data to RETURN table
-                string insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY,STATUS, DATE) " +
-                             "SELECT @id , ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, @Quantity,@Status, GETDATE() " +
-                             "FROM BORROW WHERE ID = @BorrowId";
-
+                // Transfer returned quantity to RETURN table including DESCRIPTION and PHOTO
+                string insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE, DESCRIPTION, PHOTO) " +
+                                           "SELECT @Id, ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, @Quantity, @Status, GETDATE(), DESCRIPTION, PHOTO " +
+                                           "FROM BORROW WHERE ID = @BorrowId";
                 SqlCommand insertReturnCmd = new SqlCommand(insertReturnQuery, con);
-                insertReturnCmd.Parameters.AddWithValue("@id", customId);
+                insertReturnCmd.Parameters.AddWithValue("@Id", customId);
                 insertReturnCmd.Parameters.AddWithValue("@Quantity", returnQuantity);
                 insertReturnCmd.Parameters.AddWithValue("@Status", "RETURNED");
                 insertReturnCmd.Parameters.AddWithValue("@BorrowId", _borrowId);
                 insertReturnCmd.ExecuteNonQuery();
 
-                // Now delete the corresponding borrow record
-                string deleteBorrowQuery = "DELETE FROM BORROW WHERE ID = @BorrowId";
-                SqlCommand deleteBorrowCmd = new SqlCommand(deleteBorrowQuery, con);
-                deleteBorrowCmd.Parameters.AddWithValue("@BorrowId", _borrowId);
-                deleteBorrowCmd.ExecuteNonQuery();
+                if (returnQuantity == _borrowedQuantity)
+                {
+                    // Delete the row if all items are returned
+                    string deleteBorrowQuery = "DELETE FROM BORROW WHERE ID = @BorrowId";
+                    SqlCommand deleteBorrowCmd = new SqlCommand(deleteBorrowQuery, con);
+                    deleteBorrowCmd.Parameters.AddWithValue("@BorrowId", _borrowId);
+                    deleteBorrowCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    // Update the remaining quantity in the BORROW table
+                    int remainingQuantity = _borrowedQuantity - returnQuantity;
+                    string updateBorrowQuery = "UPDATE BORROW SET QUANTITY = @RemainingQuantity WHERE ID = @BorrowId";
+                    SqlCommand updateBorrowCmd = new SqlCommand(updateBorrowQuery, con);
+                    updateBorrowCmd.Parameters.AddWithValue("@RemainingQuantity", remainingQuantity);
+                    updateBorrowCmd.Parameters.AddWithValue("@BorrowId", _borrowId);
+                    updateBorrowCmd.ExecuteNonQuery();
+                }
 
-                // Determine table based on item ID prefix
+                // Determine the relevant inventory table based on the item ID prefix
                 string inventoryTable = GetInventoryTable(_itemId);
 
                 // Update inventory quantity in the relevant table
@@ -116,10 +113,12 @@ namespace NBSPI_INVENTORY_SYSTEM
                 updateInventoryCmd.Parameters.AddWithValue("@ItemId", _itemId);
                 updateInventoryCmd.ExecuteNonQuery();
 
+                // Refresh transaction data
                 transaction.GetItems();
                 transaction.GetItems2();
                 transaction.GetItems3();
 
+                // Show notification
                 NOTIFRETURNED nOTIFRETURNED = new NOTIFRETURNED();
                 nOTIFRETURNED.Show();
                 this.Close();

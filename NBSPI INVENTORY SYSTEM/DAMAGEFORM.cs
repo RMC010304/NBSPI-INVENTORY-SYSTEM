@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace NBSPI_INVENTORY_SYSTEM
         private string category;
         private int quantity;
         private string reason;
+        private string Description;
+        private string PhotoPath;
 
         private string _borrowId;
 
@@ -33,11 +36,21 @@ namespace NBSPI_INVENTORY_SYSTEM
         private CustomIdGenerator _generator;
         private CustomIdGenerator _generator2;
 
-        public DAMAGEFORM(TRANSACTION control, string borrowerId, string borrowerName, string damagedItem, string category, int _remainingQuantity, int returnQuantity, string reason, string borrowId)
+        public DAMAGEFORM(TRANSACTION transaction, // Accept transaction as a parameter
+    string borrowerId,
+    string borrowerName,
+    string damagedItem,
+    string category,
+    
+    string reason,
+    string borrowId,
+    string description,  // New parameter for description
+    string photoPath)
+            // New parameter for photo path or URL)
         {
             InitializeComponent();
 
-            transaction = control;
+            this.transaction = transaction;
 
             this.borrowerId = borrowerId;
             this.borrowerName = borrowerName;
@@ -45,8 +58,10 @@ namespace NBSPI_INVENTORY_SYSTEM
             this.category = category;
             this.quantity = _remainingQuantity;
             this.reason = reason;
+            this.Description = description;  // Store description
+            this.PhotoPath = photoPath;
             _borrowId = borrowId;
-            _returnQuantity = returnQuantity;
+         
 
             _generator = new CustomIdGenerator("R", "DL");
 
@@ -63,34 +78,62 @@ namespace NBSPI_INVENTORY_SYSTEM
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
-                string query = "SELECT ID, NAME, ITEM, [ITEM ID], BRAND, MODEL, CATEGORY, QUANTITY FROM BORROW WHERE ID = @BorrowID";
+                string query = "SELECT ID, NAME, ITEM, [ITEM ID], BRAND, MODEL, CATEGORY, QUANTITY, PHOTO, DESCRIPTION FROM BORROW WHERE ID = @BorrowID";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@BorrowID", _borrowId);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-
                     borrowerId = reader["ID"].ToString();
                     borrowerName = reader["NAME"].ToString();
                     damagedItem = reader["ITEM"].ToString();
                     category = reader["CATEGORY"].ToString();
                     quantity = Convert.ToInt32(reader["QUANTITY"]);
-      
+                    Description = reader["DESCRIPTION"].ToString();
+
+                    // Read the byte array from the database
+                    byte[] photoData = reader["PHOTO"] as byte[];
 
                     string itemId = reader["ITEM ID"].ToString();
                     string brand = reader["BRAND"].ToString();
                     string model = reader["MODEL"].ToString();
 
-
                     rjTextBox1.Texts = borrowerId;
                     rjTextBox2.Texts = borrowerName;
                     rjTextBox3.Texts = damagedItem;
                     rjTextBox6.Texts = category;
-                    textBox1.Text = itemId;   
-                    textBox2.Text = brand;   
+                    rjTextBox7.Texts = Description;
+                    rjTextBox4.Texts = quantity.ToString();
+
+                    textBox1.Text = itemId;
+                    textBox2.Text = brand;
                     textBox3.Text = model;
 
+                    // Check if photoData is not null and convert it to an image
+                    if (photoData != null && photoData.Length > 0)
+                    {
+                        using (MemoryStream ms = new MemoryStream(photoData))
+                        {
+                            pictureBox2.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        pictureBox2.Image = null;  // Clear the picture if no image data exists
+                    }
+
+                    // Determine the source table based on ITEM ID prefix
+                    if (!itemId.StartsWith("HM") && !itemId.StartsWith("SL") && !itemId.StartsWith("SE"))
+                    {
+                        // If the ITEM ID does not start with a known prefix, it belongs to the IT table
+                        rjTextBox4.Enabled = false;
+                    }
+                    else
+                    {
+                        // Otherwise, it belongs to ITEMS, SCIENCE, or SPORTS
+                        rjTextBox4.Enabled = true;
+                    }
                 }
             }
         }
@@ -125,102 +168,127 @@ namespace NBSPI_INVENTORY_SYSTEM
             int quantity = int.TryParse(rjTextBox4.Texts, out int qty) ? qty : 0;
             DateTime dateLoss = rjDatePicker1.Value;
             string reason = rjTextBox5.Texts;
+            string description = rjTextBox7.Texts;
 
             // Validate required fields
             if (string.IsNullOrWhiteSpace(borrowerName) || string.IsNullOrWhiteSpace(borrowerId) ||
                 string.IsNullOrWhiteSpace(damagedItem) || quantity <= 0 || string.IsNullOrWhiteSpace(reason))
             {
-               NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
-               nOTIFFILLED2.Show();
-
+                NOTIFFILLED2 nOTIFFILLED2 = new NOTIFFILLED2();
+                nOTIFFILLED2.Show();
                 return;
             }
-
 
             using (SqlConnection con = new SqlConnection(conn))
             {
                 con.Open();
 
+                // Get the borrowed quantity from the BORROW table
+                string selectQuery = "SELECT QUANTITY FROM BORROW WHERE [ID] = @BorrowID AND ITEM = @Item";
+                SqlCommand selectCmd = new SqlCommand(selectQuery, con);
+                selectCmd.Parameters.AddWithValue("@BorrowID", borrowerId);
+                selectCmd.Parameters.AddWithValue("@Item", damagedItem);
+
+                int borrowedQuantity = 0;
+                object result = selectCmd.ExecuteScalar();
+                if (result != null)
+                {
+                    borrowedQuantity = Convert.ToInt32(result);
+                }
+                else
+                {
+                    MessageBox.Show("No matching record found in BORROW table.");
+                    return;
+                }
+
+                // Ensure the damage quantity is not greater than borrowed quantity
+                if (quantity > borrowedQuantity)
+                {
+                    MessageBox.Show("Damage quantity cannot exceed borrowed quantity.");
+                    return;
+                }
+
                 string customId2 = _generator.GenerateId2();
 
-                // Insert into DAMAGE table
-                string insertQuery = "INSERT INTO DAMAGE (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, REASON, DATE) " +
-                                     "VALUES (@Id, @BorrowID, @ItemID, @Name, @Item, @Brand, @Model, @Category, @Quantity, @Status, @Reason, @Date)";
+                // Insert into DAMAGE table for the damaged items
+                string insertQuery = "INSERT INTO DAMAGE (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, REASON, DATE, DESCRIPTION, PHOTO) " +
+                                     "VALUES (@Id, @BorrowID, @ItemID, @Name, @Item, @Brand, @Model, @Category, @Quantity, @Status, @Reason, @Date, @Description, @Photo)";
 
-                SqlCommand cmd = new SqlCommand(insertQuery, con);
-                cmd.Parameters.AddWithValue("@Id", customId2);
-                cmd.Parameters.AddWithValue("@BorrowID", borrowerId);
-                cmd.Parameters.AddWithValue("@ItemID", textBox1.Text);
-                cmd.Parameters.AddWithValue("@Name", borrowerName);
-                cmd.Parameters.AddWithValue("@Item", damagedItem);
-                cmd.Parameters.AddWithValue("@Brand", textBox2.Text);
-                cmd.Parameters.AddWithValue("@Model", textBox3.Text);
-                cmd.Parameters.AddWithValue("@Category", category);
-                cmd.Parameters.AddWithValue("@Quantity", quantity);  // Quantity for DAMAGE
-                cmd.Parameters.AddWithValue("@Status", "PENDING");
-                cmd.Parameters.AddWithValue("@Reason", reason);
-                cmd.Parameters.AddWithValue("@Date", dateLoss);
-                cmd.ExecuteNonQuery();
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@Id", customId2);
+                    insertCmd.Parameters.AddWithValue("@BorrowID", borrowerId);
+                    insertCmd.Parameters.AddWithValue("@ItemID", textBox1.Text);
+                    insertCmd.Parameters.AddWithValue("@Name", borrowerName);
+                    insertCmd.Parameters.AddWithValue("@Item", damagedItem);
+                    insertCmd.Parameters.AddWithValue("@Brand", textBox2.Text);
+                    insertCmd.Parameters.AddWithValue("@Model", textBox3.Text);
+                    insertCmd.Parameters.AddWithValue("@Category", category);
+                    insertCmd.Parameters.AddWithValue("@Quantity", quantity);
+                    insertCmd.Parameters.AddWithValue("@Status", "PENDING");
+                    insertCmd.Parameters.AddWithValue("@Reason", reason);
+                    insertCmd.Parameters.AddWithValue("@Date", dateLoss);
+                    insertCmd.Parameters.AddWithValue("@Description", description);
 
-                string customId = _generator.GenerateId();
+                    // Convert the image in PictureBox to a byte array for storage
+                    if (pictureBox2.Image != null)
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            // Clone the image to avoid locking issues
+                            using (var imageClone = new Bitmap(pictureBox2.Image))
+                            {
+                                imageClone.Save(ms, pictureBox2.Image.RawFormat);
+                            }
+                            byte[] photo = ms.ToArray();
+                            insertCmd.Parameters.AddWithValue("@Photo", photo);
+                        }
+                    }
+                    else
+                    {
+                        insertCmd.Parameters.AddWithValue("@Photo", DBNull.Value);
+                    }
 
-                // Insert into RETURN table
-                string insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DATE) " +
-                                           "VALUES (@Id, @BorrowID, @ItemID, @Name, @Item, @Brand, @Model, @Category, @ReturnQuantity, @ReturnStatus, @ReturnDate)";
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+                    if (rowsAffected == 0)
+                    {
+                        MessageBox.Show("Failed to insert data into the DAMAGE table.");
+                        return;
+                    }
+                }
 
-                SqlCommand cmdreturn = new SqlCommand(insertReturnQuery, con);
-                cmdreturn.Parameters.AddWithValue("@Id", customId);
-                cmdreturn.Parameters.AddWithValue("@BorrowID", borrowerId);
-                cmdreturn.Parameters.AddWithValue("@ItemID", textBox1.Text);
-                cmdreturn.Parameters.AddWithValue("@Name", borrowerName);
-                cmdreturn.Parameters.AddWithValue("@Item", damagedItem);
-                cmdreturn.Parameters.AddWithValue("@Brand", textBox2.Text);
-                cmdreturn.Parameters.AddWithValue("@Model", textBox3.Text);
-                cmdreturn.Parameters.AddWithValue("@Category", category);
-                cmdreturn.Parameters.AddWithValue("@ReturnQuantity", _returnQuantity); // Calculate the return quantity
-                cmdreturn.Parameters.AddWithValue("@ReturnStatus", "RETURNED");
-                cmdreturn.Parameters.AddWithValue("@ReturnDate", dateLoss);
-
-
-                cmdreturn.ExecuteNonQuery(); // Execut
-
-                UpdateQuantityInTable(con, "IT", textBox1.Text, _returnQuantity);
-                UpdateQuantityInTable(con, "ITEMS", textBox1.Text, _returnQuantity);
-                UpdateQuantityInTable(con, "SCIENCE", textBox1.Text, _returnQuantity);
-                UpdateQuantityInTable(con, "SPORTS", textBox1.Text, _returnQuantity);
-
-                DeleteBorrowRecord(con, borrowerId);
-
+                // Update or delete the BORROW table based on the damage quantity
+                if (quantity < borrowedQuantity)
+                {
+                    string updateQuery = "UPDATE BORROW SET QUANTITY = @RemainingQuantity WHERE [ID] = @BorrowID AND ITEM = @Item";
+                    SqlCommand updateCmd = new SqlCommand(updateQuery, con);
+                    updateCmd.Parameters.AddWithValue("@RemainingQuantity", borrowedQuantity - quantity);
+                    updateCmd.Parameters.AddWithValue("@BorrowID", borrowerId);
+                    updateCmd.Parameters.AddWithValue("@Item", damagedItem);
+                    updateCmd.ExecuteNonQuery();
+                }
+                else if (quantity == borrowedQuantity)
+                {
+                    string deleteQuery = "DELETE FROM BORROW WHERE [ID] = @BorrowID AND ITEM = @Item";
+                    SqlCommand deleteCmd = new SqlCommand(deleteQuery, con);
+                    deleteCmd.Parameters.AddWithValue("@BorrowID", borrowerId);
+                    deleteCmd.Parameters.AddWithValue("@Item", damagedItem);
+                    deleteCmd.ExecuteNonQuery();
+                }
             }
 
             transaction.GetItems();
             transaction.GetItems2();
             transaction.GetItems3();
 
-            // Show confirmation message
             NOTIFREPORTED nOTIFREPORTED = new NOTIFREPORTED();
-            nOTIFREPORTED.ShowDialog();
+            nOTIFREPORTED.Show();
             this.Close();
 
 
         }
 
-        private void UpdateQuantityInTable(SqlConnection con, string tableName, string itemId, int returnQuantity)
-        {
-            string updateQuery = $"UPDATE {tableName} SET QUANTITY = QUANTITY + @ReturnQuantity WHERE ID = @ItemID";
-            SqlCommand cmdUpdate = new SqlCommand(updateQuery, con);
-            cmdUpdate.Parameters.AddWithValue("@ReturnQuantity", returnQuantity);
-            cmdUpdate.Parameters.AddWithValue("@ItemID", itemId);
-            cmdUpdate.ExecuteNonQuery();
-        }
-
-        private void DeleteBorrowRecord(SqlConnection con, string borrowerId)
-        {
-            string deleteQuery = "DELETE FROM BORROW WHERE ID = @BorrowID";
-            SqlCommand cmdDelete = new SqlCommand(deleteQuery, con);
-            cmdDelete.Parameters.AddWithValue("@BorrowID", borrowerId);
-            cmdDelete.ExecuteNonQuery();
-        }
+     
 
         private void DAMAGEFORM_Load(object sender, EventArgs e)
         {

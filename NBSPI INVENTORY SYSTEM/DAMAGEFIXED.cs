@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NBSPI_INVENTORY_SYSTEM
 {
@@ -44,56 +45,86 @@ namespace NBSPI_INVENTORY_SYSTEM
             {
                 con.Open();
 
+                // Get the inventory table based on the prefix of the itemId
+                string inventoryTable = GetInventoryTable(_itemId);
+
+                // Transfer the item data to the RETURN table, regardless of the inventory table
                 string customId = _generator.GenerateId();
-                // Insert into RETURN table
-                string insertReturnQuery = "INSERT INTO [RETURN] (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY,STATUS, DATE) " +
-                              "SELECT @id , ID, [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY,@Status, GETDATE() " +
-                              "FROM DAMAGE WHERE ID = @damageId";
+                string insertReturnQuery = @"
+            INSERT INTO [RETURN] 
+            (ID, [BORROW ID], [ITEM ID], NAME, ITEM, BRAND, MODEL, CATEGORY, QUANTITY, STATUS, DESCRIPTION, PHOTO, DATE)
+            SELECT 
+                @id,
+                [BORROW ID],
+                [ITEM ID],
+                NAME,
+                ITEM,
+                BRAND,
+                MODEL,
+                CATEGORY,
+                QUANTITY,
+                'RETURNED',
+                DESCRIPTION,
+                PHOTO,
+                GETDATE()
+            FROM DAMAGE
+            WHERE ID = @DamageId";
 
                 SqlCommand insertReturnCmd = new SqlCommand(insertReturnQuery, con);
                 insertReturnCmd.Parameters.AddWithValue("@id", customId);
-                insertReturnCmd.Parameters.AddWithValue("@Status", "RETURNED");
-                insertReturnCmd.Parameters.AddWithValue("@damageId", _damageId);
+                insertReturnCmd.Parameters.AddWithValue("@DamageId", _damageId);
                 insertReturnCmd.ExecuteNonQuery();
 
-               
+                // Now handle the inventory update or transfer based on the item type
+                if (inventoryTable == "IT")
+                {
+                    // If the item is from the IT table, transfer the full data to IT table
+                    string transferToITQuery = @"
+                INSERT INTO IT (ID, ITEM, BRAND, MODEL, STATUS, DESCRIPTION, PHOTO, DATE)
+                SELECT [ITEM ID], ITEM, BRAND, MODEL, 'AVAILABLE', DESCRIPTION, PHOTO, GETDATE()
+                FROM DAMAGE
+                WHERE ID = @DamageId";
 
-                // Delete from DAMAGE table
+                    SqlCommand transferToITCmd = new SqlCommand(transferToITQuery, con);
+                    transferToITCmd.Parameters.AddWithValue("@DamageId", _damageId);
+                    transferToITCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    // If the item is from ITEMS, SCIENCE, or SPORTS, only update the quantity
+                    string updateInventoryQuery = $"UPDATE {inventoryTable} SET QUANTITY = QUANTITY + @Quantity WHERE ID = @ItemId";
+
+                    SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, con);
+                    updateInventoryCmd.Parameters.AddWithValue("@Quantity", _damageQuantity);
+                    updateInventoryCmd.Parameters.AddWithValue("@ItemId", _itemId);
+                    updateInventoryCmd.ExecuteNonQuery();
+                }
+
+                // Delete the item from DAMAGE table
                 string deleteDamageQuery = "DELETE FROM DAMAGE WHERE ID = @DamageId";
                 SqlCommand deleteDamageCmd = new SqlCommand(deleteDamageQuery, con);
-                deleteDamageCmd.Parameters.AddWithValue("@damageId", _damageId);
+                deleteDamageCmd.Parameters.AddWithValue("@DamageId", _damageId);
                 deleteDamageCmd.ExecuteNonQuery();
 
-                string inventoryTable = GetInventoryTable(_itemId);
-
-                // Update the quantity in the respective inventory table
-                string updateInventoryQuery = $"UPDATE {inventoryTable} SET QUANTITY = QUANTITY + @Quantity WHERE ID = @ItemId";
-                SqlCommand updateInventoryCmd = new SqlCommand(updateInventoryQuery, con);
-                updateInventoryCmd.Parameters.AddWithValue("@Quantity", _damageQuantity); // Ensure _damageQuantity is defined with the correct quantity
-                updateInventoryCmd.Parameters.AddWithValue("@ItemId", _itemId);
-                updateInventoryCmd.ExecuteNonQuery();
-
-
+                // Refresh the data
                 transaction.GetItems();
                 transaction.GetItems2();
                 transaction.GetItems3();
 
-           
-
+                // Close the form and show notification
                 this.Close();
                 NOTIFRETURNED nOTIFRETURNED = new NOTIFRETURNED();
                 nOTIFRETURNED.Show();
-
-
             }
         }
 
+
         private string GetInventoryTable(string itemId)
         {
-            if (itemId.StartsWith("IT")) return "IT";
+            if (itemId.StartsWith("HM")) return "ITEMS";
             else if (itemId.StartsWith("SL")) return "SCIENCE";
             else if (itemId.StartsWith("SE")) return "SPORTS";
-            else return "ITEMS";
+            else return "IT";
         }
 
 

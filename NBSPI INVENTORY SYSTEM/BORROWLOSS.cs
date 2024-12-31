@@ -15,24 +15,13 @@ namespace NBSPI_INVENTORY_SYSTEM
     public partial class BORROWLOSS : Form
     {
 
-        string conn = "Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678";
-        private TRANSACTION transaction;
-        string _borrowId;
+   
 
-        private int _remainingQuantity;
-        private int _returnQuantity;
-
-        public BORROWLOSS(TRANSACTION transactionUserControl, string borrowId, int remainingQuantity, int returnQuantity)
+        public BORROWLOSS()
         {
             InitializeComponent();
 
-            transaction = transactionUserControl;
 
-            _borrowId = borrowId;
-
-            _remainingQuantity = remainingQuantity;
-
-            _returnQuantity = returnQuantity;
 
         }
 
@@ -46,17 +35,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             
 
-            DAMAGEFORM dAMAGEFORM = new DAMAGEFORM(transaction,transaction.BorrowerId,
-                                                   transaction.BorrowerName,
-                                                   transaction.DamagedItem,
-                                                   transaction.Category,
-                                                     _remainingQuantity,
-                                                     _returnQuantity,
-                                                   transaction.Reason,_borrowId);
-            dAMAGEFORM.ShowDialog();
 
-
-            this.Close();
 
         }
 

@@ -42,7 +42,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.rjTextBox6 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.rjTextBox7 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // rjTextBox2
@@ -82,15 +85,15 @@
             // 
             // rjDatePicker1
             // 
-            this.rjDatePicker1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjDatePicker1.BorderColor = System.Drawing.Color.White;
             this.rjDatePicker1.BorderSize = 1;
             this.rjDatePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.rjDatePicker1.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjDatePicker1.Location = new System.Drawing.Point(63, 455);
+            this.rjDatePicker1.Location = new System.Drawing.Point(56, 455);
             this.rjDatePicker1.MinimumSize = new System.Drawing.Size(4, 35);
             this.rjDatePicker1.Name = "rjDatePicker1";
             this.rjDatePicker1.Size = new System.Drawing.Size(436, 35);
-            this.rjDatePicker1.SkinColor = System.Drawing.Color.WhiteSmoke;
+            this.rjDatePicker1.SkinColor = System.Drawing.Color.White;
             this.rjDatePicker1.TabIndex = 101;
             this.rjDatePicker1.TextColor = System.Drawing.Color.DimGray;
             // 
@@ -101,7 +104,6 @@
             this.rjTextBox4.BorderFocusColor = System.Drawing.Color.White;
             this.rjTextBox4.BorderRadius = 0;
             this.rjTextBox4.BorderSize = 1;
-            this.rjTextBox4.Enabled = false;
             this.rjTextBox4.Font = new System.Drawing.Font("Montserrat Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox4.ForeColor = System.Drawing.Color.DimGray;
             this.rjTextBox4.Location = new System.Drawing.Point(293, 362);
@@ -165,10 +167,10 @@
             // 
             // rjTextBox5
             // 
-            this.rjTextBox5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
-            this.rjTextBox5.BorderRadius = 13;
+            this.rjTextBox5.BackColor = System.Drawing.Color.White;
+            this.rjTextBox5.BorderColor = System.Drawing.Color.White;
+            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.White;
+            this.rjTextBox5.BorderRadius = 1;
             this.rjTextBox5.BorderSize = 1;
             this.rjTextBox5.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox5.ForeColor = System.Drawing.Color.DimGray;
@@ -264,6 +266,39 @@
             this.rjTextBox6.Texts = "";
             this.rjTextBox6.UnderlinedStyle = false;
             // 
+            // rjTextBox7
+            // 
+            this.rjTextBox7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjTextBox7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox7.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjTextBox7.BorderRadius = 13;
+            this.rjTextBox7.BorderSize = 1;
+            this.rjTextBox7.Font = new System.Drawing.Font("Montserrat SemiBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox7.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox7.Location = new System.Drawing.Point(203, 14);
+            this.rjTextBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox7.Multiline = false;
+            this.rjTextBox7.Name = "rjTextBox7";
+            this.rjTextBox7.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox7.PasswordChar = false;
+            this.rjTextBox7.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjTextBox7.PlaceholderText = "";
+            this.rjTextBox7.Size = new System.Drawing.Size(238, 31);
+            this.rjTextBox7.TabIndex = 113;
+            this.rjTextBox7.Texts = "";
+            this.rjTextBox7.UnderlinedStyle = false;
+            this.rjTextBox7.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(435, 52);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 80);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 114;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
             // DAMAGEFORM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +306,8 @@
             this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.dlfor;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(561, 754);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.rjTextBox7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -291,6 +328,7 @@
             this.Text = "DAMAGEFORM";
             this.Load += new System.EventHandler(this.DAMAGEFORM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,5 +349,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private RJCodeAdvance.RJControls.RJTextBox rjTextBox6;
+        private RJCodeAdvance.RJControls.RJTextBox rjTextBox7;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

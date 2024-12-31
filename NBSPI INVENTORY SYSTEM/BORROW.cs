@@ -80,15 +80,23 @@ namespace NBSPI_INVENTORY_SYSTEM
                                 rjTextBox3.Texts = reader["ITEM"].ToString();
                                 textBox1.Text = reader["BRAND"].ToString();
                                 textBox2.Text = reader["MODEL"].ToString();
-                                rjTextBox4.Texts = reader["QUANTITY"].ToString();
                                 rjTextBox5.Texts = reader["DESCRIPTION"]?.ToString();
+
+                                // Check if the table is "IT"
+                                if (table == "IT")
+                                {
+                                    rjTextBox4.Texts = "1"; // Set quantity to "1"
+                                    rjTextBox4.Enabled = false; // Disable rjTextBox4
+                                }
+                                else
+                                {
+                                    rjTextBox4.Texts = reader["QUANTITY"].ToString(); // Use the actual quantity
+                                    rjTextBox4.Enabled = true; // Enable rjTextBox4
+                                }
 
                                 // Populate photo
                                 byte[] photoBytes = reader["PHOTO"] as byte[];
                                 pictureBox2.Image = photoBytes != null ? Image.FromStream(new MemoryStream(photoBytes)) : null;
-
-                                // Disable rjTextBox4 if the data comes from the "IT" table
-                                rjTextBox4.Enabled = (table != "IT");
 
                                 return; // Exit after finding a match
                             }
