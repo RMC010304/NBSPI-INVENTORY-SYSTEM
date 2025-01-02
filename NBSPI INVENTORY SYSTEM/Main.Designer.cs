@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.doubleBufferedPanel1 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.dashboard3 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
+            this.transaction2 = new NBSPI_INVENTORY_SYSTEM.TRANSACTION();
+            this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
             this.ipanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,8 +47,6 @@
             this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
             this.abpanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.transaction2 = new NBSPI_INVENTORY_SYSTEM.TRANSACTION();
-            this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
             this.doubleBufferedPanel4 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.rjButton16 = new RJCodeAdvance.RJControls.RJButton();
             this.abbutton = new RJCodeAdvance.RJControls.RJButton();
@@ -58,7 +59,6 @@
             this.it2 = new NBSPI_INVENTORY_SYSTEM.IT();
             this.science2 = new NBSPI_INVENTORY_SYSTEM.SCIENCE();
             this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
-            this.dashboard3 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.doubleBufferedPanel1.SuspendLayout();
             this.ipanel.SuspendLayout();
             this.doubleBufferedPanel4.SuspendLayout();
@@ -79,6 +79,45 @@
             this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
             this.doubleBufferedPanel1.Size = new System.Drawing.Size(1888, 1002);
             this.doubleBufferedPanel1.TabIndex = 0;
+            // 
+            // dashboard3
+            // 
+            this.dashboard3.BackColor = System.Drawing.Color.White;
+            this.dashboard3.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.dasb;
+            this.dashboard3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dashboard3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dashboard3.Location = new System.Drawing.Point(334, 0);
+            this.dashboard3.Name = "dashboard3";
+            this.dashboard3.Size = new System.Drawing.Size(1554, 1002);
+            this.dashboard3.TabIndex = 7;
+            // 
+            // transaction2
+            // 
+            this.transaction2.BackColor = System.Drawing.Color.White;
+            this.transaction2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("transaction2.BackgroundImage")));
+            this.transaction2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.transaction2.BorrowerId = null;
+            this.transaction2.BorrowerName = null;
+            this.transaction2.Category = null;
+            this.transaction2.DamagedItem = null;
+            this.transaction2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transaction2.Location = new System.Drawing.Point(334, 0);
+            this.transaction2.Name = "transaction2";
+            this.transaction2.Quantity = 0;
+            this.transaction2.Reason = null;
+            this.transaction2.Size = new System.Drawing.Size(1554, 1002);
+            this.transaction2.TabIndex = 3;
+            // 
+            // archive2
+            // 
+            this.archive2.BackColor = System.Drawing.Color.White;
+            this.archive2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.arkayb_bg;
+            this.archive2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.archive2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.archive2.Location = new System.Drawing.Point(334, 0);
+            this.archive2.Name = "archive2";
+            this.archive2.Size = new System.Drawing.Size(1554, 1002);
+            this.archive2.TabIndex = 6;
             // 
             // ipanel
             // 
@@ -359,34 +398,6 @@
             this.abpanel.Size = new System.Drawing.Size(1554, 1002);
             this.abpanel.TabIndex = 2;
             // 
-            // transaction2
-            // 
-            this.transaction2.BackColor = System.Drawing.Color.White;
-            this.transaction2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("transaction2.BackgroundImage")));
-            this.transaction2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.transaction2.BorrowerId = null;
-            this.transaction2.BorrowerName = null;
-            this.transaction2.Category = null;
-            this.transaction2.DamagedItem = null;
-            this.transaction2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transaction2.Location = new System.Drawing.Point(334, 0);
-            this.transaction2.Name = "transaction2";
-            this.transaction2.Quantity = 0;
-            this.transaction2.Reason = null;
-            this.transaction2.Size = new System.Drawing.Size(1554, 1002);
-            this.transaction2.TabIndex = 3;
-            // 
-            // archive2
-            // 
-            this.archive2.BackColor = System.Drawing.Color.White;
-            this.archive2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.arkayb_bg;
-            this.archive2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.archive2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.archive2.Location = new System.Drawing.Point(334, 0);
-            this.archive2.Name = "archive2";
-            this.archive2.Size = new System.Drawing.Size(1554, 1002);
-            this.archive2.TabIndex = 6;
-            // 
             // doubleBufferedPanel4
             // 
             this.doubleBufferedPanel4.BackColor = System.Drawing.Color.Transparent;
@@ -614,17 +625,6 @@
             this.sports2.Name = "sports2";
             this.sports2.Size = new System.Drawing.Size(1888, 1002);
             this.sports2.TabIndex = 4;
-            // 
-            // dashboard3
-            // 
-            this.dashboard3.BackColor = System.Drawing.Color.White;
-            this.dashboard3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard3.BackgroundImage")));
-            this.dashboard3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dashboard3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboard3.Location = new System.Drawing.Point(334, 0);
-            this.dashboard3.Name = "dashboard3";
-            this.dashboard3.Size = new System.Drawing.Size(1554, 1002);
-            this.dashboard3.TabIndex = 7;
             // 
             // Main
             // 

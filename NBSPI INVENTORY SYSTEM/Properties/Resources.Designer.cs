@@ -1163,6 +1163,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dasb {
+            get {
+                object obj = ResourceManager.GetObject("dasb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DASBORRD {
             get {
                 object obj = ResourceManager.GetObject("DASBORRD", resourceCulture);
@@ -1193,9 +1203,29 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DB_FINAL {
+            get {
+                object obj = ResourceManager.GetObject("DB FINAL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap db2 {
             get {
                 object obj = ResourceManager.GetObject("db2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dbf {
+            get {
+                object obj = ResourceManager.GetObject("dbf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

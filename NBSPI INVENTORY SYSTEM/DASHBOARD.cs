@@ -16,7 +16,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
          string conn = "Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678";
 
-   
+        bool isDescending = true;
         public DASHBOARD()
         {
             InitializeComponent();
@@ -28,24 +28,32 @@ namespace NBSPI_INVENTORY_SYSTEM
             label3.Text = $"Hello, {username}"; // Update the label to display the username
         }
 
-        void FillChart()
+        void FillChart1()
         {
             SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678");
             DataTable dt = new DataTable();
             con.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT ITEM, QUANTITY FROM dbo.BORROW", con);
+            // Query to retrieve data from the 'Return' table
+            string query = "SELECT ITEM, QUANTITY, DATE FROM dbo.DAMAGE";
+
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
             da.Fill(dt);
-            chart6.DataSource = dt;
             con.Close();
 
+            chart3.DataSource = dt;
 
+            chart3.Series["QUANTITY"].XValueMember = "ITEM";
+            chart3.Series["QUANTITY"].YValueMembers = "QUANTITY";
 
-            chart6.Series["QUANTITY"].XValueMember = "ITEM";
-            chart6.Series["QUANTITY"].YValueMembers = "QUANTITY";
+            // Remove the legend
+            chart3.Legends.Clear();
 
+            // Hide X-axis labels
+            chart3.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
 
-
+            // Hide Y-axis labels
+            chart3.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
         }
 
         void FillChart2()
@@ -54,23 +62,26 @@ namespace NBSPI_INVENTORY_SYSTEM
             DataTable dt = new DataTable();
             con.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT ITEM, QUANTITY FROM dbo.[RETURN]", con);
+            // Query to retrieve data from the 'Return' table
+            string query = "SELECT ITEM, QUANTITY, DATE FROM dbo.BORROW";
+
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
             da.Fill(dt);
-            chart2.DataSource = dt;
             con.Close();
 
+            chart2.DataSource = dt;
 
-
-            chart2.Series["QUANTITY"].XValueMember = "QUANTITY";
+            chart2.Series["QUANTITY"].XValueMember = "ITEM";
             chart2.Series["QUANTITY"].YValueMembers = "QUANTITY";
 
-            foreach (var point in chart6.Series["QUANTITY"].Points)
-            {
+            // Remove the legend
+            chart2.Legends.Clear();
 
-                point.Label = string.Empty;
-            }
+            // Hide X-axis labels
+            chart2.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
 
-
+            // Hide Y-axis labels
+            chart2.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
         }
 
         void FillChart3()
@@ -79,19 +90,28 @@ namespace NBSPI_INVENTORY_SYSTEM
             DataTable dt = new DataTable();
             con.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT ITEM, QUANTITY FROM dbo. DAMAGE", con);
+            // Query to retrieve data from the 'Return' table
+            string query = "SELECT ITEM, QUANTITY, DATE FROM dbo.[RETURN]";
+
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
             da.Fill(dt);
-            chart7.DataSource = dt;
             con.Close();
 
+            chart1.DataSource = dt;
 
+            chart1.Series["QUANTITY"].XValueMember = "ITEM";
+            chart1.Series["QUANTITY"].YValueMembers = "QUANTITY";
 
-            chart7.Series["QUANTITY"].XValueMember = "ITEM";
-            chart7.Series["QUANTITY"].YValueMembers = "QUANTITY";
+            // Remove the legend
+            chart1.Legends.Clear();
 
+            // Hide X-axis labels
+            chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
 
-
+            // Hide Y-axis labels
+            chart1.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
         }
+
 
         void FillChart4()
         {
@@ -123,23 +143,22 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         }
 
-        void FillChart5()
+        public void GetItems()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;User ID=sa;Password=12345678");
+
+            string orderBy = isDescending ? "DESC" : "ASC";
+
+            SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=IT_RES;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.BORROW ORDER BY DATE {orderBy}", con);
             DataTable dt = new DataTable();
+
             con.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT NAME, QUANTITY,DATE FROM dbo. BORROW", con);
-            da.Fill(dt);
-            chart5.DataSource = dt;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
             con.Close();
 
-
-
-            chart5.Series["QUANTITY"].XValueMember = "NAME";
-            chart5.Series["QUANTITY"].YValueMembers = "QUANTITY";
-
-
+            dataGridView5.DataSource = dt;
 
         }
 
@@ -147,14 +166,15 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
             label2.Text = DateTime.Now.ToString("MMMM dd, yyyy").ToUpper();
             DisplayItemQuantities();
-            FillChart();
-            FillChart2();
-            FillChart3();
+            LoadOverallTotalItems();
             FillChart4();
-            FillChart5();
+            FillChart3();
+            FillChart2();
+            FillChart1();
             LoadBorrowedPercentage();
             LoadReturnedPercentage2();
             LoadDamagePercentage3();
+            GetItems();
 
 
         }
@@ -209,7 +229,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 {
                     object itResult = itCommand.ExecuteScalar();
                     int itQuantity = itResult != DBNull.Value ? Convert.ToInt32(itResult) : 0;
-                    label7.Text = itQuantity.ToString();
+                 
                 }
 
                 // ITEMS table item quantities
@@ -217,7 +237,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 {
                     object itemsResult = itemsCommand.ExecuteScalar();
                     int itemsQuantity = itemsResult != DBNull.Value ? Convert.ToInt32(itemsResult) : 0;
-                    label8.Text = itemsQuantity.ToString();
+                   
                 }
 
                 // SCIENCE table item quantities
@@ -225,7 +245,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 {
                     object scienceResult = scienceCommand.ExecuteScalar();
                     int scienceQuantity = scienceResult != DBNull.Value ? Convert.ToInt32(scienceResult) : 0;
-                    label9.Text = scienceQuantity.ToString();
+                    
                 }
 
                 // SPORTS table item quantities
@@ -233,7 +253,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 {
                     object sportsResult = sportsCommand.ExecuteScalar();
                     int sportsQuantity = sportsResult != DBNull.Value ? Convert.ToInt32(sportsResult) : 0;
-                    label10.Text = sportsQuantity.ToString();
+                   
                 }
             }
 
@@ -260,17 +280,17 @@ namespace NBSPI_INVENTORY_SYSTEM
                     // Query to calculate total borrowed quantity and total available quantity
                     string totalBorrowedQuery = "SELECT SUM(QUANTITY) AS TotalBorrowedQuantity FROM BORROW";
                     string totalItemsQuery = @"
-                SELECT SUM(QUANTITY) AS TotalItemsQuantity FROM (
-                    SELECT QUANTITY FROM BORROW
-                    UNION ALL
-                    SELECT QUANTITY FROM IT
-                    UNION ALL
-                    SELECT QUANTITY FROM ITEMS
-                    UNION ALL
-                    SELECT QUANTITY FROM SCIENCE
-                    UNION ALL
-                    SELECT QUANTITY FROM SPORTS
-                ) AS TotalItems";
+            SELECT SUM(QUANTITY) AS TotalItemsQuantity FROM (
+                SELECT QUANTITY FROM BORROW
+                UNION ALL
+                SELECT QUANTITY FROM IT
+                UNION ALL
+                SELECT QUANTITY FROM ITEMS
+                UNION ALL
+                SELECT QUANTITY FROM SCIENCE
+                UNION ALL
+                SELECT QUANTITY FROM SPORTS
+            ) AS TotalItems";
 
                     // Execute queries
                     SqlCommand borrowedCommand = new SqlCommand(totalBorrowedQuery, connection);
@@ -290,12 +310,14 @@ namespace NBSPI_INVENTORY_SYSTEM
                     // Calculate percentage
                     if (totalItems > 0)
                     {
-                        double percentage = (double)totalBorrowed / totalItems * 100;
-                        label11.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
+                        int percentage = (int)Math.Round((double)totalBorrowed / totalItems * 100); // Round to nearest whole number
+                        circularProgressBar1.Text = $"{percentage}"; // Display percentage as a whole number
+                        circularProgressBar1.Value = percentage; // Reflect the percentage in circularProgressBar1
                     }
                     else
                     {
-                        label11.Text = "00%";
+                        circularProgressBar1.Text = "0%";
+                        circularProgressBar1.Value = 0; // Set progress bar to 0% if no items
                     }
                 }
             }
@@ -345,12 +367,14 @@ namespace NBSPI_INVENTORY_SYSTEM
                     // Calculate percentage
                     if (totalItems > 0)
                     {
-                        double percentage = (double)totalReturned / totalItems * 100;
-                        label12.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
+                        int percentage = (int)Math.Round((double)totalReturned / totalItems * 100); // Round to nearest whole number
+                        circularProgressBar2.Text = $"{percentage}"; // Display percentage as a whole number
+                        circularProgressBar2.Value = percentage; // Reflect the percentage in circularProgressBar2
                     }
                     else
                     {
-                        label12.Text = "00%";
+                        circularProgressBar2.Text = "0%";
+                        circularProgressBar2.Value = 0; // Set progress bar to 0% if no items
                     }
                 }
             }
@@ -404,12 +428,14 @@ namespace NBSPI_INVENTORY_SYSTEM
                     // Calculate percentage
                     if (totalItems > 0)
                     {
-                        double percentage = (double)totalDamaged / totalItems * 100;
-                        label13.Text = $"{percentage:F2}%"; // Display percentage with 2 decimal places
+                        int percentage = (int)Math.Round((double)totalDamaged / totalItems * 100); // Round to nearest whole number
+                        circularProgressBar3.Text = $"{percentage}"; // Display percentage as a whole number
+                        circularProgressBar3.Value = percentage; // Reflect the percentage in circularProgressBar3
                     }
                     else
                     {
-                        label13.Text = "00%";
+                        circularProgressBar3.Text = "0%";
+                        circularProgressBar3.Value = 0; // Set progress bar to 0% if no items
                     }
                 }
             }
@@ -417,6 +443,60 @@ namespace NBSPI_INVENTORY_SYSTEM
             {
                 MessageBox.Show($"Error loading damage percentage: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadOverallTotalItems()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn)) // Use the connection string
+                {
+                    connection.Open();
+
+                    // Query to calculate total items from IT, ITEMS, SCIENCE, and SPORTS
+                    string totalQuery = @"
+            SELECT SUM(QUANTITY) AS TotalItems FROM (
+                SELECT QUANTITY FROM IT
+                UNION ALL
+                SELECT QUANTITY FROM ITEMS
+                UNION ALL
+                SELECT QUANTITY FROM SCIENCE
+                UNION ALL
+                SELECT QUANTITY FROM SPORTS
+            ) AS TotalItems";
+
+                    // Execute query
+                    SqlCommand totalCommand = new SqlCommand(totalQuery, connection);
+                    object totalResult = totalCommand.ExecuteScalar();
+
+                    // Ensure valid result
+                    int total = totalResult != DBNull.Value && totalResult != null
+                        ? Convert.ToInt32(totalResult)
+                        : 0;
+
+                    // Update label7 with the total
+                    label7.Text = $"{total}";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading overall total items: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart6_Click(object sender, EventArgs e)
+        {
+
         }
     }    
 }
