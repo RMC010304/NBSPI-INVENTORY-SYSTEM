@@ -31,24 +31,24 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OVERALL));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.iT_RESDataSet26 = new NBSPI_INVENTORY_SYSTEM.IT_RESDataSet26();
             this.iTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iT_RESDataSet26 = new NBSPI_INVENTORY_SYSTEM.IT_RESDataSet26();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.iTTableAdapter = new NBSPI_INVENTORY_SYSTEM.IT_RESDataSet26TableAdapters.ITTableAdapter();
-            this.pHOTODataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.sTATUSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qUANTITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iTEMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qUANTITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTATUSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pHOTODataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iT_RESDataSet26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iT_RESDataSet26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView5
@@ -102,6 +102,16 @@
             this.dataGridView5.Size = new System.Drawing.Size(918, 467);
             this.dataGridView5.TabIndex = 81;
             // 
+            // iTBindingSource
+            // 
+            this.iTBindingSource.DataMember = "IT";
+            this.iTBindingSource.DataSource = this.iT_RESDataSet26;
+            // 
+            // iT_RESDataSet26
+            // 
+            this.iT_RESDataSet26.DataSetName = "IT_RESDataSet26";
+            this.iT_RESDataSet26.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -114,33 +124,34 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // iT_RESDataSet26
-            // 
-            this.iT_RESDataSet26.DataSetName = "IT_RESDataSet26";
-            this.iT_RESDataSet26.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iTBindingSource
-            // 
-            this.iTBindingSource.DataMember = "IT";
-            this.iTBindingSource.DataSource = this.iT_RESDataSet26;
-            // 
             // iTTableAdapter
             // 
             this.iTTableAdapter.ClearBeforeFill = true;
             // 
-            // pHOTODataGridViewImageColumn
+            // iTEMDataGridViewTextBoxColumn
             // 
-            this.pHOTODataGridViewImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pHOTODataGridViewImageColumn.DataPropertyName = "PHOTO";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(28, 15, 28, 15);
-            this.pHOTODataGridViewImageColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.pHOTODataGridViewImageColumn.HeaderText = "";
-            this.pHOTODataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.pHOTODataGridViewImageColumn.Name = "pHOTODataGridViewImageColumn";
-            this.pHOTODataGridViewImageColumn.ReadOnly = true;
-            this.pHOTODataGridViewImageColumn.Width = 5;
+            this.iTEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat ExtraBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray;
+            this.iTEMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.iTEMDataGridViewTextBoxColumn.HeaderText = "     ITEM";
+            this.iTEMDataGridViewTextBoxColumn.Name = "iTEMDataGridViewTextBoxColumn";
+            this.iTEMDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qUANTITYDataGridViewTextBoxColumn
+            // 
+            this.qUANTITYDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.qUANTITYDataGridViewTextBoxColumn.DataPropertyName = "QUANTITY";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.qUANTITYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.qUANTITYDataGridViewTextBoxColumn.HeaderText = "QUANTITY";
+            this.qUANTITYDataGridViewTextBoxColumn.Name = "qUANTITYDataGridViewTextBoxColumn";
+            this.qUANTITYDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qUANTITYDataGridViewTextBoxColumn.Width = 5;
             // 
             // sTATUSDataGridViewTextBoxColumn
             // 
@@ -157,28 +168,19 @@
             this.sTATUSDataGridViewTextBoxColumn.ReadOnly = true;
             this.sTATUSDataGridViewTextBoxColumn.Width = 5;
             // 
-            // qUANTITYDataGridViewTextBoxColumn
+            // pHOTODataGridViewImageColumn
             // 
-            this.qUANTITYDataGridViewTextBoxColumn.DataPropertyName = "QUANTITY";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
-            this.qUANTITYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.qUANTITYDataGridViewTextBoxColumn.HeaderText = "QUANTITY";
-            this.qUANTITYDataGridViewTextBoxColumn.Name = "qUANTITYDataGridViewTextBoxColumn";
-            this.qUANTITYDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iTEMDataGridViewTextBoxColumn
-            // 
-            this.iTEMDataGridViewTextBoxColumn.DataPropertyName = "ITEM";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat ExtraBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray;
-            this.iTEMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.iTEMDataGridViewTextBoxColumn.HeaderText = "     ITEM";
-            this.iTEMDataGridViewTextBoxColumn.Name = "iTEMDataGridViewTextBoxColumn";
-            this.iTEMDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pHOTODataGridViewImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pHOTODataGridViewImageColumn.DataPropertyName = "PHOTO";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(28, 15, 28, 15);
+            this.pHOTODataGridViewImageColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.pHOTODataGridViewImageColumn.HeaderText = "";
+            this.pHOTODataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.pHOTODataGridViewImageColumn.Name = "pHOTODataGridViewImageColumn";
+            this.pHOTODataGridViewImageColumn.ReadOnly = true;
+            this.pHOTODataGridViewImageColumn.Width = 5;
             // 
             // OVERALL
             // 
@@ -196,9 +198,9 @@
             this.Text = "OVERALL";
             this.Load += new System.EventHandler(this.OVERALL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iT_RESDataSet26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iT_RESDataSet26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

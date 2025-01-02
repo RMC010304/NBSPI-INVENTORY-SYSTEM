@@ -179,6 +179,20 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         }
 
+        public void RefreshDashboard()
+        {
+            DisplayItemQuantities();
+            LoadOverallTotalItems();
+            FillChart1();
+            FillChart2();
+            FillChart3();
+            FillChart4();
+            LoadBorrowedPercentage();
+            LoadReturnedPercentage2();
+            LoadDamagePercentage3();
+            GetItems();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = DateTime.Now.ToString("hh:mm:ss tt").ToUpper();
@@ -503,6 +517,19 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
             OVERALL oVERALL = new OVERALL();
             oVERALL.Show();
+        }
+
+        private void rjButton4_Click(object sender, EventArgs e)
+        {
+            BRD bRD = new BRD();
+            bRD.Show(); 
+        }
+
+        private void rjButton9_Click(object sender, EventArgs e)
+        {
+            RefreshDashboard();
+            NOTIFRELOAD nOTIFRELOAD = new NOTIFRELOAD();
+            nOTIFRELOAD.Show();
         }
     }    
 }

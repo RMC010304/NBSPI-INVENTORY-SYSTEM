@@ -46,6 +46,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DASHBOARD));
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bORROWTableAdapter = new NBSPI_INVENTORY_SYSTEM.IT_RESDataSet25TableAdapters.BORROWTableAdapter();
+            this.rjButton9 = new RJCodeAdvance.RJControls.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
@@ -160,6 +162,7 @@
             this.rjButton4.Text = "VIEW";
             this.rjButton4.TextColor = System.Drawing.Color.White;
             this.rjButton4.UseVisualStyleBackColor = false;
+            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
             // 
             // label1
             // 
@@ -420,7 +423,7 @@
             this.dataGridView5.RowHeadersVisible = false;
             this.dataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView5.RowTemplate.DividerHeight = 15;
-            this.dataGridView5.RowTemplate.Height = 70;
+            this.dataGridView5.RowTemplate.Height = 68;
             this.dataGridView5.Size = new System.Drawing.Size(282, 394);
             this.dataGridView5.TabIndex = 111;
             // 
@@ -672,12 +675,38 @@
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
+            // rjButton9
+            // 
+            this.rjButton9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rjButton9.BackColor = System.Drawing.Color.White;
+            this.rjButton9.BackgroundColor = System.Drawing.Color.White;
+            this.rjButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rjButton9.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton9.BorderRadius = 8;
+            this.rjButton9.BorderSize = 0;
+            this.rjButton9.FlatAppearance.BorderSize = 0;
+            this.rjButton9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.rjButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton9.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjButton9.Image = ((System.Drawing.Image)(resources.GetObject("rjButton9.Image")));
+            this.rjButton9.Location = new System.Drawing.Point(1495, 140);
+            this.rjButton9.Name = "rjButton9";
+            this.rjButton9.Size = new System.Drawing.Size(40, 38);
+            this.rjButton9.TabIndex = 115;
+            this.rjButton9.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
+            this.rjButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.rjButton9.UseVisualStyleBackColor = false;
+            this.rjButton9.Click += new System.EventHandler(this.rjButton9_Click);
+            // 
             // DASHBOARD
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.dasb;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.rjButton9);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
@@ -736,5 +765,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iTEMDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qUANTITYDataGridViewTextBoxColumn;
+        private RJCodeAdvance.RJControls.RJButton rjButton9;
     }
 }

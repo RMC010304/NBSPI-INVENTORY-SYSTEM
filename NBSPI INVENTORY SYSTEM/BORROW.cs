@@ -282,18 +282,23 @@ namespace NBSPI_INVENTORY_SYSTEM
                 insertBorrowCmd.Parameters.AddWithValue("@Date2", returnDate);
                 insertBorrowCmd.Parameters.AddWithValue("@Description", rjTextBox5.Texts.Trim());
 
+                // Handle the PHOTO column
                 if (pictureBox2.Image != null)
                 {
+                    // Convert the image to a byte array
                     using (var ms = new MemoryStream())
                     {
                         pictureBox2.Image.Save(ms, pictureBox2.Image.RawFormat);
                         byte[] photo = ms.ToArray();
-                        insertBorrowCmd.Parameters.AddWithValue("@Photo", photo);
+                        insertBorrowCmd.Parameters.AddWithValue("@Photo", photo); // Add as byte[]
                     }
                 }
                 else
                 {
-                    insertBorrowCmd.Parameters.AddWithValue("@Photo", DBNull.Value);
+                    // Set DBNull.Value if no image is provided
+                    SqlParameter photoParam = new SqlParameter("@Photo", SqlDbType.VarBinary);
+                    photoParam.Value = DBNull.Value;
+                    insertBorrowCmd.Parameters.Add(photoParam);
                 }
 
                 insertBorrowCmd.ExecuteNonQuery();

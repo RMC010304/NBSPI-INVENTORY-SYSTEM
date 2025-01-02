@@ -21,11 +21,12 @@ namespace NBSPI_INVENTORY_SYSTEM
     public partial class Main : Form
     {
 
+        public DASHBOARD dashboard;
 
         public Main()
         {
             InitializeComponent();
-
+            dashboard = new DASHBOARD();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -60,8 +61,10 @@ namespace NBSPI_INVENTORY_SYSTEM
             archbutton.Image = Resources.ar2;
             abbutton.Image = Resources.ab2;
 
-            dashboard3.BringToFront();
-           
+            dashboard4.BringToFront();
+
+            dashboard.RefreshDashboard();
+
         }
 
         private void itbutton_Click(object sender, EventArgs e)

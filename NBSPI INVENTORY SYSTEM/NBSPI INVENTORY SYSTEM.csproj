@@ -154,6 +154,12 @@
     <Compile Include="BORROWRETURN.Designer.cs">
       <DependentUpon>BORROWRETURN.cs</DependentUpon>
     </Compile>
+    <Compile Include="BRD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BRD.Designer.cs">
+      <DependentUpon>BRD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -359,6 +365,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet26.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet27.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet28.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet28.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IT_RESDataSet29.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet29.xsd</DependentUpon>
     </Compile>
     <Compile Include="IT_RESDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -722,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BORROWRETURN.resx">
       <DependentUpon>BORROWRETURN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BRD.resx">
+      <DependentUpon>BRD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DAMAGEFIXED.resx">
       <DependentUpon>DAMAGEFIXED.cs</DependentUpon>
@@ -1148,6 +1172,39 @@
     </None>
     <None Include="IT_RESDataSet26.xss">
       <DependentUpon>IT_RESDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet27.xsc">
+      <DependentUpon>IT_RESDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet27.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet27.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet27.xss">
+      <DependentUpon>IT_RESDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet28.xsc">
+      <DependentUpon>IT_RESDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet28.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet28.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet28.xss">
+      <DependentUpon>IT_RESDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet29.xsc">
+      <DependentUpon>IT_RESDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet29.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet29.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet29.xss">
+      <DependentUpon>IT_RESDataSet29.xsd</DependentUpon>
     </None>
     <None Include="IT_RESDataSet3.xsc">
       <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
@@ -1863,6 +1920,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\OVERALL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BRD2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brd final.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

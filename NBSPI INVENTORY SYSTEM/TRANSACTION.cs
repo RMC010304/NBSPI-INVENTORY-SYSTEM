@@ -15,6 +15,7 @@ using DGVPrinterHelper;
 using System.Drawing.Printing;
 using RJCodeAdvance.RJControls;
 using System.Transactions;
+using System.IO;
 
 namespace NBSPI_INVENTORY_SYSTEM
 {
@@ -357,8 +358,17 @@ namespace NBSPI_INVENTORY_SYSTEM
                                 insertToITCmd.Parameters.AddWithValue("@Model", model);
                                 insertToITCmd.Parameters.AddWithValue("@Status", "AVAILABLE");
                                 insertToITCmd.Parameters.AddWithValue("@Description", description);
-                                insertToITCmd.Parameters.AddWithValue("@Photo", (object)photo ?? DBNull.Value);
+                               
                                 insertToITCmd.Parameters.AddWithValue("@Date", DateTime.Now);
+
+                                if (photo != null) // If photo data is available
+                                {
+                                    insertToITCmd.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = photo;
+                                }
+                                else // If no photo is uploaded
+                                {
+                                    insertToITCmd.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = DBNull.Value;
+                                }
 
                                 // Insert into IT table
                                 insertToITCmd.ExecuteNonQuery();
