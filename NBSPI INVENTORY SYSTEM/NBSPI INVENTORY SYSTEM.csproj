@@ -355,6 +355,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IT_RESDataSet25.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IT_RESDataSet26.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IT_RESDataSet26.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IT_RESDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -593,6 +598,12 @@
     </Compile>
     <Compile Include="NOTIFUPDATE.Designer.cs">
       <DependentUpon>NOTIFUPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OVERALL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OVERALL.Designer.cs">
+      <DependentUpon>OVERALL.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -865,6 +876,9 @@
     <EmbeddedResource Include="NOTIFUPDATE.resx">
       <DependentUpon>NOTIFUPDATE.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OVERALL.resx">
+      <DependentUpon>OVERALL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -1123,6 +1137,17 @@
     </None>
     <None Include="IT_RESDataSet25.xss">
       <DependentUpon>IT_RESDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet26.xsc">
+      <DependentUpon>IT_RESDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="IT_RESDataSet26.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IT_RESDataSet26.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IT_RESDataSet26.xss">
+      <DependentUpon>IT_RESDataSet26.xsd</DependentUpon>
     </None>
     <None Include="IT_RESDataSet3.xsc">
       <DependentUpon>IT_RESDataSet3.xsd</DependentUpon>
@@ -1835,6 +1860,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dasb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OVERALL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

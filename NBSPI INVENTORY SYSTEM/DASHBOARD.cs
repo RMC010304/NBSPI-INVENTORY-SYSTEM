@@ -498,5 +498,11 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
 
         }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+            OVERALL oVERALL = new OVERALL();
+            oVERALL.Show();
+        }
     }    
 }
