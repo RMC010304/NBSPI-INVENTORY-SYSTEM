@@ -476,6 +476,12 @@
     <Compile Include="NOTIFEXCEED.Designer.cs">
       <DependentUpon>NOTIFEXCEED.cs</DependentUpon>
     </Compile>
+    <Compile Include="NOTIFEXCEED2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NOTIFEXCEED2.Designer.cs">
+      <DependentUpon>NOTIFEXCEED2.cs</DependentUpon>
+    </Compile>
     <Compile Include="NOTIFEXIST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -827,6 +833,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NOTIFEXCEED.resx">
       <DependentUpon>NOTIFEXCEED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NOTIFEXCEED2.resx">
+      <DependentUpon>NOTIFEXCEED2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NOTIFEXIST.resx">
       <DependentUpon>NOTIFEXIST.cs</DependentUpon>
@@ -1929,6 +1938,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\brd final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\damage notif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\total2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

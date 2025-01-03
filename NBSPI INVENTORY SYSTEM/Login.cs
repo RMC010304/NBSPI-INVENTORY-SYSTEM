@@ -571,6 +571,15 @@ namespace NBSPI_INVENTORY_SYSTEM
                            Properties.Resources._21, Properties.Resources.hm111,
                           Properties.Resources._31, Properties.Resources.sc111,
                           Properties.Resources._41, Properties.Resources.sp111);
+
+                            mainForm.UpdateAdditionalButtons(
+                        it ? Properties.Resources._1 : Properties.Resources.total2,
+                        hm ? Properties.Resources._2 : Properties.Resources.total2,
+                        science ? Properties.Resources._3 : Properties.Resources.total2,
+                        sports ? Properties.Resources._4 : Properties.Resources.total2);
+
+                            mainForm.UpdateLabelVisibility(it, hm, science, sports);
+
                         }
                     }
                 }
@@ -606,18 +615,28 @@ namespace NBSPI_INVENTORY_SYSTEM
 
                             // Enable or disable buttons based on the user's permissions
                             mainForm.SetButtonPermissions(
-                       it, hm, science, sports,
-                       Properties.Resources.it1111, Properties.Resources.it111,
-                       Properties.Resources._21, Properties.Resources.hm111,
-                      Properties.Resources._31, Properties.Resources.sc111,
-                      Properties.Resources._41, Properties.Resources.sp111);
+                                it, hm, science, sports,
+                                Properties.Resources.it1111, Properties.Resources.it111,
+                                Properties.Resources._21, Properties.Resources.hm111,
+                                Properties.Resources._31, Properties.Resources.sc111,
+                                Properties.Resources._41, Properties.Resources.sp111);
+
+                            mainForm.UpdateAdditionalButtons(
+                                it ? Properties.Resources._1 : Properties.Resources.total2,
+                                hm ? Properties.Resources._2 : Properties.Resources.total2,
+                                science ? Properties.Resources._3 : Properties.Resources.total2,
+                                sports ? Properties.Resources._4 : Properties.Resources.total2);
+
+                            mainForm.UpdateLabelVisibility(it, hm, science, sports);
                         }
                     }
                 }
             }
         }
 
+        private void scan_Paint(object sender, PaintEventArgs e)
+        {
 
-
+        }
     }
 }

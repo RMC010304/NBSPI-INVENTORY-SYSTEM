@@ -204,7 +204,7 @@ namespace NBSPI_INVENTORY_SYSTEM
                 // Ensure the damage quantity is not greater than borrowed quantity
                 if (quantity > borrowedQuantity)
                 {
-                    NOTIFEXCEED nOTIFEXCEED = new NOTIFEXCEED();
+                    NOTIFEXCEED2 nOTIFEXCEED = new NOTIFEXCEED2();
                     nOTIFEXCEED.Show();
                 }
 

@@ -1153,6 +1153,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap damage_notif {
+            get {
+                object obj = ResourceManager.GetObject("damage notif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap damagedis {
             get {
                 object obj = ResourceManager.GetObject("damagedis", resourceCulture);
@@ -1986,6 +1996,16 @@ namespace NBSPI_INVENTORY_SYSTEM.Properties {
         internal static System.Drawing.Bitmap tech {
             get {
                 object obj = ResourceManager.GetObject("tech", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap total2 {
+            get {
+                object obj = ResourceManager.GetObject("total2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

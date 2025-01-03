@@ -87,6 +87,14 @@ namespace NBSPI_INVENTORY_SYSTEM
 
             }
         }
+
+        public void RefreshData()
+        {
+            GetItems();
+            GetItems2();
+            GetItems3();
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();

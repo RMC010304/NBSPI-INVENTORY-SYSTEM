@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.doubleBufferedPanel1 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.dashboard4 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.transaction2 = new NBSPI_INVENTORY_SYSTEM.TRANSACTION();
             this.archive2 = new NBSPI_INVENTORY_SYSTEM.ARCHIVE();
             this.ipanel = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
@@ -58,7 +59,6 @@
             this.it2 = new NBSPI_INVENTORY_SYSTEM.IT();
             this.science2 = new NBSPI_INVENTORY_SYSTEM.SCIENCE();
             this.sports2 = new NBSPI_INVENTORY_SYSTEM.SPORTS();
-            this.dashboard4 = new NBSPI_INVENTORY_SYSTEM.DASHBOARD();
             this.doubleBufferedPanel1.SuspendLayout();
             this.ipanel.SuspendLayout();
             this.doubleBufferedPanel4.SuspendLayout();
@@ -79,6 +79,17 @@
             this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
             this.doubleBufferedPanel1.Size = new System.Drawing.Size(1888, 1002);
             this.doubleBufferedPanel1.TabIndex = 0;
+            // 
+            // dashboard4
+            // 
+            this.dashboard4.BackColor = System.Drawing.Color.White;
+            this.dashboard4.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.dasb;
+            this.dashboard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dashboard4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dashboard4.Location = new System.Drawing.Point(334, 0);
+            this.dashboard4.Name = "dashboard4";
+            this.dashboard4.Size = new System.Drawing.Size(1554, 1002);
+            this.dashboard4.TabIndex = 7;
             // 
             // transaction2
             // 
@@ -614,17 +625,6 @@
             this.sports2.Name = "sports2";
             this.sports2.Size = new System.Drawing.Size(1888, 1002);
             this.sports2.TabIndex = 4;
-            // 
-            // dashboard4
-            // 
-            this.dashboard4.BackColor = System.Drawing.Color.White;
-            this.dashboard4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dashboard4.BackgroundImage")));
-            this.dashboard4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dashboard4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dashboard4.Location = new System.Drawing.Point(334, 0);
-            this.dashboard4.Name = "dashboard4";
-            this.dashboard4.Size = new System.Drawing.Size(1554, 1002);
-            this.dashboard4.TabIndex = 7;
             // 
             // Main
             // 

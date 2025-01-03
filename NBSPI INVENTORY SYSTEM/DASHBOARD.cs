@@ -517,12 +517,14 @@ namespace NBSPI_INVENTORY_SYSTEM
         {
             OVERALL oVERALL = new OVERALL();
             oVERALL.Show();
+            oVERALL.RefreshData();
         }
 
         private void rjButton4_Click(object sender, EventArgs e)
         {
             BRD bRD = new BRD();
-            bRD.Show(); 
+            bRD.Show();
+            bRD.RefreshData();
         }
 
         private void rjButton9_Click(object sender, EventArgs e)

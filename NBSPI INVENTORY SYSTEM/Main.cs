@@ -1,5 +1,6 @@
 ﻿using NBSPI_INVENTORY_SYSTEM.Properties;
 using Org.BouncyCastle.Crmf;
+using RJCodeAdvance.RJControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace NBSPI_INVENTORY_SYSTEM
 
         public void UpdateDashboardUsername(string username)
         {
-            dashboard3.SetUsername(username); // Call the method on the Dashboard user control
+            dashboard4.SetUsername(username); // Call the method on the Dashboard user control
         }
 
         private void dashbutton_Click(object sender, EventArgs e)
@@ -364,43 +365,77 @@ namespace NBSPI_INVENTORY_SYSTEM
         }
 
         public void SetButtonPermissions(
-      bool it, bool hm, bool science, bool sports,
-      Image itEnabledImage, Image itDisabledImage,
-      Image hmEnabledImage, Image hmDisabledImage,
-      Image scienceEnabledImage, Image scienceDisabledImage,
-      Image sportsEnabledImage, Image sportsDisabledImage)
+     bool it, bool hm, bool science, bool sports,
+     Image itEnabledImage, Image itDisabledImage,
+     Image hmEnabledImage, Image hmDisabledImage,
+     Image scienceEnabledImage, Image scienceDisabledImage,
+     Image sportsEnabledImage, Image sportsDisabledImage)
         {
             // IT button
             rjButton5.Enabled = it;
             rjButton5.BackgroundImage = it ? itEnabledImage : itDisabledImage;
             rjButton5.BackgroundImageLayout = ImageLayout.Stretch;
+         
 
             // HM button
             rjButton1.Enabled = hm;
             rjButton1.BackgroundImage = hm ? hmEnabledImage : hmDisabledImage;
             rjButton1.BackgroundImageLayout = ImageLayout.Stretch;
+          
 
             // Science button
             rjButton2.Enabled = science;
             rjButton2.BackgroundImage = science ? scienceEnabledImage : scienceDisabledImage;
             rjButton2.BackgroundImageLayout = ImageLayout.Stretch;
-
+     
             // Sports button
             rjButton3.Enabled = sports;
             rjButton3.BackgroundImage = sports ? sportsEnabledImage : sportsDisabledImage;
             rjButton3.BackgroundImageLayout = ImageLayout.Stretch;
+  
 
-            // Optional: Refresh UI
+            // Refresh UI
             rjButton5.Refresh();
             rjButton1.Refresh();
             rjButton2.Refresh();
             rjButton3.Refresh();
         }
+        public void UpdateAdditionalButtons(Image itImage, Image hmImage, Image scienceImage, Image sportsImage)
+        {
+            // Update images for the additional buttons
+            rjButton4.BackgroundImage = itImage;
+            rjButton4.BackgroundImageLayout = ImageLayout.Stretch;
+
+            rjButton6.BackgroundImage = hmImage;
+            rjButton6.BackgroundImageLayout = ImageLayout.Stretch;
+
+            rjButton7.BackgroundImage = scienceImage;
+            rjButton7.BackgroundImageLayout = ImageLayout.Stretch;
+
+            rjButton8.BackgroundImage = sportsImage;
+            rjButton8.BackgroundImageLayout = ImageLayout.Stretch;
+
+            // Refresh the UI
+            rjButton4.Refresh();
+            rjButton6.Refresh();
+            rjButton7.Refresh();
+            rjButton8.Refresh();
+        }
+
+        public void UpdateLabelVisibility(bool it, bool hm, bool science, bool sports)
+        {
+            // Update label visibility based on permissions
+            label1.Visible = it;
+            label2.Visible = hm;
+            label3.Visible = science;
+            label4.Visible = sports;
+        }
 
         private void Main_Load_1(object sender, EventArgs e)
         {
-
+         
         }
+
 
         private void rjButton15_Click(object sender, EventArgs e)
         {

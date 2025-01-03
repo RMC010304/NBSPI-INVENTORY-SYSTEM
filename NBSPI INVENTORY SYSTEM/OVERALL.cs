@@ -66,6 +66,11 @@ namespace NBSPI_INVENTORY_SYSTEM
             }
         }
 
+        public void RefreshData()
+        {
+            LoadDataGridView();
+
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -37,20 +37,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.doubleBufferedPanel1 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.doubleBufferedPanel6 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.rjTextBox3 = new RJCodeAdvance.RJControls.RJTextBox();
-            this.rjButton6 = new RJCodeAdvance.RJControls.RJButton();
-            this.rjTextBox4 = new RJCodeAdvance.RJControls.RJTextBox();
-            this.doubleBufferedPanel2 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.doubleBufferedPanel3 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.doubleBufferedPanel4 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
-            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
-            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
-            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
-            this.Character = new System.Windows.Forms.PictureBox();
             this.scan = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
             this.card = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.rjCircularPictureBox2 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
@@ -67,18 +53,32 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rjButton5 = new RJCodeAdvance.RJControls.RJButton();
+            this.doubleBufferedPanel6 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.rjTextBox3 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.rjButton6 = new RJCodeAdvance.RJControls.RJButton();
+            this.rjTextBox4 = new RJCodeAdvance.RJControls.RJTextBox();
+            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
+            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
+            this.doubleBufferedPanel2 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.doubleBufferedPanel3 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.doubleBufferedPanel4 = new NBSPI_INVENTORY_SYSTEM.DoubleBufferedPanel();
+            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
+            this.Character = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.doubleBufferedPanel1.SuspendLayout();
-            this.doubleBufferedPanel6.SuspendLayout();
-            this.doubleBufferedPanel2.SuspendLayout();
-            this.doubleBufferedPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Character)).BeginInit();
             this.scan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.card)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox2)).BeginInit();
             this.create.SuspendLayout();
             this.doubleBufferedPanel5.SuspendLayout();
+            this.doubleBufferedPanel6.SuspendLayout();
+            this.doubleBufferedPanel2.SuspendLayout();
+            this.doubleBufferedPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Character)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -141,227 +141,6 @@
             this.doubleBufferedPanel1.TabIndex = 0;
             this.doubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.doubleBufferedPanel1_Paint);
             // 
-            // doubleBufferedPanel6
-            // 
-            this.doubleBufferedPanel6.BackColor = System.Drawing.Color.White;
-            this.doubleBufferedPanel6.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources._52;
-            this.doubleBufferedPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.doubleBufferedPanel6.Controls.Add(this.checkBox6);
-            this.doubleBufferedPanel6.Controls.Add(this.pictureBox1);
-            this.doubleBufferedPanel6.Controls.Add(this.rjTextBox3);
-            this.doubleBufferedPanel6.Controls.Add(this.rjButton6);
-            this.doubleBufferedPanel6.Controls.Add(this.rjTextBox4);
-            this.doubleBufferedPanel6.Location = new System.Drawing.Point(616, 0);
-            this.doubleBufferedPanel6.Name = "doubleBufferedPanel6";
-            this.doubleBufferedPanel6.Size = new System.Drawing.Size(747, 814);
-            this.doubleBufferedPanel6.TabIndex = 19;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Montserrat", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.checkBox6.Location = new System.Drawing.Point(501, 526);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(122, 20);
-            this.checkBox6.TabIndex = 19;
-            this.checkBox6.Text = "Show password";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // rjTextBox3
-            // 
-            this.rjTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.rjTextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjTextBox3.BorderRadius = 18;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox3.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox3.Location = new System.Drawing.Point(131, 481);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox3.PasswordChar = true;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.Silver;
-            this.rjTextBox3.PlaceholderText = " Type your password";
-            this.rjTextBox3.Size = new System.Drawing.Size(492, 37);
-            this.rjTextBox3.TabIndex = 17;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = false;
-            // 
-            // rjButton6
-            // 
-            this.rjButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton6.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton6.BorderRadius = 25;
-            this.rjButton6.BorderSize = 0;
-            this.rjButton6.FlatAppearance.BorderSize = 0;
-            this.rjButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton6.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton6.ForeColor = System.Drawing.Color.White;
-            this.rjButton6.Location = new System.Drawing.Point(131, 567);
-            this.rjButton6.Name = "rjButton6";
-            this.rjButton6.Size = new System.Drawing.Size(492, 50);
-            this.rjButton6.TabIndex = 16;
-            this.rjButton6.Text = "Log In";
-            this.rjButton6.TextColor = System.Drawing.Color.White;
-            this.rjButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.rjButton6.UseVisualStyleBackColor = false;
-            this.rjButton6.Click += new System.EventHandler(this.rjButton6_Click);
-            // 
-            // rjTextBox4
-            // 
-            this.rjTextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.rjTextBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjTextBox4.BorderRadius = 18;
-            this.rjTextBox4.BorderSize = 2;
-            this.rjTextBox4.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox4.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox4.Location = new System.Drawing.Point(131, 357);
-            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = true;
-            this.rjTextBox4.Name = "rjTextBox4";
-            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox4.PasswordChar = false;
-            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.Silver;
-            this.rjTextBox4.PlaceholderText = "Type your username";
-            this.rjTextBox4.Size = new System.Drawing.Size(492, 39);
-            this.rjTextBox4.TabIndex = 15;
-            this.rjTextBox4.Texts = "";
-            this.rjTextBox4.UnderlinedStyle = false;
-            // 
-            // doubleBufferedPanel2
-            // 
-            this.doubleBufferedPanel2.BackColor = System.Drawing.Color.White;
-            this.doubleBufferedPanel2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources._83;
-            this.doubleBufferedPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.doubleBufferedPanel2.Controls.Add(this.textBox1);
-            this.doubleBufferedPanel2.Controls.Add(this.label2);
-            this.doubleBufferedPanel2.Controls.Add(this.doubleBufferedPanel3);
-            this.doubleBufferedPanel2.Controls.Add(this.rjButton4);
-            this.doubleBufferedPanel2.Location = new System.Drawing.Point(616, 0);
-            this.doubleBufferedPanel2.Name = "doubleBufferedPanel2";
-            this.doubleBufferedPanel2.Size = new System.Drawing.Size(747, 814);
-            this.doubleBufferedPanel2.TabIndex = 17;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(770, 202);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 17;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(429, 448);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 21);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Back";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // doubleBufferedPanel3
-            // 
-            this.doubleBufferedPanel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.doubleBufferedPanel3.Controls.Add(this.doubleBufferedPanel4);
-            this.doubleBufferedPanel3.Location = new System.Drawing.Point(137, 404);
-            this.doubleBufferedPanel3.Name = "doubleBufferedPanel3";
-            this.doubleBufferedPanel3.Size = new System.Drawing.Size(488, 10);
-            this.doubleBufferedPanel3.TabIndex = 14;
-            // 
-            // doubleBufferedPanel4
-            // 
-            this.doubleBufferedPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.doubleBufferedPanel4.Location = new System.Drawing.Point(-13, 0);
-            this.doubleBufferedPanel4.Name = "doubleBufferedPanel4";
-            this.doubleBufferedPanel4.Size = new System.Drawing.Size(10, 10);
-            this.doubleBufferedPanel4.TabIndex = 15;
-            // 
-            // rjButton4
-            // 
-            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton4.BorderRadius = 22;
-            this.rjButton4.BorderSize = 0;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton4.ForeColor = System.Drawing.Color.White;
-            this.rjButton4.Location = new System.Drawing.Point(506, 437);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(117, 42);
-            this.rjButton4.TabIndex = 13;
-            this.rjButton4.Text = "Sign in";
-            this.rjButton4.TextColor = System.Drawing.Color.White;
-            this.rjButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.rjButton4.UseVisualStyleBackColor = false;
-            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.Transparent;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.rjButton1.BorderColor = System.Drawing.Color.Transparent;
-            this.rjButton1.BorderRadius = 25;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(218)))), ((int)(((byte)(246)))));
-            this.rjButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(179)))), ((int)(((byte)(237)))));
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(482, 469);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(162, 54);
-            this.rjButton1.TabIndex = 13;
-            this.rjButton1.Text = "    SIGN IN";
-            this.rjButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
-            this.rjButton1.MouseHover += new System.EventHandler(this.rjButton1_MouseHover);
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.White;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.White;
-            this.rjButton2.BorderColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BorderRadius = 25;
-            this.rjButton2.BorderSize = 0;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(218)))), ((int)(((byte)(246)))));
-            this.rjButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(179)))), ((int)(((byte)(237)))));
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton2.Location = new System.Drawing.Point(482, 415);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(162, 54);
-            this.rjButton2.TabIndex = 15;
-            this.rjButton2.Text = "    SCAN";
-            this.rjButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
-            // 
-            // Character
-            // 
-            this.Character.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Character.Image = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.c;
-            this.Character.Location = new System.Drawing.Point(-169, 294);
-            this.Character.Name = "Character";
-            this.Character.Size = new System.Drawing.Size(728, 621);
-            this.Character.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Character.TabIndex = 14;
-            this.Character.TabStop = false;
-            // 
             // scan
             // 
             this.scan.BackColor = System.Drawing.Color.White;
@@ -375,6 +154,7 @@
             this.scan.Name = "scan";
             this.scan.Size = new System.Drawing.Size(747, 814);
             this.scan.TabIndex = 0;
+            this.scan.Paint += new System.Windows.Forms.PaintEventHandler(this.scan_Paint);
             // 
             // card
             // 
@@ -611,6 +391,227 @@
             this.rjButton5.UseVisualStyleBackColor = false;
             this.rjButton5.Click += new System.EventHandler(this.rjButton5_Click);
             // 
+            // doubleBufferedPanel6
+            // 
+            this.doubleBufferedPanel6.BackColor = System.Drawing.Color.White;
+            this.doubleBufferedPanel6.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources._52;
+            this.doubleBufferedPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.doubleBufferedPanel6.Controls.Add(this.checkBox6);
+            this.doubleBufferedPanel6.Controls.Add(this.pictureBox1);
+            this.doubleBufferedPanel6.Controls.Add(this.rjTextBox3);
+            this.doubleBufferedPanel6.Controls.Add(this.rjButton6);
+            this.doubleBufferedPanel6.Controls.Add(this.rjTextBox4);
+            this.doubleBufferedPanel6.Location = new System.Drawing.Point(616, 0);
+            this.doubleBufferedPanel6.Name = "doubleBufferedPanel6";
+            this.doubleBufferedPanel6.Size = new System.Drawing.Size(747, 814);
+            this.doubleBufferedPanel6.TabIndex = 19;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("Montserrat", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.checkBox6.Location = new System.Drawing.Point(501, 526);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(122, 20);
+            this.checkBox6.TabIndex = 19;
+            this.checkBox6.Text = "Show password";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // rjTextBox3
+            // 
+            this.rjTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.rjTextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjTextBox3.BorderRadius = 18;
+            this.rjTextBox3.BorderSize = 2;
+            this.rjTextBox3.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox3.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox3.Location = new System.Drawing.Point(131, 481);
+            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox3.Multiline = false;
+            this.rjTextBox3.Name = "rjTextBox3";
+            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox3.PasswordChar = true;
+            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.Silver;
+            this.rjTextBox3.PlaceholderText = " Type your password";
+            this.rjTextBox3.Size = new System.Drawing.Size(492, 37);
+            this.rjTextBox3.TabIndex = 17;
+            this.rjTextBox3.Texts = "";
+            this.rjTextBox3.UnderlinedStyle = false;
+            // 
+            // rjButton6
+            // 
+            this.rjButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton6.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton6.BorderRadius = 25;
+            this.rjButton6.BorderSize = 0;
+            this.rjButton6.FlatAppearance.BorderSize = 0;
+            this.rjButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton6.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton6.ForeColor = System.Drawing.Color.White;
+            this.rjButton6.Location = new System.Drawing.Point(131, 567);
+            this.rjButton6.Name = "rjButton6";
+            this.rjButton6.Size = new System.Drawing.Size(492, 50);
+            this.rjButton6.TabIndex = 16;
+            this.rjButton6.Text = "Log In";
+            this.rjButton6.TextColor = System.Drawing.Color.White;
+            this.rjButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.rjButton6.UseVisualStyleBackColor = false;
+            this.rjButton6.Click += new System.EventHandler(this.rjButton6_Click);
+            // 
+            // rjTextBox4
+            // 
+            this.rjTextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.rjTextBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjTextBox4.BorderRadius = 18;
+            this.rjTextBox4.BorderSize = 2;
+            this.rjTextBox4.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox4.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox4.Location = new System.Drawing.Point(131, 357);
+            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox4.Multiline = true;
+            this.rjTextBox4.Name = "rjTextBox4";
+            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox4.PasswordChar = false;
+            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.Silver;
+            this.rjTextBox4.PlaceholderText = "Type your username";
+            this.rjTextBox4.Size = new System.Drawing.Size(492, 39);
+            this.rjTextBox4.TabIndex = 15;
+            this.rjTextBox4.Texts = "";
+            this.rjTextBox4.UnderlinedStyle = false;
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BorderColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BorderRadius = 25;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(218)))), ((int)(((byte)(246)))));
+            this.rjButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(179)))), ((int)(((byte)(237)))));
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(482, 469);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(162, 54);
+            this.rjButton1.TabIndex = 13;
+            this.rjButton1.Text = "    SIGN IN";
+            this.rjButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
+            this.rjButton1.MouseHover += new System.EventHandler(this.rjButton1_MouseHover);
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.BackColor = System.Drawing.Color.White;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.White;
+            this.rjButton2.BorderColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BorderRadius = 25;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(218)))), ((int)(((byte)(246)))));
+            this.rjButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(179)))), ((int)(((byte)(237)))));
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton2.Location = new System.Drawing.Point(482, 415);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(162, 54);
+            this.rjButton2.TabIndex = 15;
+            this.rjButton2.Text = "    SCAN";
+            this.rjButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rjButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton2.UseVisualStyleBackColor = false;
+            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            // 
+            // doubleBufferedPanel2
+            // 
+            this.doubleBufferedPanel2.BackColor = System.Drawing.Color.White;
+            this.doubleBufferedPanel2.BackgroundImage = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources._83;
+            this.doubleBufferedPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.doubleBufferedPanel2.Controls.Add(this.textBox1);
+            this.doubleBufferedPanel2.Controls.Add(this.label2);
+            this.doubleBufferedPanel2.Controls.Add(this.doubleBufferedPanel3);
+            this.doubleBufferedPanel2.Controls.Add(this.rjButton4);
+            this.doubleBufferedPanel2.Location = new System.Drawing.Point(616, 0);
+            this.doubleBufferedPanel2.Name = "doubleBufferedPanel2";
+            this.doubleBufferedPanel2.Size = new System.Drawing.Size(747, 814);
+            this.doubleBufferedPanel2.TabIndex = 17;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(770, 202);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(429, 448);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 21);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Back";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // doubleBufferedPanel3
+            // 
+            this.doubleBufferedPanel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.doubleBufferedPanel3.Controls.Add(this.doubleBufferedPanel4);
+            this.doubleBufferedPanel3.Location = new System.Drawing.Point(137, 404);
+            this.doubleBufferedPanel3.Name = "doubleBufferedPanel3";
+            this.doubleBufferedPanel3.Size = new System.Drawing.Size(488, 10);
+            this.doubleBufferedPanel3.TabIndex = 14;
+            // 
+            // doubleBufferedPanel4
+            // 
+            this.doubleBufferedPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.doubleBufferedPanel4.Location = new System.Drawing.Point(-13, 0);
+            this.doubleBufferedPanel4.Name = "doubleBufferedPanel4";
+            this.doubleBufferedPanel4.Size = new System.Drawing.Size(10, 10);
+            this.doubleBufferedPanel4.TabIndex = 15;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(79)))), ((int)(((byte)(162)))));
+            this.rjButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton4.BorderRadius = 22;
+            this.rjButton4.BorderSize = 0;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton4.ForeColor = System.Drawing.Color.White;
+            this.rjButton4.Location = new System.Drawing.Point(506, 437);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(117, 42);
+            this.rjButton4.TabIndex = 13;
+            this.rjButton4.Text = "Sign in";
+            this.rjButton4.TextColor = System.Drawing.Color.White;
+            this.rjButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.rjButton4.UseVisualStyleBackColor = false;
+            this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);
+            // 
+            // Character
+            // 
+            this.Character.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Character.Image = global::NBSPI_INVENTORY_SYSTEM.Properties.Resources.c;
+            this.Character.Location = new System.Drawing.Point(-169, 294);
+            this.Character.Name = "Character";
+            this.Character.Size = new System.Drawing.Size(728, 621);
+            this.Character.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Character.TabIndex = 14;
+            this.Character.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,12 +627,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.doubleBufferedPanel1.ResumeLayout(false);
-            this.doubleBufferedPanel6.ResumeLayout(false);
-            this.doubleBufferedPanel6.PerformLayout();
-            this.doubleBufferedPanel2.ResumeLayout(false);
-            this.doubleBufferedPanel2.PerformLayout();
-            this.doubleBufferedPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Character)).EndInit();
             this.scan.ResumeLayout(false);
             this.scan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.card)).EndInit();
@@ -640,6 +635,12 @@
             this.create.PerformLayout();
             this.doubleBufferedPanel5.ResumeLayout(false);
             this.doubleBufferedPanel5.PerformLayout();
+            this.doubleBufferedPanel6.ResumeLayout(false);
+            this.doubleBufferedPanel6.PerformLayout();
+            this.doubleBufferedPanel2.ResumeLayout(false);
+            this.doubleBufferedPanel2.PerformLayout();
+            this.doubleBufferedPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Character)).EndInit();
             this.ResumeLayout(false);
 
         }
